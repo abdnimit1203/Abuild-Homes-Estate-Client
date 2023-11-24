@@ -5,15 +5,15 @@ export default {
       {
         mytheme: {
         
-            "primary": "#facc15",
+            "primary": "#38B6FF",
                     
-            "secondary": "#185f96",
+            "secondary": "#FF3131",
                     
-            "accent": "#96d5f7",
+            "accent": "#FF914D",
                     
-            "neutral": "#44403c",
+            "neutral": "#545454",
                     
-            "base-100": "#ffffff",
+            "base-100": "#f8f7fd",
                     
             "info": "#fda4af",
                     

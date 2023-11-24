@@ -1,3 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    font-family: 'Outfit', sans-serif;
+}
+/* custom button */
+.button {
+
+    text-align: center;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+    
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .button-1 {
+    color: #38B6FF;
+    border: 3px solid #38B6FF;
+    background-image: -webkit-linear-gradient(30deg, #fff 50%, transparent 50%);
+    background-image: linear-gradient(30deg, #fff 50%, transparent 50%);
+    background-size: 500px;
+    background-repeat: no-repeat;
+    background-position: 0%;
+    -webkit-transition: background 300ms ease-in-out;
+    transition: background 500ms ease-in-out;
+  }
+  .button-1:hover {
+    background-position: 100%;
+    color: #fff;
+    background-color: #38B6FF;
+  }
+  .button-2 {
+    color: #fff;
+    border: 3px solid #38B6FF;
+    background-image: -webkit-linear-gradient(30deg, #38B6FF 50%, transparent 50%);
+    background-image: linear-gradient(30deg, #38B6FF 50%, transparent 50%);
+    background-size: 500px;
+    background-repeat: no-repeat;
+    background-position: 0%;
+    -webkit-transition: background 300ms ease-in-out;
+    transition: background 500ms ease-in-out;
+  }
+  .button-2:hover {
+    background-position: 100%;
+    color: #38B6FF;
+  }
