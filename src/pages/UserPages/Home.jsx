@@ -12,6 +12,9 @@ const Home = () => {
         <AvailableCountries />
       </div>
       <div>
+        
+      </div>
+      <div>
         <h1 className="transition duration-300 ease-in-out hover:scale-95 text-xl">
           Home Sweet Home
         </h1>

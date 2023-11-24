@@ -12,7 +12,7 @@ const Navbar = () => {
         Home
       </NavLink>
       <NavLink
-        to="/products"
+        to="/all-properties"
         className={({ isActive, isPending }) =>
         isPending ? "pending" : isActive ? " active bg-primary px-3 py-2 text-base-100 rounded-xl" : "hover:bg-primary px-3 py-2 hover:text-base-100 transition duration-200 rounded-xl"
         }
@@ -20,7 +20,7 @@ const Navbar = () => {
         All Properties
       </NavLink>
       <NavLink
-        to="/about"
+        to="/dashboard"
         className={({ isActive, isPending }) =>
         isPending ? "pending" : isActive ? " active bg-primary px-3 py-2 text-base-100 rounded-xl" : "hover:bg-primary px-3 py-2 hover:text-base-100 transition duration-200 rounded-xl"
         }

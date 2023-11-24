@@ -13,7 +13,6 @@ const CountrySlider = () => {
         freeMode={true}
         loop={true}
         autoplay={true}
-    
         pagination={{
           clickable: true,
         }}
@@ -24,23 +23,23 @@ const CountrySlider = () => {
       >
         <SwiperSlide className=" text-white rounded-2xl bg-[#28cf52c4]">
           <img src="/assets/home/bangladesh.jpg" alt="swiper img1 " className="rounded-t-2xl" />
-          <p className="text-center rounded-b-xl   font-thin py-2 ">Bangladesh</p>
+          <p className="text-center text-xs md:text-base rounded-b-xl   font-thin py-2 ">Bangladesh</p>
         </SwiperSlide>
         <SwiperSlide className=" text-white rounded-2xl bg-[#2892cfc4]">
           <img src="/assets/home/paris.jpg" alt="swiper img1 " className="rounded-t-2xl" />
-          <p className="text-center rounded-b-xl   font-thin py-2 ">Paris</p>
+          <p className="text-center text-xs md:text-base rounded-b-xl   font-thin py-2 ">Paris</p>
         </SwiperSlide>
         <SwiperSlide className=" text-white rounded-2xl bg-[#cf2836c4]">
           <img src="/assets/home/london.jpg" alt="swiper img2 " className="rounded-t-2xl" />
-          <p className="text-center rounded-b-xl   font-thin py-2 ">London</p>
+          <p className="text-center text-xs md:text-base rounded-b-xl   font-thin py-2 ">London</p>
         </SwiperSlide>
         <SwiperSlide className=" text-white rounded-2xl bg-[#28c4cfc4]">
           <img src="/assets/home/america.jpg" alt="swiper img3 " className="rounded-t-2xl" />
-          <p className="text-center rounded-b-xl   font-thin py-2 ">USA</p>
+          <p className="text-center text-xs md:text-base rounded-b-xl   font-thin py-2 ">USA</p>
         </SwiperSlide>
         <SwiperSlide className=" text-white rounded-2xl bg-[#f32f5ac4]">
           <img src="/assets/home/spain.jpg" alt="swiper img4 " className="rounded-t-2xl" />
-          <p className="text-center rounded-b-xl   font-thin py-2 ">Spain</p>
+          <p className="text-center text-xs md:text-base rounded-b-xl   font-thin py-2 ">Spain</p>
         </SwiperSlide>
        
       </Swiper>
