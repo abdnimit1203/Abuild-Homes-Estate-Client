@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const navlinks = (
@@ -30,11 +30,11 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="drawer">
+    <div className="drawer bg-white shadow-md shadow-blue-100 mb-6">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col">
+      <div className="drawer-content w-[90%] mx-auto flex flex-col">
         {/* Navbar */}
-        <div className="w-full navbar bg-white shadow-md shadow-blue-100">
+        <div className="w-full navbar  bg-white ">
           <div className="flex-none  md:hidden">
             <label
               htmlFor="my-drawer-3"
@@ -63,7 +63,10 @@ const Navbar = () => {
             <div className="menu menu-horizontal justify-center items-center gap-2 font-semibold ">
               {/* Navbar menu content here */}
               {navlinks}
+              <Link to={'/login'}>
+              
               <button className="button button-1 px-6 py-2 rounded-xl text-xs hover:border-primary">LOGIN</button>
+              </Link>
             
             </div>
           </div>
@@ -71,7 +74,7 @@ const Navbar = () => {
         {/* Page content here */}
       
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side z-10">
         <label
           htmlFor="my-drawer-3"
           aria-label="close sidebar"
@@ -82,7 +85,10 @@ const Navbar = () => {
           {
             navlinks
           }
+          <Link to={'/login'}>
+          
           <button className="w-fit btn button button-1 px-6 py-2 rounded-xl hover:text-white btn-ghost">LOGIN</button>
+          </Link>
               
         </div>
       </div>

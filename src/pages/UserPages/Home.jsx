@@ -1,5 +1,6 @@
 import Accordion from "../../components/Accordion/Accordion";
 import Banner from "../../components/Banner/Banner";
+import Advertisement from "../../components/Others/Advertisement";
 import AvailableCountries from "../../components/Others/AvailableCountries";
 
 const Home = () => {
@@ -12,7 +13,7 @@ const Home = () => {
         <AvailableCountries />
       </div>
       <div>
-        
+        <Advertisement/>
       </div>
       <div>
         <h1 className="transition duration-300 ease-in-out hover:scale-95 text-xl">

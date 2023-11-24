@@ -4,6 +4,7 @@ import ErrorPage from "../pages/UserPages/ErrorPage";
 import MainLayout from "../layouts/MainLayout";
 import AllProperties from "../pages/UserPages/AllProperties";
 import DashboardLayout from "../layouts/DashboardLayout";
+import Login from "../pages/UserPages/Login";
 
 export const router = createBrowserRouter([
   {
@@ -19,9 +20,14 @@ export const router = createBrowserRouter([
         path: "/all-properties",
         element: <AllProperties />,
       },
+      
      
 
     ],
+  },
+  {
+    path: "/login",
+    element: <Login/>
   },
   {
     path:'/dashboard',

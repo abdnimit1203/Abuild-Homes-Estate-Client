@@ -6,7 +6,7 @@ const Banner = () => {
       <img
         src="/assets/home/banner.png"
         alt="banner img"
-        className=" rounded-2xl"
+        className=" rounded-2xl w-full"
       />
       <div className="md:absolute md:pl-20 top-[10%] 2xl:top-[200px] text-neutral-700">
         <h2 className="text-2xl md:text-4xl font-bold md:w-[50%]">
