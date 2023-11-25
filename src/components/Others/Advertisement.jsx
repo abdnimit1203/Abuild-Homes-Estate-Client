@@ -15,7 +15,7 @@ const Advertisement = () => {
     return (
         <div className="flex flex-col items-center">
             <HeaderText headerText="Our Popular Properties"/>
-            <div className="grid grid-cols-2 gap-6 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                 {
                     adData.map((property,idx)=><MiniCard key={idx} property={property}></MiniCard>)
                 }

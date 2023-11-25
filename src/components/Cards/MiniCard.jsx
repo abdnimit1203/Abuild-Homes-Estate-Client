@@ -14,42 +14,51 @@ const MiniCard = ({ property }) => {
   } = property;
   return (
     <div className="h-full max-w-xl mx-auto">
-      <div className="overflow-hidden  shadow flex transition hover:shadow-lg hover:border-primary p-6 bg-white border rounded-xl items-start h-full">
+      <div className="overflow-hidden  shadow flex transition hover:shadow-lg hover:border-primary hover:scale-110  p-6 bg-white border rounded-xl items-start h-full">
+        <div>
+
         <img
           alt="property image"
           src={propertyImage}
-          className="h-56 object-cover rounded-xl"
+          className="h-52 w-56 md:w-fit object-cover md:object-fill rounded-xl"
         />
+        </div>
 
-        <div className="bg-white  pl-6">
-        
+        <div className="bg-white  pl-6 flex flex-col justify-between md:h-52">
+          <div>
 
-            <h3 className="mt-0.5 text-xl font-semibold text-gray-900 ">
-             {propertyTitle}
-            </h3>
-    
+          <h3 className="mt-0.5 text-xl font-semibold text-gray-900 ">
+            {propertyTitle}
+          </h3>
+
           <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-           <FiMapPin  className="inline mr-3"/>{propertyLocation}
+            <FiMapPin className="inline mr-3" />
+            {propertyLocation}
           </p>
-        
+
           <p className="mt-2 line-clamp-3  text-gray-500">
-           <MdPriceChange  className="inline mr-3"/>{priceRange}
+            <MdPriceChange className="inline mr-3" />
+            {priceRange}
           </p>
-          <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-          <span className="font-bold text-secondary">Status: </span>{verificationStatus}
-          </p>
-            
-          <Link to={`${propertyTitle}`} >
-          <button className="btn btn-primary btn-sm text-white my-6">
-            Details
-          </button>
-          </Link>
+          </div>
+          <div className="flex justify-between items-center mt-4">
+            <p className="mt-2  line-clamp-3 text-md/relaxed text-gray-500">
+              <span className="font-bold text-secondary">Status: </span>
+              {verificationStatus}
+            </p>
+
+            <Link to={`${propertyTitle}`}>
+              <button className="btn btn-primary btn-sm lg:px-10 text-white ">
+                Details
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 MiniCard.propTypes = {
-    property: PropTypes.object.isRequired,
-  };
+  property: PropTypes.object.isRequired,
+};
 export default MiniCard;
