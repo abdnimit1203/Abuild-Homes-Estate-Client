@@ -10,7 +10,7 @@ const LoginForm = () => {
         <aside className="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
           <img
             alt="Pattern"
-            src="https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+            src="https://i.ibb.co/RvMftC5/property1.jpg"
             className="absolute inset-0 h-full w-full object-cover"
           />
         </aside>
@@ -77,7 +77,7 @@ const LoginForm = () => {
               </div>
 
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
-                <button className="inline-block shrink-0 rounded-md border border-primary bg-primary px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary">
+                <button type="submit" className="inline-block shrink-0 rounded-md border border-primary bg-primary px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-primary">
                   Login
                 </button>
 
@@ -86,18 +86,19 @@ const LoginForm = () => {
               <div className="col-span-4">
               <p className="mt-4 text-base text-gray-500 sm:mt-0 ">
                   Dont have an account?
-                  <Link to={'sign-up'} className="text-gray-700 underline">
+                  <Link to={'sign-up'} className="text-primary font-semibold underline">
                     Sign Up
                   </Link>
                   
                 </p>
               </div>
-              <div className="col-span-6">
-                <button className="flex items-center gap-6 font-semibold bg-slate-100 p-2 px-4 rounded-xl shadow-md hover:scale-110 transition delay-150 hover:shadow-success">
+             
+            </form>
+            <div  className="my-10">
+                <button type="button" className="flex items-center gap-6 font-semibold bg-slate-100 p-2 px-4 rounded-xl shadow-md hover:scale-110 transition delay-150 hover:shadow-success">
                     <img src="https://i.ibb.co/syGPgLz/google-Logo.png" alt="google"  className="w-12"/> Continue with Google
                 </button>
               </div>
-            </form>
           </div>
         </main>
       </div>

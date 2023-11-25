@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-base-100 text-neutral gap-6">
+    <footer className="footer p-10 bg-base-100 text-neutral gap-6 w-[90%] mx-auto justify-between">
       <nav className="md:w-[80%]">
       <img src="/assets/home/logoMain.png" alt="logo" className="w-40 rounded-3xl" />
       <p className="max-w-xs">Where your dreams find their address, and every door opens to endless possibilities.</p>
@@ -31,7 +31,7 @@ const Footer = () => {
         <a className="link link-hover">Privacy policy</a>
         <a className="link link-hover">Cookie policy</a>
       </nav>
-      <form>
+      <form className="">
         <header className="footer-title">Subscribe</header>
         <fieldset className="form-control w-80">
           <label className="label">

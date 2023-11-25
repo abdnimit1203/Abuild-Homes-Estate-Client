@@ -57,7 +57,7 @@ const Navbar = () => {
             </label>
           </div>
           <div className="flex-1 px-2 mx-2">
-            <img src="/assets/home/logoMain.png" alt="logo" className="w-56" />
+            <img src="/assets/home/logoMain.png" alt="logo" className="w-52" />
           </div>
           <div className="flex-none hidden  md:block">
             <div className="menu menu-horizontal justify-center items-center gap-2 font-semibold ">

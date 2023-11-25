@@ -1,25 +1,48 @@
 import { FaSearch } from "react-icons/fa";
+import TypeWriterEffect from "react-typewriter-effect";
 
 const Banner = () => {
   return (
-    <div className="relative rounded-2xl">
-      <img
-        src="/assets/home/banner.png"
-        alt="banner img"
-        className=" rounded-2xl w-full"
-      />
-      <div className="md:absolute md:pl-20 top-[10%] 2xl:top-[200px] text-neutral-700">
-        <h2 className="text-2xl md:text-4xl font-bold md:w-[50%]">
-          Discover Your Dream Home with <br />
-          ABuild Homes Estates
-        </h2>
-        <p className="md:w-[50%] text-lg py-6">
-          We provide a complete service for the sale, purchase or rental of real
-          estate.
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-4  glass bg-[#ffffffbe] gap-6 p-4 rounded-xl items-center justify-around">
+    
+    <div
+      className="hero rounded-2xl justify-start min-h-[600px]"
+      style={{ backgroundImage: "url(/assets/home/banner.png)" }}
+    >
+      <div className="hero-content text-left text-neutral">
+        <div className="md:py-10 pl-6">
+         <div className="max-w-md ">
+
+          <h2 className=" mb-5 text-4xl leading-normal  font-bold">
+          <TypeWriterEffect
+              startDelay={1000}
+              cursorColor="#3F3D56"
+              multiText={[
+                "Discover Your Dream Home with ",
+                "Your Partner in Building a Lifetime of Memories.",
+                "Stay Informed. Stay Inspired. Stay Home.",
+                "Easy way to find a perfect property",
+              ]}
+              multiTextDelay={1000}
+    
+              typeSpeed={30}
+            />
+          </h2>
+          <h2 className=" mb-5 text-4xl leading-normal  font-bold">
+            
+            <hr className="border-0 pt-3" />
+            <span className="text-2xl text-primary">
+              - ABuild Homes Estates
+            </span>
+          </h2>
+          <p className="mb-5 text-lg py-6">
+            Where every brick tells a unique and captivating story. We believe
+            that a home is not just a structure; its a narrative waiting to
+            unfold.
+          </p>
+         </div>
+          <div className="grid grid-cols-2 md:grid-cols-4  glass bg-[#ffffffbe] gap-6 p-4 rounded-xl items-center justify-around">
           <div className="">
-            <h3 className="font-semibold">Location</h3>
+           <h3 className="font-semibold">Location</h3>
             <select
               name="location"
               id="location"
@@ -48,7 +71,7 @@ const Banner = () => {
               <option value="c">FarmHouse</option>
               <option value="d">Industrial</option>
               <option value="e">Ranch</option>
-              
+
             </select>
           </div>
           <div>
@@ -61,6 +84,7 @@ const Banner = () => {
             <FaSearch className=" text-lg text-white "/>
             </button>
           </div>
+        </div>
         </div>
       </div>
     </div>

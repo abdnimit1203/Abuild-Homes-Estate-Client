@@ -1,6 +1,5 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Pagination } from "swiper/modules";
-// Import Swiper styles
+import { Swiper, SwiperSlide  } from "swiper/react";
+import { FreeMode, Pagination ,Autoplay} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
@@ -12,13 +11,16 @@ const CountrySlider = () => {
         spaceBetween={30}
         freeMode={true}
         loop={true}
-        autoplay={true}
+     
         pagination={{
           clickable: true,
         }}
-    
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         
-        modules={[FreeMode, Pagination]}
+        modules={[Autoplay,FreeMode, Pagination]}
         className="mySwiper rounded-xl"
       >
         <SwiperSlide className=" text-white rounded-2xl bg-[#28cf52c4]">

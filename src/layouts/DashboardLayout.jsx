@@ -67,7 +67,7 @@ const DashboardLayout = () => {
             {/* Sidebar content here */}
         
 
-            <HeaderText headerText={`USER DASHBOARD`} />
+            <HeaderText headerText={`DASHBOARD`} />
            
             {
                 userNavlinks

@@ -9,9 +9,9 @@ export default {
                     
             "secondary": "#FF3131",
                     
-            "accent": "#FF914D",
+            "accent": "#FCB690",
                     
-            "neutral": "#545454",
+            "neutral": "#494949",
                     
             "base-100": "#f8f7fd",
                     
