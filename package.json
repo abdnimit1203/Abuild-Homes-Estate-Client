@@ -12,6 +12,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.8.7",
     "axios": "^1.6.2",
+    "firebase": "^10.6.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "prop-types": "^15.8.1",
@@ -25,6 +26,7 @@
     "react-toastify": "^9.1.3",
     "react-typewriter-effect": "^1.1.0",
     "sort-by": "^1.2.0",
+    "sweetalert2": "^11.10.1",
     "swiper": "^11.0.5"
   },
   "devDependencies": {

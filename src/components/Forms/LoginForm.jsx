@@ -1,9 +1,58 @@
 import { useState } from "react";
-import { BsEye, BsEyeSlash } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form"
+import { MdCheckBoxOutlineBlank, MdOutlineCheckBox } from "react-icons/md";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const LoginForm = () => {
   const [showPassword, setShowPassord] = useState(false);
+  const {user,signIn} = useAuth()
+  const navigate = useNavigate()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = async(data) =>{
+    
+    
+    console.log(data)
+if(!user){
+  const toastId = toast.loading("logging in...");
+
+  try{
+     await signIn(data.email,data.password)
+    .then(res=>{
+      console.log(res.user)
+      toast.success(
+        "User logged in successfully!",
+
+        { id: toastId }
+      );
+      navigate(location?.state ? location.state : "/");
+    })
+  }catch(err){
+    toast.error(err.message, { id: toastId });
+  }
+}else{
+  toast('LOG OUT OF OTHER ACCOUNT FIRST!',
+  {
+    icon: '⚠',
+    style: {
+      borderRadius: '10px',
+      background: '#fadf1b',
+      color: '#1a1a1a',
+    },
+  }
+);
+}
+   
+  
+  }
+
+
   return (
     <section className="bg-white">
       <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
@@ -37,7 +86,7 @@ const LoginForm = () => {
             </p>
           
 
-            <form className="mt-8 grid grid-cols-6 gap-6 text-left justify-center items-center">
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-8 grid grid-cols-6 gap-6 text-left justify-center items-center">
               <div className="col-span-6">
                 <label
                   htmlFor="Email"
@@ -50,6 +99,7 @@ const LoginForm = () => {
                   type="email"
                   id="Email"
                   name="email"
+                  {...register("email")}
                   className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
                 />
               </div>
@@ -57,6 +107,7 @@ const LoginForm = () => {
               <div className="col-span-6 relative">
                 <label
                   htmlFor="Password"
+
                   className="block text-sm font-medium text-gray-700"
                 >
                   Password
@@ -66,14 +117,20 @@ const LoginForm = () => {
                   type={showPassword ? "text" : "password"}
                   id="Password"
                   name="password"
+                  {...register("password", { required: true })}
+                  
                   className="mt-1 px-3 w-full border-0 rounded-md border-gray-200 focus:outline-2  bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
                 />
+                {errors.password && <span className="text-red-400">Password is required</span>}
+
                 <span
                   onClick={() => setShowPassord(!showPassword)}
-                  className="absolute cursor-pointer text-xl top-[55%] right-6"
+                  className=" cursor-pointer top-[55%] right-6 flex my-2 items-center w-fit"
                 >
-                  {showPassword ? <BsEye /> : <BsEyeSlash />}
+                  {showPassword ? <MdOutlineCheckBox className="text-2xl mr-2" />: <MdCheckBoxOutlineBlank className="text-2xl mr-2"/> } 
+                  Show Password
                 </span>
+              
               </div>
 
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4 mx-auto">

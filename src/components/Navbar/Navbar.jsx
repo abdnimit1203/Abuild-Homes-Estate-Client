@@ -1,12 +1,19 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+  console.log(user);
   const navlinks = (
     <>
       <NavLink
         to="/"
         className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? " active bg-primary px-3 py-2 text-base-100 rounded-xl" : "hover:bg-primary px-3 py-2 hover:text-base-100 transition duration-200 rounded-xl"
+          isPending
+            ? "pending"
+            : isActive
+            ? " active bg-primary px-3 py-2 text-base-100 rounded-xl"
+            : "hover:bg-primary px-3 py-2 hover:text-base-100 transition duration-200 rounded-xl"
         }
       >
         Home
@@ -14,7 +21,11 @@ const Navbar = () => {
       <NavLink
         to="/all-properties"
         className={({ isActive, isPending }) =>
-        isPending ? "pending" : isActive ? " active bg-primary px-3 py-2 text-base-100 rounded-xl" : "hover:bg-primary px-3 py-2 hover:text-base-100 transition duration-200 rounded-xl"
+          isPending
+            ? "pending"
+            : isActive
+            ? " active bg-primary px-3 py-2 text-base-100 rounded-xl"
+            : "hover:bg-primary px-3 py-2 hover:text-base-100 transition duration-200 rounded-xl"
         }
       >
         All Properties
@@ -22,7 +33,11 @@ const Navbar = () => {
       <NavLink
         to="/dashboard"
         className={({ isActive, isPending }) =>
-        isPending ? "pending" : isActive ? " active bg-primary px-3 py-2 text-base-100 rounded-xl" : "hover:bg-primary px-3 py-2 hover:text-base-100 transition duration-200 rounded-xl"
+          isPending
+            ? "pending"
+            : isActive
+            ? " active bg-primary px-3 py-2 text-base-100 rounded-xl"
+            : "hover:bg-primary px-3 py-2 hover:text-base-100 transition duration-200 rounded-xl"
         }
       >
         Dashboard
@@ -63,16 +78,40 @@ const Navbar = () => {
             <div className="menu menu-horizontal justify-center items-center gap-2 font-semibold ">
               {/* Navbar menu content here */}
               {navlinks}
-              <Link to={'/login'}>
-              
-              <button className="button button-1 px-6 py-2 rounded-xl text-xs hover:border-primary">LOGIN</button>
-              </Link>
-            
             </div>
+          </div>
+          <div>
+            {user ? (
+              <div className="avatar online dropdown dropdown-end">
+                <div tabIndex={0} className="w-12 ml-4 rounded-full drop">
+                  <img
+                    src={
+                      user?.photoURL
+                        ? user?.photoURL
+                        : "https://i.ibb.co/5x6DN2n/blank-dp.png"
+                    }
+                  />
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-4 py-6 shadow bg-base-100 rounded-box w-52 border-primary border-4 space-y-3"
+                >
+                  <p className="font-semibold text-center">Email</p>
+                  <hr />
+                 <p>{user?.email}</p>
+                 <button onClick={logOut} className="btn btn-secondary w-full text-white btn-sm">LOG OUT</button>
+                </ul>
+              </div>
+            ) : (
+              <Link to={"/login"}>
+                <button className="button button-1 px-6 py-2 rounded-xl text-xs hover:border-primary">
+                  LOGIN
+                </button>
+              </Link>
+            )}
           </div>
         </div>
         {/* Page content here */}
-      
       </div>
       <div className="drawer-side z-10">
         <label
@@ -82,14 +121,19 @@ const Navbar = () => {
         ></label>
         <div className="menu p-4 w-80 min-h-full bg-gradient-to-br from-primary to-blue-100 text-white  text-center justify-center items-center text-xl gap-6">
           {/* Sidebar content here */}
-          {
-            navlinks
-          }
-          <Link to={'/login'}>
-          
-          <button className="w-fit btn button button-1 px-6 py-2 rounded-xl hover:text-white btn-ghost">LOGIN</button>
+          {navlinks}
+          <div>
+            {user ? (
+              <button onClick={logOut} className="btn btn-secondary w-full text-white btn-sm">LOG OUT</button>
+            ) : (
+              <Link to={"/login"}>
+            <button className="w-fit btn button button-1 px-6 py-2 rounded-xl hover:text-white btn-ghost">
+              LOGIN
+            </button>
           </Link>
-              
+            )}
+          </div>
+          
         </div>
       </div>
     </div>
