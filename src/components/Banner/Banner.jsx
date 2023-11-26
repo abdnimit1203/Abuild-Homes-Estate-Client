@@ -34,11 +34,14 @@ const Banner = () => {
               - ABuild Homes Estates
             </span>
           </h2>
-          <p className="mb-5 text-lg py-6">
+          <div className="mb-5">
+
+          <p className="text-white lg:text-neutral  text-lg py-6 backgrond-line  lg:bg-transparent ">
             Where every brick tells a unique and captivating story. We believe
             that a home is not just a structure; its a narrative waiting to
             unfold.
           </p>
+          </div>
          </div>
           <div className="grid grid-cols-2 md:grid-cols-4  glass bg-[#ffffffbe] gap-6 p-4 rounded-xl items-center justify-around">
           <div className="">

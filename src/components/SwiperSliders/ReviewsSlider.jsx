@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide  } from "swiper/react";
-import { FreeMode, Scrollbar ,Autoplay} from "swiper/modules";
+import { FreeMode, Pagination ,Autoplay} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 
@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import { BsFillBuildingsFill } from "react-icons/bs";
 // import "swiper/css/scrollbar";
 
 
@@ -34,17 +35,17 @@ const ReviewsSlider = () => {
         slidesPerView={1}
         spaceBetween={30}
         freeMode={true}
-        loop={true}
+
      
-        scrollbar={{
-            hide: true,
-          }}
+        pagination={{
+          clickable: true,
+        }}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
         }}
         
-        modules={[Autoplay,FreeMode, Scrollbar]}
+        modules={[Autoplay,FreeMode, Pagination]}
         className="mySwiper rounded-xl"
       >
       {
@@ -104,7 +105,7 @@ const ReviewsSlider = () => {
                 />
               </div>
               <footer className="mt-4 font-medium  text-xl sm:mt-6 bg-white p-3 rounded-xl text-neutral">
-                PROPERTY :  {review?.propertyTitle}
+                <BsFillBuildingsFill className="inline text-primary text-2xl"/>  Property:  {review?.propertyTitle}
               </footer>
             </div>
           </SwiperSlide>

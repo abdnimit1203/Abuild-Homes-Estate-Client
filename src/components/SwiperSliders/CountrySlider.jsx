@@ -43,6 +43,7 @@ const CountrySlider = () => {
           <img src="/assets/home/spain.jpg" alt="swiper img4 " className="rounded-t-2xl" />
           <p className="text-center text-xs md:text-base rounded-b-xl   font-thin py-2 ">Spain</p>
         </SwiperSlide>
+      
        
       </Swiper>
     </div>
