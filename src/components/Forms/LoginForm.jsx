@@ -54,7 +54,7 @@ if(!user){
 
 
   return (
-    <section className="bg-white">
+    <section className="bg-base-100">
       <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
         <aside className="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
           <img
@@ -119,7 +119,7 @@ if(!user){
                   name="password"
                   {...register("password", { required: true })}
                   
-                  className="mt-1 px-3 w-full border-0 rounded-md border-gray-200 focus:outline-2  bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
+                  className="mt-1 px-3 w-full border-0 rounded-md border-gray-200 focus:outline-2  bg-base-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
                 />
                 {errors.password && <span className="text-red-400">Password is required</span>}
 

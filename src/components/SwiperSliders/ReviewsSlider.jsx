@@ -26,7 +26,7 @@ const ReviewsSlider = () => {
    })
  console.log(reviews);
   return (
-    <div>
+    <div className="text-neutral">
       <div className="text-center pb-16 space-y-6">
         <h2 className="text-2xl font-semibold">Dont just take our word for it...</h2>
         <p className="text-xl">Check the latest reviews from customers</p>
@@ -104,7 +104,7 @@ const ReviewsSlider = () => {
                   readonly
                 />
               </div>
-              <footer className="mt-4 font-medium  text-xl sm:mt-6 bg-white p-3 rounded-xl text-neutral">
+              <footer className="mt-4 font-medium  text-xl sm:mt-6 bg-white p-3 rounded-xl text-slate-700">
                 <BsFillBuildingsFill className="inline text-primary text-2xl"/>  Property:  {review?.propertyTitle}
               </footer>
             </div>

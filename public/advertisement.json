@@ -4,28 +4,66 @@
       "propertyLocation": "123 Main Street, Cityville",
       "priceRange": "$300,000 - $350,000",
       "verificationStatus": "Verified",
-      "propertyTitle": "Modern Luxury Apartment with Stunning Views"
+      "propertyTitle": "Modern Luxury Apartment with Stunning Views",
+      "agentEmail": "agent@estate.com",
+      "agentName": "AGENT Riley", 
+      "agentImage": "https://i.ibb.co/3CM7zGR/agent-dp.jpg",
+      "status": "verified"
     },
     {
       "propertyImage": "https://i.ibb.co/RvMftC5/property1.jpg",
       "propertyLocation": "456 Oak Avenue, Suburbia",
       "priceRange": "$500,000 - $550,000",
       "verificationStatus": "Verified",
-      "propertyTitle": "Spacious Family Home with a Private Garden"
+      "propertyTitle": "Spacious Family Home with a Private Garden",
+      "agentEmail": "agent@estate.com",
+      "agentName": "AGENT Riley", 
+      "agentImage": "https://i.ibb.co/3CM7zGR/agent-dp.jpg",
+      "status": "verified"
     },
     {
       "propertyImage": "https://i.ibb.co/RvMftC5/property1.jpg",
       "propertyLocation": "789 Pine Lane, Countryside",
       "priceRange": "$750,000 - $800,000",
       "verificationStatus": "Pending",
-      "propertyTitle": "Rustic Retreat: A Serene Countryside Estate"
+      "propertyTitle": "Rustic Retreat: A Serene Countryside Estate",
+      "agentEmail": "agent@estate.com",
+      "agentName": "AGENT Riley", 
+      "agentImage": "https://i.ibb.co/3CM7zGR/agent-dp.jpg",
+      "status": "verified"
     },
     {
       "propertyImage": "https://i.ibb.co/RvMftC5/property1.jpg",
       "propertyLocation": "101 Beachfront Drive, Coastal Town",
       "priceRange": "$1,200,000 - $1,300,000",
       "verificationStatus": "Verified",
-      "propertyTitle": "Luxurious Beachfront Villa with Infinity Pool"
+      "propertyTitle": "Luxurious Beachfront Villa with Infinity Pool",
+      "agentEmail": "agent@estate.com",
+      "agentName": "AGENT Riley", 
+      "agentImage": "https://i.ibb.co/3CM7zGR/agent-dp.jpg",
+      "status": "verified"
+    },
+    {
+      "propertyImage": "https://i.ibb.co/RvMftC5/property1.jpg",
+      "propertyLocation": "101 Beachfront Drive, Coastal Town",
+      "priceRange": "$1,200,000 - $1,300,000",
+      "verificationStatus": "Verified",
+      "propertyTitle": "22Luxurious Beachfront Villa with Infinity Pool",
+      "agentEmail": "agent@estate.com",
+      "agentName": "AGENT Riley", 
+      "agentImage": "https://i.ibb.co/3CM7zGR/agent-dp.jpg",
+      "status": "pending"
+    },
+    {
+      "propertyImage": "https://i.ibb.co/RvMftC5/property1.jpg",
+      "propertyLocation": "101 Beachfront Drive, Coastal Town",
+      "priceRange": "$1,200,000 - $1,300,000",
+      "verificationStatus": "Verified",
+      "propertyTitle": "33Luxurious Beachfront Villa with Infinity Pool",
+      "agentEmail": "agent@estate.com",
+      "agentName": "AGENT Riley", 
+      "agentImage": "https://i.ibb.co/3CM7zGR/agent-dp.jpg",
+      "status": "pending"
     }
   ]
   

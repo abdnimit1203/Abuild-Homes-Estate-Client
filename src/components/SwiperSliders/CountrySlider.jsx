@@ -14,6 +14,7 @@ const CountrySlider = () => {
      
         pagination={{
           clickable: true,
+          
         }}
         autoplay={{
           delay: 2500,

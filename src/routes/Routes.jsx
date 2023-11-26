@@ -6,6 +6,7 @@ import AllProperties from "../pages/UserPages/AllProperties";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Login from "../pages/UserPages/Login";
 import SignUp from "../pages/UserPages/SignUp";
+import PrivateRoute from './PrivateRoute';
 
 export const router = createBrowserRouter([
   {
@@ -19,11 +20,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "/all-properties",
-        element: <AllProperties />,
+        element:<PrivateRoute><AllProperties /></PrivateRoute> ,
       },
-      
-     
-
     ],
   },
   {

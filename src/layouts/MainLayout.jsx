@@ -26,7 +26,7 @@ const MainLayout = () => {
             <div>
                 <Navbar></Navbar>
             </div>
-            <div className="w-[90%] mx-auto">
+            <div className="w-[90%] mx-auto mt-[130px]">
                 <Outlet/>
             </div>
             <div>
