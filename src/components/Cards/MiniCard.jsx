@@ -6,8 +6,9 @@ import PropTypes from "prop-types";
 
 const MiniCard = ({ property }) => {
   const {
+    _id,
     propertyTitle,
-    verificationStatus,
+    status,
     priceRange,
     propertyLocation,
     propertyImage,
@@ -20,7 +21,7 @@ const MiniCard = ({ property }) => {
         <img
           alt="property image"
           src={propertyImage}
-          className="h-52 w-56 md:w-fit object-cover md:object-fill rounded-xl"
+          className="h-52 w-56 md:w-fit object-cover md:object-cover rounded-xl"
         />
         </div>
 
@@ -44,10 +45,10 @@ const MiniCard = ({ property }) => {
           <div className="flex justify-between items-center mt-4">
             <p className="mt-2  line-clamp-3 text-md/relaxed ">
               <span className="font-bold text-secondary">Status: </span>
-              {verificationStatus}
+              {status}
             </p>
 
-            <Link to={`${propertyTitle}`}>
+            <Link to={`/properties/${_id}`}>
               <button className="btn btn-primary btn-sm lg:px-10 text-white ">
                 Details
               </button>

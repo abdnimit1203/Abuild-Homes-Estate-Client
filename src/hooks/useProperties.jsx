@@ -5,14 +5,14 @@ const useProperties = () => {
     const axiosSecure = useAxiosSecure()
 
 
-    const {data: property=[],refetch} = useQuery({
+    const {data: property=[],isLoading} = useQuery({
         queryKey: ['property'],
         queryFn: async()=>{
             const res = await axiosSecure.get(`/api/v1/properties?status=verified`)
             return res.data
         }
     })
-    return [property,refetch]
+    return [property,isLoading]
 };
 
 export default useProperties;

@@ -7,6 +7,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import Login from "../pages/UserPages/Login";
 import SignUp from "../pages/UserPages/SignUp";
 import PrivateRoute from './PrivateRoute';
+import PropertyDetails from "../pages/UserPages/PropertyDetails";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,11 @@ export const router = createBrowserRouter([
       {
         path: "/all-properties",
         element:<PrivateRoute><AllProperties /></PrivateRoute> ,
+      },
+      {
+        path: "/properties/:id",
+        element:<PrivateRoute><PropertyDetails/></PrivateRoute> ,
+        loader: ({params})=> fetch(`http://localhost:3000/api/v1/properties/${params.id}`)
       },
     ],
   },
