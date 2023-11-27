@@ -8,6 +8,7 @@ import Login from "../pages/UserPages/Login";
 import SignUp from "../pages/UserPages/SignUp";
 import PrivateRoute from './PrivateRoute';
 import PropertyDetails from "../pages/UserPages/PropertyDetails";
+import UserHome from "../pages/DashboardPages/UserDashboard/UserHome";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +41,12 @@ export const router = createBrowserRouter([
   },
   {
     path:'/dashboard',
-    element: <DashboardLayout/>
+    element: <DashboardLayout/>,
+    children:[
+      {
+        path: 'user-profile',
+        element: <UserHome></UserHome>
+      }
+    ]
   }
 ]);

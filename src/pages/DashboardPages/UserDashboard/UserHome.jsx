@@ -1,8 +1,10 @@
+import UserProfile from "./UserProfile";
 
 const UserHome = () => {
     return (
-        <div>
-            User Home
+        <div className="min-h-screen">
+   
+           <UserProfile/>
         </div>
     );
 };

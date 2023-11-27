@@ -1,5 +1,4 @@
-import toast from "react-hot-toast";
-import { BsBookmarkHeart } from "react-icons/bs";
+import { BsBookmarkHeart, BsBookmarkHeartFill } from "react-icons/bs";
 import { FaParking } from "react-icons/fa";
 import { FiMapPin } from "react-icons/fi";
 import { MdOutlineBedroomChild, MdPriceChange } from "react-icons/md";
@@ -8,11 +7,18 @@ import { TbRulerMeasure } from "react-icons/tb";
 import { Link, useLoaderData, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import AddReviews from "../Reviews/AddReviews";
-import HeaderText from './../HeaderText/HeaderText';
+import HeaderText from "./../HeaderText/HeaderText";
+import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useWishlistByEmail from "../../hooks/useWishlistByEmail";
+import { useEffect, useState } from "react";
 
 const SinglePropertyCard = () => {
+  const { user } = useAuth();
+  const [disableBtn, setDisableBtn] = useState(false);
+  const axiosPublic = useAxiosPublic();
   const property = useLoaderData();
-  console.log(property);
+  //   console.log(property);
   const {
     _id,
     propertyImage,
@@ -29,25 +35,52 @@ const SinglePropertyCard = () => {
     size,
   } = property;
   const location = useLocation();
-  console.log(location);
+  //   console.log(location);
+  const [wishlistDataByEmail,refetch] = useWishlistByEmail(user.email);
 
+  useEffect(() => {
+    if (wishlistDataByEmail) {
+      const found = wishlistDataByEmail.find(
+        (wishlist) => wishlist.propertyID === _id
+      );
+      console.log("found", found);
+      if (found) {
+        setDisableBtn(true)
+      }
+    }
+  }, [_id, wishlistDataByEmail]);
   const reviewData = {
-    _id,agentName,agentEmail,propertyTitle
-  }
+    _id,
+    agentName,
+    agentEmail,
+    propertyTitle,
+  };
   console.log(reviewData);
 
   //   wishlist handling
   const handleAddtoWishlist = () => {
-    Swal.fire({
-      position: "top-end",
-      imageUrl:
-        "https://png.pngtree.com/png-vector/20190423/ourmid/pngtree-bookmark-icon-vector-illustration-in-filled-style-for-any-purpose-png-image_975418.jpg",
-      imageWidth: 50,
-      imageHeight: 50,
-      imageAlt: "wishlist image",
-      titleText: "Added to wishlist!",
-      showConfirmButton: false,
-      timer: 1500,
+    const { _id, ...propertyData } = property;
+    const wishlistData = {
+      userEmail: user.email,
+      propertyID: _id,
+      ...propertyData,
+    };
+    console.log("wishListData", wishlistData);
+
+    axiosPublic.post("/api/v1/wishlists", wishlistData).then((res) => {
+      console.log(res.data);
+      Swal.fire({
+        position: "top-end",
+        imageUrl:
+          "https://png.pngtree.com/png-vector/20190423/ourmid/pngtree-bookmark-icon-vector-illustration-in-filled-style-for-any-purpose-png-image_975418.jpg",
+        imageWidth: 50,
+        imageHeight: 50,
+        imageAlt: "wishlist image",
+        titleText: "Added to wishlist!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      refetch()
     });
   };
   return (
@@ -68,13 +101,26 @@ const SinglePropertyCard = () => {
         </div>
         <div className="flex items-center  justify-between gap-4 py-4 ">
           <h3 className="text-2xl/relaxed font-bold">{propertyTitle}</h3>
-          <button
+          {
+            disableBtn?<button
             onClick={handleAddtoWishlist}
-            className="btn btn-sm bg-pink-600 text-white"
+            className="btn btn-sm text-white btn-disabled"
+          >
+            <BsBookmarkHeartFill className="text-2xl" />
+            Already Added
+           
+          </button> :<button
+            onClick={handleAddtoWishlist}
+            className="btn btn-sm bg-pink-600 text-white hover:bg-pink-800 "
           >
             <BsBookmarkHeart className="text-2xl" />
             Add to wishlist
+           
           </button>
+
+          }
+          
+         
         </div>
         <img
           alt="Home"
@@ -142,12 +188,15 @@ const SinglePropertyCard = () => {
           </div>
         </div>
         <div>
-            <AddReviews reviewData={reviewData}/>
+          <AddReviews reviewData={reviewData} />
         </div>
       </div>
       <div className="md:p-6 lg:max-w-[80%]  bg-base-200 rounded-2xl h-fit">
         <div className=" ">
-          <HeaderText headerText="Contact Info" headerText3={"contact our agent"}/>
+          <HeaderText
+            headerText="Contact Info"
+            headerText3={"contact our agent"}
+          />
         </div>
         <div className="py-3 flex flex-col items-center textcenter">
           <p className="text-xl font-bold">AGENT INFO</p>

@@ -12,7 +12,7 @@ const AddReviews = ({ reviewData }) => {
   const { _id, agentName, agentEmail, propertyTitle } = reviewData;
   // get id wise reviews
   const [reviewDataByID, refetch] = useReviewsID(_id);
-  console.log(reviewDataByID);
+//   console.log(reviewDataByID);
 
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
@@ -105,19 +105,24 @@ const AddReviews = ({ reviewData }) => {
         <hr />
         <div className="grid grid-cols-1 gap-6">
           {reviewDataByID?.map((review) => (
-            <>
-              <div className="border-warning rounded-xl  border-2 p-4">
+            
+              <div className="border-warning rounded-xl  border-2 p-4" key={review._id}>
                 <FaQuoteLeft className="text-neutral mb-2" />
-                <p>{review.reviewDescription}</p>
+                <p className="textarea-md text-base">{review.reviewDescription}</p>
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                <p className="italic text-sm/relaxed text-neutral-400 pt-2"> - {review.username}</p>
+                <p className="italic text-sm/relaxed text-neutral-400 pt-2 text-right">Posted - {new Date(review.reviewTime).toDateString()}</p>
+
+                </div>
                 <div className="text-sm/relaxed text-neutral-400 pt-4">
                   <hr />
                   <p className="italic">
                     Property title - {review.propertyTitle}
                   </p>
-                  <p className="italic">Review by - {review.username}</p>
+                 
                 </div>
               </div>
-            </>
+            
           ))}
         </div>
       </div>
