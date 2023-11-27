@@ -8,11 +8,11 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation();
   if (loading) {
     return (
-      <div className="min-h-screen" >
+      <div className="min-h-screen flex justify-center items-center" >
         <img
           src="/assets/home/loading2.png"
           alt="loader"
-          className="animate-spin delay-300 animation w-64 mx-auto "
+          className="motion-safe:animate-spin w-64 mx-auto "
         />
       </div>
     );

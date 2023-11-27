@@ -33,9 +33,9 @@ const AllPropertiesCard = ({ property }) => {
 
         <div className="flex flex-1 flex-col justify-between glass rounded-r-2xl text-neutral">
           <div className="border-s border-gray-900/10 p-4 sm:pr-0 sm:pb-0 sm:border-l-transparent sm:p-6">
-            <a href="#">
+            
               <h3 className="font-bold text-2xl  ">{propertyTitle}</h3>
-            </a>
+            
 
             <p className="mt-2 line-clamp-3 md:text-lg">
               <FiMapPin className="inline mr-3" />

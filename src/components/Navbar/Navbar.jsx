@@ -174,7 +174,7 @@ const Navbar = () => {
                   <img
                     src={
                       user?.photoURL
-                        ? "https://lh3.googleusercontent.com/a/ACg8ocK4cXa1GZyDZmB2TS5lhBNVEJ1mAdx-OtS3Ebx7-ZpL69k=s96-c"
+                        ? "https://lh3.googleusercontent.com/a/ACg8ocID5zSUV-WABes3OsXCtX7wWe3UO_REPtGL9KHPqzh4gw=s96-c"
                         : "https://i.ibb.co/5x6DN2n/blank-dp.png"
                     }
                     alt="user-photo"

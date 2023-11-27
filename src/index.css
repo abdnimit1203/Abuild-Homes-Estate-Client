@@ -95,3 +95,15 @@ body{
 ::-webkit-scrollbar-thumb:hover {
   background: #0980c5; 
 }
+
+/* selection text color */
+
+::-moz-selection { /* Code for Firefox */
+  color: white;
+  background: #38B6FF;
+}
+
+::selection {
+  color: white;
+  background: #38B6FF;
+}

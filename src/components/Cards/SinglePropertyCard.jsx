@@ -8,6 +8,7 @@ import { TbRulerMeasure } from "react-icons/tb";
 import { Link, useLoaderData, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import AddReviews from "../Reviews/AddReviews";
+import HeaderText from './../HeaderText/HeaderText';
 
 const SinglePropertyCard = () => {
   const property = useLoaderData();
@@ -29,6 +30,11 @@ const SinglePropertyCard = () => {
   } = property;
   const location = useLocation();
   console.log(location);
+
+  const reviewData = {
+    _id,agentName,agentEmail,propertyTitle
+  }
+  console.log(reviewData);
 
   //   wishlist handling
   const handleAddtoWishlist = () => {
@@ -136,12 +142,12 @@ const SinglePropertyCard = () => {
           </div>
         </div>
         <div>
-            <AddReviews/>
+            <AddReviews reviewData={reviewData}/>
         </div>
       </div>
       <div className="md:p-6 lg:max-w-[80%]  bg-base-200 rounded-2xl h-fit">
-        <div className=" font-semibold btn btn-success text-white w-full">
-          <p className="md:text-2xl">Contact Details</p>
+        <div className=" ">
+          <HeaderText headerText="Contact Info" headerText3={"contact our agent"}/>
         </div>
         <div className="py-3 flex flex-col items-center textcenter">
           <p className="text-xl font-bold">AGENT INFO</p>
