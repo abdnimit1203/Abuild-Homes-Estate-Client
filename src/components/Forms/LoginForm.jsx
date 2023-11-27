@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"
 import { MdCheckBoxOutlineBlank, MdOutlineCheckBox } from "react-icons/md";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const LoginForm = () => {
   const [showPassword, setShowPassord] = useState(false);
@@ -54,7 +55,7 @@ if(!user){
 
 
   return (
-    <section className="bg-base-100">
+    <section className="bg-base-100 text-neutral">
       <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
         <aside className="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
           <img
@@ -76,7 +77,7 @@ if(!user){
             Welcome to <br />ABuild Homes Estates
             </h1> */}
 
-            <h1 className="mt-6 text-2xl font-bold text-gray-900  sm:text-3xl md:text-4xl">
+            <h1 className="mt-6 text-2xl font-bold   sm:text-3xl md:text-4xl">
               LOGIN
             </h1>
 
@@ -90,7 +91,7 @@ if(!user){
               <div className="col-span-6">
                 <label
                   htmlFor="Email"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium "
                 >
                   Email Adress
                 </label>
@@ -100,7 +101,7 @@ if(!user){
                   id="Email"
                   name="email"
                   {...register("email")}
-                  className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
+                  className="mt-1 w-full border-2 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3   shadow-inner"
                 />
               </div>
 
@@ -119,7 +120,7 @@ if(!user){
                   name="password"
                   {...register("password", { required: true })}
                   
-                  className="mt-1 px-3 w-full border-0 rounded-md border-gray-200 focus:outline-2  bg-base-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
+                  className="mt-1 w-full border-2 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3   shadow-inner"
                 />
                 {errors.password && <span className="text-red-400">Password is required</span>}
 
@@ -142,7 +143,7 @@ if(!user){
                 </button>
               </div>
               <div className="col-span-4">
-                <p className="mt-4 text-base text-gray-500 sm:mt-0 text">
+                <p className="mt-4  sm:mt-0 text">
                   Dont have an account?
                   <Link
                     to={"/sign-up"}
@@ -156,21 +157,14 @@ if(!user){
             <span className="relative flex justify-center py-10">
               <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75"></div>
 
-              <span className="relative z-10 bg-white px-6 text-neutral">
+              <span className="relative z-10 bg-base-200 px-6 text-neutral">
                 OR
               </span>
             </span>
-            <button
-              type="button"
-              className="flex items-center gap-6 font-semibold bg-slate-100 p-2 px-4 rounded-xl shadow-md hover:scale-110 transition delay-150 hover:shadow-success text-center mx-auto btn-sm py-6"
-            >
-              <img
-                src="https://i.ibb.co/syGPgLz/google-Logo.png"
-                alt="google"
-                className="w-10"
-              />{" "}
-              Continue with Google
-            </button>
+            <div className="mx-auto w-fit">
+
+            <SocialLogin/>
+            </div>
           </div>
         </main>
       </div>

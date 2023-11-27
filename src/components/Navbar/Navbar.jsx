@@ -109,11 +109,11 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="drawer bg-base-200   mb-6">
+    <div className="drawer bg-base-200  mb-6">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content w-[90%]  flex flex-col">
         {/* Navbar */}
-        <div className="fixed top-0 z-10 w-full navbar bg-base-200 p-0 px-[5%] shadow-blue-400 shadow-md">
+        <div className="fixed top-0 z-10 w-full navbar bg-base-200 p-0 px-[5%] glass shadow-blue-400 shadow-md">
           <div className="flex-none  md:hidden">
             <label
               htmlFor="my-drawer-3"
@@ -137,19 +137,23 @@ const Navbar = () => {
           </div>
           {isdark ? (
             <div className="flex-1 px-2 mx-2">
-              <img
-                src="/assets/home/logoDark.png"
-                alt="logo"
-                className="w-52"
-              />
+              <Link to={"/"}>
+                <img
+                  src="/assets/home/logoDark.png"
+                  alt="logo"
+                  className="w-52 rounded-3xl"
+                />
+              </Link>
             </div>
           ) : (
             <div className="flex-1 px-2 mx-2">
-              <img
-                src="/assets/home/logoMain.png"
-                alt="logo"
-                className="w-52"
-              />
+              <Link to={"/"}>
+                <img
+                  src="/assets/home/logoMain.png"
+                  alt="logo"
+                  className="w-52"
+                />
+              </Link>
             </div>
           )}
           <div className="flex-none hidden  md:block">
@@ -164,19 +168,22 @@ const Navbar = () => {
               <div className="avatar online dropdown dropdown-end w-12 mx-3">
                 <div
                   tabIndex={0}
-                  className="  rounded-full drop border-2 border-primary"
+                  role="button"
+                  className="  rounded-full border-2 border-primary"
                 >
                   <img
                     src={
                       user?.photoURL
-                        ? user?.photoURL
+                        ? "https://lh3.googleusercontent.com/a/ACg8ocK4cXa1GZyDZmB2TS5lhBNVEJ1mAdx-OtS3Ebx7-ZpL69k=s96-c"
                         : "https://i.ibb.co/5x6DN2n/blank-dp.png"
                     }
+                    alt="user-photo"
+                    className="w-full"
                   />
                 </div>
                 <ul
-                  tabIndex={0}
-                  className="dropdown-content z-[1] menu p-4 py-6 shadow bg-base-100 rounded-box w-52 border-secondary border-4 space-y-3"
+                 
+                  className="dropdown-content z-[1] menu p-4 py-6 shadow bg-base-100 rounded-box min-w-max border-secondary border-4 space-y-3"
                 >
                   {isLoading ? (
                     <p>Loading..</p>
@@ -214,6 +221,7 @@ const Navbar = () => {
                     LOG OUT
                   </button>
                 </ul>
+                
               </div>
             ) : (
               <Link to={"/login"}>

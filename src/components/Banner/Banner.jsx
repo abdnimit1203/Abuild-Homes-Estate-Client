@@ -12,7 +12,7 @@ const Banner = () => {
         <div className="md:py-10 pl-6">
          <div className="max-w-md ">
 
-          <h2 className=" mb-5 text-4xl leading-normal  font-bold">
+          <h2 className=" mb-5 text-4xl leading-normal text-gray-600 font-bold">
           <TypeWriterEffect
               startDelay={1000}
               cursorColor="#3F3D56"
@@ -43,7 +43,7 @@ const Banner = () => {
           </p>
           </div>
          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4  glass bg-[#ffffffbe] gap-6 p-4 rounded-xl items-center justify-around">
+          <div className="grid grid-cols-2 md:grid-cols-4  glass bg-[#ffffffbe] gap-6 p-4 rounded-xl items-center justify-around text-gray-700">
           <div className="">
            <h3 className="font-semibold">Location</h3>
             <select

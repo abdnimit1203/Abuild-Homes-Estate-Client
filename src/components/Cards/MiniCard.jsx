@@ -14,7 +14,7 @@ const MiniCard = ({ property }) => {
   } = property;
   return (
     <div className="h-full max-w-xl mx-auto">
-      <div className="overflow-hidden  shadow flex transition hover:shadow-lg hover:border-primary hover:scale-110  p-6 bg-white border rounded-xl items-start h-full">
+      <div className="overflow-hidden  shadow flex transition hover:shadow-lg hover:border-primary hover:scale-105  p-6 bg-base-200 border rounded-xl items-start h-full text-neutral glass">
         <div>
 
         <img
@@ -24,25 +24,25 @@ const MiniCard = ({ property }) => {
         />
         </div>
 
-        <div className="bg-white  pl-6 flex flex-col justify-between md:h-52">
+        <div className="bg-transparent pl-6 flex flex-col justify-between  md:h-52">
           <div>
 
-          <h3 className="mt-0.5 text-xl font-semibold text-gray-900 ">
+          <h3 className="mt-0.5 text-xl font-semibold  ">
             {propertyTitle}
           </h3>
 
-          <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+          <p className="mt-2 line-clamp-3 text-sm/relaxed ">
             <FiMapPin className="inline mr-3" />
             {propertyLocation}
           </p>
 
-          <p className="mt-2 line-clamp-3  text-gray-500">
+          <p className="mt-2 line-clamp-3  ">
             <MdPriceChange className="inline mr-3" />
             {priceRange}
           </p>
           </div>
           <div className="flex justify-between items-center mt-4">
-            <p className="mt-2  line-clamp-3 text-md/relaxed text-gray-500">
+            <p className="mt-2  line-clamp-3 text-md/relaxed ">
               <span className="font-bold text-secondary">Status: </span>
               {verificationStatus}
             </p>

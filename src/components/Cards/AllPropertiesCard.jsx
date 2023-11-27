@@ -17,7 +17,7 @@ const AllPropertiesCard = ({ property }) => {
   return (
     <div>
       <article className="flex bg-base-200   transition glass hover:shadow-xl border-2 rounded-2xl">
-        <div className="rotate-180 p-2 [writing-mode:_vertical-lr] bg-secondary rounded-ee-2xl rounded-es-2xl ">
+        <div className="rotate-180 p-2 [writing-mode:_vertical-lr] bg-success rounded-ee-2xl rounded-es-2xl ">
           <p className="text-center text-white text-xl font-semibold">
             {status}
           </p>
@@ -49,14 +49,14 @@ const AllPropertiesCard = ({ property }) => {
               </span>
             </p>
             <div className="sm:flex sm:items-end sm:justify-between pt-6 items-center">
-              <div className="flex gap-4  border-4 border-b-0 px-4 border-primary pt-2 rounded-2xl rounded-b-none pb-2">
+              <div className="flex gap-4  border-4 border-b-0 px-4 border-primary pt-1 rounded-2xl rounded-r-none rounded-b-none pb-1 drop-shadow-xl  shadow-inner glass bg-primary text-white items-center">
                 <div className="">
 
-                    <img src={agentImage} alt="agent-image" className=" mask w-10 border mask-squircle"/>
+                    <img src={agentImage} alt="agent-image" className=" mask w-8 border mask-squircle aspect-square object-cover"/>
                 </div>
-                    <div className="flex flex-col font-medium">
-                        <p className="text-sm/relaxed">{agentName}</p>
-                        <p className="text-sm/relaxed">{agentEmail}</p>
+                    <div className="flex flex-col font-medium text-xs/relaxed">
+                        <p className="pb-0">{agentName}</p>
+                        <p className="">{agentEmail}</p>
                     </div>
               </div>
               <Link to={`/property/${_id}`}>

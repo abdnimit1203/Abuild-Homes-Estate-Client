@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { MdCheckBoxOutlineBlank, MdOutlineCheckBox } from "react-icons/md";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_API_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -262,17 +263,8 @@ const SignUpForm = () => {
               </div>
             </form>
             <div className="my-10">
-              <button
-                type="button"
-                className="flex items-center gap-6 font-semibold bg-slate-100 p-2 px-4 rounded-xl shadow-md hover:scale-110 transition delay-150 hover:shadow-success"
-              >
-                <img
-                  src="https://i.ibb.co/syGPgLz/google-Logo.png"
-                  alt="google"
-                  className="w-12"
-                />{" "}
-                Continue with Google
-              </button>
+
+            <SocialLogin/>
             </div>
           </div>
         </main>

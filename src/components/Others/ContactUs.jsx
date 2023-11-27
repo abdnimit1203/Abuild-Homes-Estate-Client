@@ -3,7 +3,7 @@ import TypeWriterEffect from "react-typewriter-effect";
 const ContactUs = () => {
     return (
         <div
-        className="hero rounded-2xl w-[100%] justify-start min-h-[400px] text-base-100"
+        className="hero rounded-2xl w-[100%] justify-start min-h-[400px] text-white"
         style={{ backgroundImage: "url(/assets/home/contact-home.jpg)" }}
       >
         <div className="hero-overlay rounded-l-2xl bg-opacity-50 bg-[#000000] "></div>
@@ -14,7 +14,7 @@ const ContactUs = () => {
             <h2 className=" text-4xl leading-normal font-bold">
             Find your best <br />Real Estate
             </h2>
-            <h3  className="mb-5 text-lg text-base-100 py-6">
+            <h3  className="mb-5 text-lg  py-6">
 
             <TypeWriterEffect
                 startDelay={1000}
