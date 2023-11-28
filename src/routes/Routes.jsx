@@ -49,9 +49,11 @@ export const router = createBrowserRouter([
     path:'/dashboard',
     element: <PrivateRoute><DashboardLayout/></PrivateRoute>,
     children:[
+  // user routes
       {
-        path: 'user-profile',
-        element: <OnlyUserRoute><UserHome></UserHome></OnlyUserRoute>
+      
+       path:"profile",
+        element: <UserHome></UserHome>
       },
       {
         path: 'wishlist',
@@ -65,11 +67,12 @@ export const router = createBrowserRouter([
         path: 'my-reviews',
         element: <OnlyUserRoute><MyReviews></MyReviews></OnlyUserRoute>
       },
-
-      {
-        path: 'agent-profile',
-        element: <OnlyAgentRoutes><AgentHome></AgentHome></OnlyAgentRoutes>
-      }
+// agent routes
+      // {
+      //   path: 'agent-profile',
+      //   element: <OnlyAgentRoutes><AgentHome></AgentHome></OnlyAgentRoutes>
+      // }
+//admin routes
     ]
   }
 ]);

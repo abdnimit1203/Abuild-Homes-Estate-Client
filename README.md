@@ -17,6 +17,10 @@
 
 - **Feature 3 :** - This site has also a **Dark Theme** functionality. User can easily change theme "Ligth to Dark ". Data is saved to local storage so upon refreshing theme will stay as it was!
 
-- **Feature 4 :** - 
+- **Feature 4 :** - User can view details of property and add them to their wishlist also user can add a review on single property page and see all the other users review for that perticular property.
 
-- **Feature 5 :** - Comming soon... 
+- **Feature 5 :** - User Dashboard : where user can view there profile and edit their profile there.
+
+- **Feature 6 :** - 
+
+- **Feature 7 :** - 

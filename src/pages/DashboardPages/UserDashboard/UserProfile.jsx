@@ -6,12 +6,14 @@ import useAuth from "../../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { FaEdit } from "react-icons/fa";
+import useRole from "../../../hooks/useRole";
 const image_hosting_key = import.meta.env.VITE_IMAGE_API_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 
 const UserProfile = () => {
   const { user, updateUserProfile } = useAuth()
+  const [role,isLoading] = useRole(user?.email)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -54,7 +56,7 @@ const { register, handleSubmit, reset } = useForm();
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-tr from-purple-400 to-pink-600 py-20 md:pt-32">
+    <div className="min-h-screen bg-gradient-to-tr from-primary to-sky-700 py-20 md:pt-32">
       <h2 className="text-center font-bold pb-16 text-white text-2xl lg:text-5xl">
         Welcome to Profile Manager
       </h2>
@@ -87,6 +89,12 @@ const { register, handleSubmit, reset } = useForm();
             <p className="text-xs text-center ">(not verified)</p>
           )}
         </h3>
+        <div>
+            {
+                isLoading? <span className="loading loading-spinner loading-md"></span>: role !== "user" &&
+                <button className="btn btn-secondary text-white">ROLE : {role.toUpperCase()}</button>
+            }
+        </div>
         <p className="">{user?.email}</p>
         {/* FOrm */}
        
@@ -104,7 +112,7 @@ const { register, handleSubmit, reset } = useForm();
             </div>
         
         <dialog id="my_modal_3" className="modal">
-          <div className="modal-box text-neutral-800 border-4 border-pink-500 bg-gradient-to-tr via-pink-400">
+          <div className="modal-box text-neutral-800 border-4 border-pink-500 bg-gradient-to-tr via-pink-400 to-white">
             <form method="dialog">
             
               <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
@@ -144,7 +152,7 @@ const { register, handleSubmit, reset } = useForm();
                   type="file"
                   name="image"
                   {...register("image", { required: true })}
-                  className="file-input file-input-bordered file-input-secondary w-full max-w-full"
+                  className="file-input file-input-bordered file-input-secondary w-full max-w-full bg-white"
                 />
               </div>
 

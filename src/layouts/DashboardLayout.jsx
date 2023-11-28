@@ -25,7 +25,7 @@ const DashboardLayout = () => {
     const userNavlinks =(
         <>
          <NavLink
-        to="/dashboard/user-profile"
+        to="profile"
         className={({ isActive, isPending }) =>
         isPending ? "pending" : isActive ? " active bg-base-100  px-3 py-2 text-neutral rounded-xl font-semibold" : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl "
         }
@@ -61,7 +61,7 @@ const DashboardLayout = () => {
     const agentNavlinks =(
         <>
          <NavLink
-        to="/dashboard/agent-profile"
+        to="/dashboard"
         className={({ isActive, isPending }) =>
         isPending ? "pending" : isActive ? " active bg-base-100  px-3 py-2 text-neutral rounded-xl font-semibold" : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl "
         }
@@ -166,7 +166,7 @@ const DashboardLayout = () => {
           {/* Page content here */}
           <label
             htmlFor="my-drawer-2"
-            className="navbar btn-primary drawer-button md:hidden flex items-center text-center justify-center bg-primary text-white"
+            className="navbar btn-primary drawer-button md:hidden flex items-center text-center justify-center bg-primary text-white animate-pulse "
           >
             <MdSpaceDashboard className="text-xl"/> Open DASHBOARD
           </label>

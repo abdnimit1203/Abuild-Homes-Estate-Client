@@ -43,7 +43,7 @@ const AddReviews = ({ reviewData }) => {
       <hr />
       <div className="flex gap-6 flex-col md:flex-row">
         <p>You can view and also add review for this property here</p>
-        {/* You can open the modal using document.getElementById('ID').showModal() method */}
+      
         <button
           className="btn btn-warning btn-sm"
           onClick={() => document.getElementById("my_modal_3").showModal()}
@@ -53,7 +53,7 @@ const AddReviews = ({ reviewData }) => {
         <dialog id="my_modal_3" className="modal">
           <div className="modal-box bg-warning text-neutral-800">
             <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
+            
               <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                 ✕
               </button>
