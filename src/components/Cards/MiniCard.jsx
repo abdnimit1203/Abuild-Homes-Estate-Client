@@ -32,17 +32,17 @@ const MiniCard = ({ property }) => {
             {propertyTitle}
           </h3>
 
-          <p className="mt-2 line-clamp-3 text-sm/relaxed ">
+          <p className="mt-2 line-clamp-3 text-sm/relaxed  ">
             <FiMapPin className="inline mr-3" />
             {propertyLocation}
           </p>
 
-          <p className="mt-2 line-clamp-3  ">
+          <p className="mt-2 line-clamp-3 md:text-xs lg:text-base ">
             <MdPriceChange className="inline mr-3" />
             {priceRange}
           </p>
           </div>
-          <div className="flex justify-between items-center mt-4">
+          <div className="flex justify-between items-center lg:mt-4">
             <p className="mt-2  line-clamp-3 text-md/relaxed ">
               <span className="font-bold text-secondary">Status: </span>
               {status}

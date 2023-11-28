@@ -8,10 +8,19 @@ import { GrMoney } from "react-icons/gr";
 
 import { IoIosHome } from "react-icons/io";
 import useRole from "../hooks/useRole";
+import useAuth from "../hooks/useAuth";
 
 const DashboardLayout = () => {
-    const [userRole,isLoading] =useRole();
-    console.log(userRole);
+  const {user,loading} = useAuth()
+    const [role,isLoading] =useRole(user?.email);
+    let headerText = ""
+    let headerText2 = "DASHBOARD"
+    if(!isLoading){
+
+        if(role!== 'user'){
+          headerText= role.toUpperCase()
+        }
+    }
 
     const userNavlinks =(
         <>
@@ -93,17 +102,71 @@ const DashboardLayout = () => {
       </NavLink>
         </>
     )
+    const adminNavlinks =(
+        <>
+         <NavLink
+        to="/dashboard/agent-profile"
+        className={({ isActive, isPending }) =>
+        isPending ? "pending" : isActive ? " active bg-base-100  px-3 py-2 text-neutral rounded-xl font-semibold" : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl "
+        }
+      >
+    <FaUserSecret  className="inline text-xl mr-3"/> Admin Profile
+      </NavLink>
+      <NavLink
+        to="/dashboard/add-property"
+        className={({ isActive, isPending }) =>
+        isPending ? "pending" : isActive ? " active bg-base-100  px-3 py-2 text-neutral rounded-xl font-semibold" : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl "
+        }
+      >
+        <BsBuildingFillAdd  className="inline text-xl mr-3"/>Add Property
+      </NavLink>
+      <NavLink
+        to="/dashboard/added-properties"
+        className={({ isActive, isPending }) =>
+        isPending ? "pending" : isActive ? " active bg-base-100  px-3 py-2 text-neutral rounded-xl font-semibold" : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl "
+        }
+      >
+        <BsFillHousesFill  className="inline text-xl mr-3"/>My Added Properties
+      </NavLink>
+      <NavLink
+        to="/dashboard/sold-properties"
+        className={({ isActive, isPending }) =>
+        isPending ? "pending" : isActive ? " active bg-base-100  px-3 py-2 text-neutral rounded-xl font-semibold" : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl "
+    }
+      >
+       <GrMoney  className="inline text-xl mr-3"/>My Sold Properties
+      </NavLink>
+      <NavLink
+        to="/dashboard/requested-properties"
+        className={({ isActive, isPending }) =>
+        isPending ? "pending" : isActive ? " active bg-base-100  px-3 py-2 text-neutral rounded-xl font-semibold" : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl "
+        }
+      >
+       <BsBuildingExclamation  className="inline text-xl mr-3"/> Requested Properties
+      </NavLink>
+        </>
+    )
   return (
     <div>
-       
-      <div className="drawer md:drawer-open">
+       {
+
+        loading? 
+        <div className="min-h-screen flex justify-center items-center" >
+        <img
+          src="/assets/home/loading2.png"
+          alt="loader"
+          className="motion-safe:animate-spin w-52 mx-auto "
+        />
+      </div>
+        :
+        <div className="drawer md:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         
         <div className="drawer-content">
           {/* Page content here */}
           <label
             htmlFor="my-drawer-2"
-            className="navbar btn-primary drawer-button md:hidden flex items-center text-center justify-center"
+            className="navbar btn-primary drawer-button md:hidden flex items-center text-center justify-center bg-primary text-white"
           >
             <MdSpaceDashboard className="text-xl"/> Open DASHBOARD
           </label>
@@ -122,11 +185,13 @@ const DashboardLayout = () => {
             {/* Sidebar content here */}
         
 
-            <HeaderText headerText={`DASHBOARD`} />
-           
-            {
-                agentNavlinks
-            }
+            <HeaderText headerText={headerText} headerText2={headerText2} />
+           {
+            isLoading? <span className="loading loading-ring w-32 mx-auto text-center "></span> :
+            role === 'user'?userNavlinks:
+                role === 'agent'? agentNavlinks: adminNavlinks
+           }
+            
             <hr  className="border-white"/>
           
                 <span className="hover:bg-white py-2 px-3 hover:text-neutral transition duration-200  rounded-xl ">
@@ -139,6 +204,8 @@ const DashboardLayout = () => {
           
         </div>
       </div>
+       }
+      
       
     </div>
   );

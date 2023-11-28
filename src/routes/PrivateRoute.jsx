@@ -21,13 +21,12 @@ const PrivateRoute = ({ children }) => {
       return children;
     } else {
       Swal.fire({
-        position: "top-center",
+    
         icon: "warning",
         color: "white",
-
         text: "You have to log in first",
         showConfirmButton: false,
-        timer: 2000,
+        timer: 3000,
         background: "#3bb1ff",
       });
     }

@@ -1,35 +1,57 @@
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { MdVerified } from "react-icons/md";
 import useAuth from "../../../hooks/useAuth";
+import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { FaEdit } from "react-icons/fa";
+const image_hosting_key = import.meta.env.VITE_IMAGE_API_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
 
 const UserProfile = () => {
   const { user, updateUserProfile } = useAuth()
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const axiosPublic = useAxiosPublic()
   //toast
 
   const toastProfileUpdateSuccess = () => toast.success("Profile Updated");
   const toastProfileUpdateError = (err) => toast.error(`${err.split(":")[1]}`);
 
-  //handle form
-  const handleUpdateProfile = (e) => {
-    e.preventDefault();
-    const displayName = e.target.displayName.value;
-    const photoURL = e.target.photoURL.value;
-    // console.log(displayName, photoURL);
-    updateUserProfile(displayName, photoURL)
-      .then(() => {
-        toastProfileUpdateSuccess();
-        e.target.displayName.value = "";
-        e.target.photoURL.value = "";
-        navigate("/user-profile");
-      })
-      .catch((error) => {
-        console.log(error.message);
-        toastProfileUpdateError(error.message);
-      });
+
+
+
+// modal submit
+const { register, handleSubmit, reset } = useForm();
+  const onSubmit =async (data) => {
+   console.log(data)
+   const imageFile = { image: data.image[0] };
+   const res = await axiosPublic.post(image_hosting_api, imageFile, {
+     headers: {
+       "content-type": "multipart/form-data",
+     },
+   });
+   console.log(res.data);
+    updateUserProfile(data.displayName, res.data.data.display_url)
+    .then(() => {
+      toastProfileUpdateSuccess();
+        navigate(location.pathname)
+    })
+    .catch((error) => {
+      console.log(error.message);
+      toastProfileUpdateError(error.message);
+    });
+  
+    document.getElementById("my_modal_3").close();
+    reset();
   };
+
+
+
+
 
   return (
     <div className="min-h-screen bg-gradient-to-tr from-purple-400 to-pink-600 py-20 md:pt-32">
@@ -67,51 +89,78 @@ const UserProfile = () => {
         </h3>
         <p className="">{user?.email}</p>
         {/* FOrm */}
-        <form onSubmit={handleUpdateProfile}>
-          <div className="relative flex lg:w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-            <div className="text-center pt-10 font-bold text-xl sm:text-3xl transition duration-300 ease-in-out hover:scale-110 ">
-              <h2 className=" text-transparent  bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-                EDIT PROFILE
-              </h2>
+       
+        {/* modal */}
+        <div className="flex gap-6 flex-col md:flex-row">
+   
+        <div className="text-center p-4 font-bold text-xl sm:text-2xl rounded-2xl transition duration-300 ease-in-out hover:scale-110 bg-white flex items-center">
+             <FaEdit className="text-pink-400 inline mr-3 "/>
+              <button
+          className="text-transparent  bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
+          onClick={() => document.getElementById("my_modal_3").showModal()}
+        >
+          EDIT PROFILE
+        </button>
             </div>
-            <div className="flex flex-col gap-4 p-6">
-              <div className="relative h-11 w-full min-w-[200px]">
+        
+        <dialog id="my_modal_3" className="modal">
+          <div className="modal-box text-neutral-800 border-4 border-pink-500 bg-gradient-to-tr via-pink-400">
+            <form method="dialog">
+            
+              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                ✕
+              </button>
+            </form>
+            <h3 className="font-bold  pb-4 text-xl">Edit & update your profile<FaEdit className="inline-block text-2xl ml-2"/> </h3>
+           
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="mt-8 grid grid-cols-6 gap-6 text-left justify-center items-center"
+            >
+              <div className="col-span-6">
+                <label htmlFor="review" className="block text-sm font-medium ">
+                  New username
+                </label>
+
                 <input
+                type="displayName"
+                  id="displayName"
                   name="displayName"
+                  defaultValue={user?.displayName}
                   required
-                  type="text"
-                  className="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-secondary focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                  placeholder=" "
+                  {...register("displayName")}
+                  className="mt-1 w-full border-2 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3   shadow-inner"
                 />
-                <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-secondary peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-secondary peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-secondary peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                  Username
-                </label>
               </div>
-              <div className="relative h-11 w-full min-w-[200px]">
+              <div className="col-span-6 ">
+                <label
+                  htmlFor="image"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  Upload Image
+                </label>
+
                 <input
-                  type="url"
-                  name="photoURL"
-                  required
-                  className="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-secondary focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                  placeholder=" "
+                  type="file"
+                  name="image"
+                  {...register("image", { required: true })}
+                  className="file-input file-input-bordered file-input-secondary w-full max-w-full"
                 />
-                <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-secondary peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-secondary peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-secondary peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                  Photo URL
-                </label>
               </div>
-            </div>
-            <div className="p-6 pt-0 md:pb-20 ">
-              <motion.button whileHover={{ scale: 1.06 }}
-    whileTap={{ scale: 0.9 }}
-                className="block w-full select-none  bg-gradient-to-tr from-pink-600 to-secondary py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-secondary/20 transition-all hover:shadow-lg hover:shadow-secondary/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none rounded-xl"
-                type="submit"
-                data-ripple-light="true"
-              >
-                Update Profile
-              </motion.button>
-            </div>
+
+              <div className="col-span-6 sm:flex sm:items-center sm:gap-4 mx-auto">
+                <button
+                  type="submit"
+                  className="button button-2 btn-secondary hover:text-white p-4"
+                >
+                  Update Profile
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
+        </dialog>
+      </div>
+        {/* modal */}
       </div>
     </div>
   );

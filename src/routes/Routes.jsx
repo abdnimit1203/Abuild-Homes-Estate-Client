@@ -9,6 +9,12 @@ import SignUp from "../pages/UserPages/SignUp";
 import PrivateRoute from './PrivateRoute';
 import PropertyDetails from "../pages/UserPages/PropertyDetails";
 import UserHome from "../pages/DashboardPages/UserDashboard/UserHome";
+import OnlyUserRoute from "./OnlyUserRoute";
+import OnlyAgentRoutes from "./OnlyAgentRoutes";
+import AgentHome from "../pages/DashboardPages/AgentDashboard/AgentHome";
+import Wishlist from "../pages/DashboardPages/UserDashboard/Wishlist";
+import PropertyBought from "../pages/DashboardPages/UserDashboard/PropertyBought";
+import MyReviews from "../pages/DashboardPages/UserDashboard/MyReviews";
 
 export const router = createBrowserRouter([
   {
@@ -41,11 +47,28 @@ export const router = createBrowserRouter([
   },
   {
     path:'/dashboard',
-    element: <DashboardLayout/>,
+    element: <PrivateRoute><DashboardLayout/></PrivateRoute>,
     children:[
       {
         path: 'user-profile',
-        element: <UserHome></UserHome>
+        element: <OnlyUserRoute><UserHome></UserHome></OnlyUserRoute>
+      },
+      {
+        path: 'wishlist',
+        element: <OnlyUserRoute><Wishlist></Wishlist></OnlyUserRoute>
+      },
+      {
+        path: 'property-bought',
+        element: <OnlyUserRoute><PropertyBought></PropertyBought></OnlyUserRoute>
+      },
+      {
+        path: 'my-reviews',
+        element: <OnlyUserRoute><MyReviews></MyReviews></OnlyUserRoute>
+      },
+
+      {
+        path: 'agent-profile',
+        element: <OnlyAgentRoutes><AgentHome></AgentHome></OnlyAgentRoutes>
       }
     ]
   }
