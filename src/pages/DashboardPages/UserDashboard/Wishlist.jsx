@@ -9,7 +9,7 @@ const Wishlist = () => {
     const [wishlistDataByEmail,refetch] = useWishlistByEmail(user?.email)
     console.log(wishlistDataByEmail);
     return (
-        <div className="min-h-screen bg-gradient-to-tr to-rose-100 from-white py-20 md:pt-32">
+        <div className="min-h-screen bg-gradient-to-tr to-rose-100 from-white py-20 md:pt-6">
             <HeaderText headerText='My Wishlists' headerText3='offer / remove from here'/>
             <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-6 p-6'>
                 {

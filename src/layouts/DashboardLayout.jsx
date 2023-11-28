@@ -61,7 +61,7 @@ const DashboardLayout = () => {
     const agentNavlinks =(
         <>
          <NavLink
-        to="/dashboard"
+        to="profile"
         className={({ isActive, isPending }) =>
         isPending ? "pending" : isActive ? " active bg-base-100  px-3 py-2 text-neutral rounded-xl font-semibold" : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl "
         }

@@ -73,7 +73,7 @@ const WishlistCard = ({ wishlist,refetch }) => {
         <p className="text-success font-semibold">Price Range : {priceRange}</p>
         <div className="flex justify-between mt-4">
             <Link>
-            <button className="btn btn-success btn-outline hover:text-white">
+            <button className="btn btn-success  text-white">
                <MdLocalOffer className="text-2xl"/>  Make Offer
             </button>
             
