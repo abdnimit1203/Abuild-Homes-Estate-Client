@@ -19,6 +19,8 @@ import AddProperty from "../pages/DashboardPages/AgentDashboard/AddProperty";
 import MyAddedProperties from "../pages/DashboardPages/AgentDashboard/MyAddedProperties";
 import MySoldProperties from "../pages/DashboardPages/AgentDashboard/MySoldProperties";
 import RequestedProperties from "../pages/DashboardPages/AgentDashboard/RequestedProperties";
+import AgentHome from './../pages/DashboardPages/AgentDashboard/AgentHome';
+import MakeOffer from "../pages/DashboardPages/UserDashboard/MakeOffer";
 
 export const router = createBrowserRouter([
   {
@@ -71,6 +73,11 @@ export const router = createBrowserRouter([
         path: 'my-reviews',
         element: <OnlyUserRoute><MyReviews></MyReviews></OnlyUserRoute>
       },
+      {
+        path: 'make-offer/:id',
+        element: <OnlyUserRoute><MakeOffer></MakeOffer></OnlyUserRoute>,
+        loader: ({params})=> fetch(`http://localhost:3000/api/v1/wishlists/${params.id}`)
+      },
 // agent routes
       {
         path: 'add-property',
@@ -90,5 +97,9 @@ export const router = createBrowserRouter([
       },
 //admin routes
     ]
+  },
+  {
+    path: 'no-internet',
+    element: <AgentHome></AgentHome>
   }
 ]);

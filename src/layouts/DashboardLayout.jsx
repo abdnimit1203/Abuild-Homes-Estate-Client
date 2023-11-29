@@ -181,11 +181,11 @@ const DashboardLayout = () => {
             className="drawer-overlay"
           ></label>
         
-          <div className="menu gap-6 p-4 w-80 min-h-full  bg-gradient-to-tr from-secondary to-accent ">
+          <div className="menu gap-6 p-4 w-80 min-h-full  bg-gradient-to-tr from-secondary to-accent text-black">
             {/* Sidebar content here */}
         
 
-            <HeaderText headerText={headerText} headerText2={headerText2} />
+            <HeaderText headerText={headerText} headerText2={headerText2} headerText3={user?.email}/>
            {
             isLoading? <span className="loading loading-ring w-32 mx-auto text-center "></span> :
             role === 'user'?userNavlinks:
@@ -194,7 +194,7 @@ const DashboardLayout = () => {
             
             <hr  className="border-white"/>
           
-                <span className="hover:bg-white py-2 px-3 hover:text-neutral transition duration-200  rounded-xl ">
+                <span className="hover:bg-white py-2 px-3 hover:text-neutral transition duration-200 text-black font-semibold rounded-xl ">
 
                 <Link to={'/'}><IoIosHome className="inline text-xl mr-3"/>HOMEPAGE </Link>
                 </span>

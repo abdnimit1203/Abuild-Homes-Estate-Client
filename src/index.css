@@ -107,3 +107,14 @@ body{
   color: white;
   background: #38B6FF;
 }
+
+.verified{
+  background: #18b47b
+}
+.pending{
+  background: #f0d447;
+  color: rgb(34, 34, 34);
+}
+.rejected{
+  background: #f41042
+}

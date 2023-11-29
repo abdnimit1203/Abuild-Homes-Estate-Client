@@ -1,7 +1,7 @@
 import HeaderText from "../../../components/HeaderText/HeaderText";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { BsBuildingAdd } from "react-icons/bs";
 import { useState } from "react";
@@ -17,7 +17,7 @@ const AddProperty = () => {
   const [minimum, setMinimum] = useState(0);
   console.log(minimum);
   const axiosPublic = useAxiosPublic();
-
+  const location =useLocation()
   const { user, loading } = useAuth();
   const navigate = useNavigate();
   const {
@@ -29,8 +29,9 @@ const AddProperty = () => {
 
   const onSubmit = async (data) => {
     const priceRange = `$${data.minPrice} - $${data.maxPrice}`;
+ 
 
-    //image upload to imgbb and then get an url
+    // image upload to imgbb and then get an url
 
     const imageFile = { image: data.image[0] };
     const res = await axiosPublic.post(image_hosting_api, imageFile, {
@@ -68,7 +69,7 @@ const AddProperty = () => {
     }
   };
   return (
-    <section className="bg-white">
+    <section className="bg-base-200 text-neutral">
       <div>
         <HeaderText headerText="Add New Property" />
       </div>
@@ -82,7 +83,7 @@ const AddProperty = () => {
               <div className="col-span-6">
                 <label
                   htmlFor="propertyTitle"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-neutral"
                 >
                   Property Title
                 </label>
@@ -98,7 +99,7 @@ const AddProperty = () => {
               <div className="col-span-6 ">
                 <label
                   htmlFor="image"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block text-sm font-medium text-neutral mb-2"
                 >
                   Property Image
                 </label>
@@ -107,13 +108,13 @@ const AddProperty = () => {
                   type="file"
                   name="image"
                   {...register("image", { required: true })}
-                  className="file-input file-input-bordered file-input-secondary w-full max-w-full"
+                  className="file-input file-input-bordered file-input-secondary w-full max-w-full bg-base-200 "
                 />
               </div>
               <div className="col-span-6">
                 <label
                   htmlFor="propertyDetails"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-neutral"
                 >
                   Property Details
                 </label>
@@ -123,14 +124,14 @@ const AddProperty = () => {
                   id="propertyDetails"
                   {...register("propertyDetails", { required: true })}
                   name="propertyDetails"
-                  className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
+                  className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm  py-3 shadow-sm text-gray-700"
                 />
               </div>
 
               <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="minPrice"
-                  className=" text-sm font-medium flex items-center text-gray-700"
+                  className=" text-sm font-medium flex items-center text-neutral"
                 >
                   <MdAttachMoney className="inline" /> Min Price Range
                 </label>
@@ -141,7 +142,7 @@ const AddProperty = () => {
                   onBlurCapture={(e) => setMinimum(e.target.value)}
                   name="minPrice"
                   min={100}
-                  {...register("minPrice", { required: true })}
+                  {...register("minPrice", { required: true ,valueAsNumber:true})}
                   className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
                 />
               </div>
@@ -149,7 +150,7 @@ const AddProperty = () => {
               <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="maxPrice"
-                  className=" text-sm font-medium flex items-center text-gray-700"
+                  className=" text-sm font-medium flex items-center text-neutral"
                 >
                   <MdAttachMoney className="inline text-xl" /> Max Price Range
                 </label>
@@ -159,14 +160,14 @@ const AddProperty = () => {
                   id="maxPrice"
                   min={minimum}
                   name="maxPrice"
-                  {...register("maxPrice", { required: true })}
+                  {...register("maxPrice", { required: true ,valueAsNumber:true})}
                   className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
                 />
               </div>
               <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="propertyLocation"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-neutral"
                 >
                   <FaMapMarkerAlt className="inline" /> Property Location
                 </label>
@@ -182,25 +183,25 @@ const AddProperty = () => {
               <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="size"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-neutral"
                 >
                   Size (sqft)
                 </label>
 
                 <input
                   type="number"
-                  min={1000}
-                  placeholder={">1000"}
+                  min={500}
+                  placeholder={">500"}
                   id="size"
                   name="size"
-                  {...register("size", { required: true })}
+                  {...register("size", { required: true ,valueAsNumber:true})}
                   className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
                 />
               </div>
               <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="rooms"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-neutral"
                 >
                   Rooms
                 </label>
@@ -210,29 +211,29 @@ const AddProperty = () => {
                   id="rooms"
                   name="rooms"
                   min={1}
-                  max={10}
-                  placeholder="1-10"
-                  {...register("rooms", { required: true })}
+                  max={20}
+                  placeholder="1-20"
+                  {...register("rooms", { required: true,valueAsNumber:true })}
                   className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
                 />
               </div>
               <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="parking"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-neutral"
                 >
                   Parking
                 </label>
 
                 <input
                   type="number"
-                  min={1}
+                  min={0}
                   max={10}
-                  placeholder={"1-10"}
+                  placeholder={"0-10"}
                   id="parking"
                   name="parking"
-                  {...register("parking", { required: true })}
-                  className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
+                  {...register("parking", { required: true ,valueAsNumber:true})}
+                  className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-neutral py-3 shadow-sm"
                 />
               </div>
               {loading ? (
@@ -242,7 +243,7 @@ const AddProperty = () => {
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="agentName"
-                      className="block text-sm font-medium text-gray-700"
+                      className="block text-sm font-medium text-neutral"
                     >
                       Agent Name
                     </label>
@@ -253,13 +254,13 @@ const AddProperty = () => {
                       value={user?.displayName}
                       name="agentName"
                       {...register("agentName", { required: true })}
-                      className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
+                      className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-neutral py-3 shadow-sm"
                     />
                   </div>
                   <div className="col-span-6 sm:col-span-3">
                     <label
                       htmlFor="agentEmail"
-                      className="block text-sm font-medium text-gray-700"
+                      className="block text-sm font-medium text-neutral"
                     >
                       Agent Email
                     </label>
@@ -270,7 +271,7 @@ const AddProperty = () => {
                       name="agentEmail"
                       value={user?.email}
                       {...register("agentEmail", { required: true })}
-                      className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
+                      className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-neutral py-3 shadow-sm"
                     />
                   </div>
                 </>

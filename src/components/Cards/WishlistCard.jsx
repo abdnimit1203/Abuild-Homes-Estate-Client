@@ -11,12 +11,12 @@ const WishlistCard = ({ wishlist,refetch }) => {
     const axiosPublic = useAxiosPublic()
   const {
     _id,
-    propertyID,
+    // propertyID,
     propertyImage,
     propertyLocation,
     priceRange,
     propertyTitle,
-    agentEmail,
+    // agentEmail,
     agentName,
     agentImage,
     status,
@@ -24,25 +24,34 @@ const WishlistCard = ({ wishlist,refetch }) => {
 
 
   const handleRemove = async()=>{
-    
-    axiosPublic.delete(`/api/v1/wishlists/${_id}`)
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosPublic.delete(`/api/v1/wishlists/${_id}`)
     .then(res=>{
         console.log(res.data)
-     
         Swal.fire({
-          position: "top-end",
-       
+          title: "Removed!",
           text: `${propertyTitle} - has been removed from wishlist`,
-          showConfirmButton: false,
-          timer: 2500,
-          iconHtml: '<img src="https://i.ibb.co/sC2CCr2/pngegg.png" alt="removed"  />'
-
-        })
+          icon: "success"
+        });
+       
         refetch()
     })
     .then(err=>{
         toast.error(`${err.message}`)
     })
+       
+      }
+    });
+    
    
   }
   return (
@@ -72,13 +81,13 @@ const WishlistCard = ({ wishlist,refetch }) => {
         <button className="btn-success btn btn-xs text-white my-4">Status : {status}</button>
         <p className="text-success font-semibold">Price Range : {priceRange}</p>
         <div className="flex justify-between mt-4">
-            <Link>
-            <button className="btn btn-success  text-white">
+            <Link to={`/dashboard/make-offer/${_id}`}>
+            <button className="btn btn-success  text-white btn-sm">
                <MdLocalOffer className="text-2xl"/>  Make Offer
             </button>
             
             </Link>
-            <button onClick={handleRemove} className="btn btn-error text-white">
+            <button onClick={handleRemove} className="btn btn-sm btn-error text-white">
                <BsBookmarkX className="text-2xl"/> Remove
             </button>
         </div>
@@ -88,5 +97,6 @@ const WishlistCard = ({ wishlist,refetch }) => {
 };
 WishlistCard.propTypes = {
     wishlist: PropTypes.object.isRequired,
+    refetch: PropTypes.func,
   };
 export default WishlistCard;

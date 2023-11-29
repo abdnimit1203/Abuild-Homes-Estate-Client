@@ -42,7 +42,7 @@ const MiniCard = ({ property }) => {
             {priceRange}
           </p>
           </div>
-          <div className="flex justify-between items-center lg:mt-4">
+          <div className="flex flex-col items-start lg:flex-row lg:justify-between lg:items-center lg:mt-4 gap-3">
             <p className="mt-2  line-clamp-3 text-md/relaxed ">
               <span className="font-bold text-secondary">Status: </span>
               {status}
