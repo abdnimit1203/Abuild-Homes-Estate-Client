@@ -105,7 +105,7 @@ body{
 
 ::selection {
   color: white;
-  background: #38B6FF;
+  background: #2b9cdd;
 }
 
 .verified{
@@ -117,4 +117,14 @@ body{
 }
 .rejected{
   background: #f41042
+}
+.accepted{
+  background: #18b47b;
+  color: white;
+}
+.bought{
+  background: #38B6FF;
+  text-transform: uppercase;
+  color: white;
+  
 }

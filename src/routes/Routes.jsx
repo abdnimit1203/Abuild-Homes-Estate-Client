@@ -21,6 +21,7 @@ import MySoldProperties from "../pages/DashboardPages/AgentDashboard/MySoldPrope
 import RequestedProperties from "../pages/DashboardPages/AgentDashboard/RequestedProperties";
 import AgentHome from './../pages/DashboardPages/AgentDashboard/AgentHome';
 import MakeOffer from "../pages/DashboardPages/UserDashboard/MakeOffer";
+import Payment from "../pages/DashboardPages/UserDashboard/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -77,6 +78,11 @@ export const router = createBrowserRouter([
         path: 'make-offer/:id',
         element: <OnlyUserRoute><MakeOffer></MakeOffer></OnlyUserRoute>,
         loader: ({params})=> fetch(`http://localhost:3000/api/v1/wishlists/${params.id}`)
+      },
+      {
+        path: 'payment/:id',
+        element: <OnlyUserRoute><Payment></Payment></OnlyUserRoute>,
+        loader: ({params})=> fetch(`http://localhost:3000/api/v1/offers/${params.id}`)
       },
 // agent routes
       {

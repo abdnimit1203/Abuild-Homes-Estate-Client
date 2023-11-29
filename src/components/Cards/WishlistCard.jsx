@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import toast from "react-hot-toast";
 import { BsBookmarkX } from "react-icons/bs";
 import { FiMapPin } from "react-icons/fi";
-import { MdLocalOffer, MdRemove } from "react-icons/md";
+import { MdLocalOffer } from "react-icons/md";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
