@@ -40,6 +40,10 @@ const { register, handleSubmit, reset } = useForm();
     updateUserProfile(data.displayName, res.data.data.display_url)
     .then(() => {
       toastProfileUpdateSuccess();
+      axiosPublic.patch(`/api/v1/username?email=${user.email}&username=${data.displayName}`)
+      .then(res=>{
+        console.log(res.data)
+      })
         navigate(location.pathname)
     })
     .catch((error) => {

@@ -7,7 +7,7 @@ import { FaBuildingUser } from "react-icons/fa6";
 import { MdRateReview, MdReviews, MdSpaceDashboard } from "react-icons/md";
 import {  BsBuildingExclamation, BsBuildingFillAdd, BsBuildingFillGear, BsClipboardHeart, BsFillHousesFill } from "react-icons/bs";
 import { GrMoney } from "react-icons/gr";
-
+import { RiAdminFill } from "react-icons/ri";
 import { IoIosHome } from "react-icons/io";
 import useRole from "../hooks/useRole";
 import useAuth from "../hooks/useAuth";
@@ -112,7 +112,7 @@ const DashboardLayout = () => {
         isPending ? "pending" : isActive ? " active bg-base-100  px-3 py-2 text-neutral rounded-xl font-semibold" : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl "
         }
       >
-    <FaUserSecret  className="inline text-xl mr-3"/> Admin Profile
+    <RiAdminFill   className="inline text-xl mr-3"/> Admin Profile
       </NavLink>
       <NavLink
         to="/dashboard/manage-properties"

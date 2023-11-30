@@ -50,6 +50,9 @@ const handleRemove = (id)=>{
         headerText={"My Reviews"}
         headerText3={"view/ manage your reviews here!"}
       />
+      {
+        reviewDataByEmail?.length == 0 && <p className="text-2xl font-semibold text-center">You have no reviews to show!</p>
+      }
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  p-6 gap-6">
         {reviewDataByEmail?.map((review) => (
           <div

@@ -52,7 +52,7 @@ const RequestedProperties = () => {
 
       <div className="overflow-x-auto px-[5%] rounded-2xl">
         {
-          data?.length ? <p>Opp! No data available</p>:
+          data?.length ==0 ? <p className="text-2xl font-bold text-center border-y-2 py-4 glass bg-warning">Opp! No data available</p>:
         <table className="min-w-full divide-y-2 di bg-base-200 text-sm rounded-2xl">
           <thead className="bg-success text-neutral glass md:text-lg rounded-2xl ">
             <tr>

@@ -33,7 +33,12 @@ const MySoldProperties = () => {
           )}
         </h2>
       </div>
-      
+      {isLoading ? 
+            <span className="loading loading-dots text-white loading-lg"></span>
+          : data.length == 0 ?
+            <p className="text-2xl font-bold text-center border-y-2 py-4 glass bg-primary"> No data here!</p>
+            :
+
         <div className="overflow-x-auto w-[90%] px-2 mx-auto my-10 rounded-2xl">
           <table className="min-w-full divide-y-2 divide-gray-200 glass text-xs rounded-2xl bg-base-200">
             <thead className="ltr:text-left rtl:text-right  md:text-lg font-bold bg-primary rounded-2xl">
@@ -80,6 +85,8 @@ const MySoldProperties = () => {
             </tbody>
           </table>
         </div>
+          
+          }
      
     </>
   );

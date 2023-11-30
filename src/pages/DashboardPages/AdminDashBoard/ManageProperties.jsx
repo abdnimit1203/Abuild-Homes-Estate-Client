@@ -21,13 +21,13 @@ const ManageProperties = () => {
     // const propertiesData = data.propertiesData
     // const countData = data.countData
   
-        const pendingCount = data.propertiesData.reduce((count, property) => {
+        const pendingCount = data?.propertiesData?.reduce((count, property) => {
             return count + (property.status === 'pending' ? 1 : 0);
           }, 0);
-        const verifiedCount = data.propertiesData.reduce((count, property) => {
+        const verifiedCount = data?.propertiesData?.reduce((count, property) => {
             return count + (property.status === 'verified' ? 1 : 0);
           }, 0);
-        const rejectedCount = data.propertiesData.reduce((count, property) => {
+        const rejectedCount = data?.propertiesData?.reduce((count, property) => {
             return count + (property.status === 'rejected' ? 1 : 0);
           }, 0);
           console.log(pendingCount,verifiedCount,rejectedCount);
@@ -65,9 +65,10 @@ const ManageProperties = () => {
             headerText3={"all offered/requested property are here"}
           />
         </div>
-        <div className="flex gap-4 justify-between px-[5%]">
+        <div className="grid grid-cols-3 gap-4 justify-between px-[5%]">
 
-        <div className="my-8 flex flex-col glass p-6 rounded-2xl w-fit  bg-primary text-white">
+        <div className="my-8 col-span-3
+         flex flex-col glass p-6  rounded-2xl w-full  bg-primary text-white">
         <h2 className="text-xl md:text-3xl font-bold  ">Total Properties</h2>
         <h2 className="text-3xl md:text-6xl  font-bold ">
           {isLoading ? (
@@ -77,7 +78,7 @@ const ManageProperties = () => {
           )}
         </h2>
       </div>
-        <div className="my-8 flex flex-col glass p-6 rounded-2xl w-80  bg-warning text-neutral-500 ">
+        <div className="my-8 flex flex-col glass p-6 rounded-2xl w-fit  bg-warning text-neutral-500 ">
         <h2 className="text-xl md:text-3xl font-bold  ">Pending Properties</h2>
         <h2 className="text-3xl md:text-6xl  font-bold ">
           {isLoading ? (
@@ -109,7 +110,7 @@ const ManageProperties = () => {
       </div>
         </div>
   
-        <div className="overflow-x-auto px-[5%] rounded-2xl">
+        <div className="overflow-x-auto px-[5%] rounded-2xl pb-16">
           <table className="min-w-full divide-y-2 di bg-base-200 text-sm rounded-2xl">
             <thead className="bg-success text-neutral glass md:text-lg rounded-2xl ">
               <tr>
@@ -131,7 +132,7 @@ const ManageProperties = () => {
             <tbody className="divide-y divide-gray-200 text-neutral glass">
               {data?.propertiesData?.map((property) => (
                 <tr key={property._id} className="">
-                  <td className="whitespace-wrap px-4 py-3 ">
+                  <td className="whitespace-wrap px-4 py-3 font-semibold">
                     {property.propertyTitle}
                   </td>
                   <td className="whitespace-nowrap px-4 py-3 ">
@@ -168,6 +169,7 @@ const ManageProperties = () => {
                       {property.status}
                     </td>
                   )}
+                 
                 </tr>
               ))}
             </tbody>
