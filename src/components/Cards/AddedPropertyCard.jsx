@@ -25,7 +25,16 @@ const AddedPropertyCard = ({ property,refetch }) => {
 
 
   const handleRemove = async()=>{
-    
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to get the review!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, remove review"
+    }).then((result) => {
+      if (result.isConfirmed) {
     axiosPublic.delete(`/api/v1/properties/${_id}`)
     .then(res=>{
         console.log(res.data)
@@ -36,7 +45,7 @@ const AddedPropertyCard = ({ property,refetch }) => {
           text: `${propertyTitle} - has been removed !`,
           showConfirmButton: false,
           timer: 2500,
-          iconHtml: '<img src="https://i.ibb.co/sC2CCr2/pngegg.png" alt="removed"  />'
+          icon: 'success'
 
         })
         refetch()
@@ -44,6 +53,8 @@ const AddedPropertyCard = ({ property,refetch }) => {
     .then(err=>{
         toast.error(`${err.message}`)
     })
+  }
+})
    
   }
   return (
@@ -65,8 +76,8 @@ const AddedPropertyCard = ({ property,refetch }) => {
        Agent Info
         </p>
         <hr />
-        <div className="flex gap-2 py-2 btn no-animation bg-gradient-to-tr from-primary to-success text-white">
-            <img src={agentImage} alt="agent image" className="w-8 border rounded-full" />
+        <div className="flex gap-2 py-2 no-animation  items-center ">
+            <img src={agentImage} alt="agent image" className="w-12 border rounded-full aspect-square object-cover" />
             <p>{agentName}</p>
         </div>
         <hr />

@@ -5,6 +5,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ paymentData }) => {
   const [error, setError] = useState("");
@@ -14,6 +15,7 @@ const CheckoutForm = ({ paymentData }) => {
   const stripe = useStripe();
   const elements = useElements();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate()
   // console.log(paymentData);
   const {
     offeredAmount,
@@ -105,6 +107,7 @@ const CheckoutForm = ({ paymentData }) => {
           }`,
           icon: "success",
         });
+        navigate('/dashboard/property-bought')
       }
     }
   };
