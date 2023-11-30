@@ -162,7 +162,7 @@ const DashboardLayout = () => {
         <div className="drawer md:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         
-        <div className="drawer-content">
+        <div className="drawer-content overflow-x-auto ">
           {/* Page content here */}
           <label
             htmlFor="my-drawer-2"
@@ -170,7 +170,9 @@ const DashboardLayout = () => {
           >
             <MdSpaceDashboard className="text-xl"/> Open DASHBOARD
           </label>
+        
           <Outlet></Outlet>
+        
         </div>
         
         
@@ -194,10 +196,10 @@ const DashboardLayout = () => {
             
             <hr  className="border-white"/>
           
-                <span className="hover:bg-white py-2 px-3 hover:text-neutral transition duration-200 text-black font-semibold rounded-xl ">
+             
 
-                <Link to={'/'}><IoIosHome className="inline text-xl mr-3"/>HOMEPAGE </Link>
-                </span>
+                <Link to={'/'} className="hover:bg-white font-bold px-3 py-2 rounded-2xl transition delay-100 ease-in-out"><IoIosHome className="inline text-xl  mr-3"/>HOMEPAGE </Link>
+             
     
           </div>
         

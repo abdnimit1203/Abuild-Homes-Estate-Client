@@ -33,8 +33,8 @@ const MySoldProperties = () => {
           )}
         </h2>
       </div>
-      <div className="max-w-sm sm:max-w-full lg:max-w-4xl xl:max-w-full">
-        <div className="overflow-x-auto w-[90%] px-2 mx-auto ">
+      
+        <div className="overflow-x-auto w-[90%] px-2 mx-auto my-10">
           <table className="min-w-full divide-y-2 divide-gray-200 glass text-xs rounded-2xl bg-base-200">
             <thead className="ltr:text-left rtl:text-right  md:text-lg font-bold bg-primary rounded-2xl">
               <tr>
@@ -80,7 +80,7 @@ const MySoldProperties = () => {
             </tbody>
           </table>
         </div>
-      </div>
+     
     </>
   );
 };
