@@ -19,7 +19,7 @@ const OnlyAdminRoutes = ({children}) => {
     );
   } else {
     if (!isLoading) {
-      if (user && role === "agent") {
+      if (user && role === "admin") {
         return children;
       } else {
         Swal.fire({

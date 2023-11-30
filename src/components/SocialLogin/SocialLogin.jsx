@@ -9,7 +9,7 @@ const SocialLogin = () => {
   const axiosPublic = useAxiosPublic();
 
   const handleGoogleSignIn = async() => {
-    const toastId = toast.loading("signing in...");
+    const toastId2 = toast.loading("signing in...");
     try{
 
     
@@ -32,7 +32,7 @@ const SocialLogin = () => {
         toast.success(
             "user signed in successfully!",
 
-            { id: toastId }
+            { id: toastId2 }
           );
 
           navigate(location?.state || "/");
@@ -43,7 +43,7 @@ const SocialLogin = () => {
         console.log(err.message);
       })
     }catch(err){
-        toast.error(err.message, { id: toastId });
+        toast.error(err.message, { id: toastId2 });
       }
   };
   return (

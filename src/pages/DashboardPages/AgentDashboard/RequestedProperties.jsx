@@ -51,8 +51,10 @@ const RequestedProperties = () => {
       </div>
 
       <div className="overflow-x-auto px-[5%] rounded-2xl">
-        <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm rounded-2xl">
-          <thead className="bg-success text-white glass md:text-lg rounded-2xl ">
+        {
+          data?.length ? <p>Opp! No data available</p>:
+        <table className="min-w-full divide-y-2 di bg-base-200 text-sm rounded-2xl">
+          <thead className="bg-success text-neutral glass md:text-lg rounded-2xl ">
             <tr>
               <th className="whitespace-wrap  rounded-ss-2xl">
                 Property title
@@ -69,16 +71,16 @@ const RequestedProperties = () => {
             </tr>
           </thead>
 
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-gray-200 text-neutral glass">
             {data?.map((property) => (
               <tr key={property._id} className="">
-                <td className="whitespace-wrap px-4 py-3 text-gray-700">
+                <td className="whitespace-wrap px-4 py-3 ">
                   {property.propertyTitle}
                 </td>
-                <td className="whitespace-nowrap px-4 py-3 text-gray-700">
+                <td className="whitespace-nowrap px-4 py-3 ">
                   {property.propertyLocation}
                 </td>
-                <td className="whitespace-nowrap px-4 py-3 text-gray-700">
+                <td className="whitespace-nowrap px-4 py-3 ">
                   {property.buyerName}
                 </td>
                 <td className="whitespace-nowrap px-4 py-3">
@@ -113,6 +115,7 @@ const RequestedProperties = () => {
             ))}
           </tbody>
         </table>
+        }
       </div>
       
     </>

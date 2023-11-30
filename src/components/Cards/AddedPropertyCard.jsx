@@ -81,7 +81,7 @@ const AddedPropertyCard = ({ property,refetch }) => {
             <p>{agentName}</p>
         </div>
         <hr />
-        <button className={`${status}  p-1 underline text-white my-4`}>Status : {status}</button>
+        <button className={`${status}nobg  p-1 my-4`}>Status : {status}</button>
 
         <p className="text-success font-semibold">Price Range : {priceRange}</p>
         <div className="flex flex-col justify-end mt-4 gap-4">

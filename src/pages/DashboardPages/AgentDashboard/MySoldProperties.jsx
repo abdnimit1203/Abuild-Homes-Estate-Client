@@ -34,11 +34,11 @@ const MySoldProperties = () => {
         </h2>
       </div>
       
-        <div className="overflow-x-auto w-[90%] px-2 mx-auto my-10">
+        <div className="overflow-x-auto w-[90%] px-2 mx-auto my-10 rounded-2xl">
           <table className="min-w-full divide-y-2 divide-gray-200 glass text-xs rounded-2xl bg-base-200">
             <thead className="ltr:text-left rtl:text-right  md:text-lg font-bold bg-primary rounded-2xl">
-              <tr>
-                <th className="whitespace-nowrap px-4  text-white py-4">
+              <tr className="">
+                <th className="whitespace-wrap px-4  text-white py-4 rounded-ss-2xl">
                   Property Title
                 </th>
                 <th className="whitespace-nowrap px-4  text-white py-4">

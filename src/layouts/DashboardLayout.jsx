@@ -1,9 +1,11 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import HeaderText from "../components/HeaderText/HeaderText";
+import { LiaUsersCogSolid } from "react-icons/lia";
+
 import { FaRegUserCircle, FaUserSecret } from "react-icons/fa";
 import { FaBuildingUser } from "react-icons/fa6";
-import { MdReviews, MdSpaceDashboard } from "react-icons/md";
-import {  BsBuildingExclamation, BsBuildingFillAdd, BsClipboardHeart, BsFillHousesFill } from "react-icons/bs";
+import { MdRateReview, MdReviews, MdSpaceDashboard } from "react-icons/md";
+import {  BsBuildingExclamation, BsBuildingFillAdd, BsBuildingFillGear, BsClipboardHeart, BsFillHousesFill } from "react-icons/bs";
 import { GrMoney } from "react-icons/gr";
 
 import { IoIosHome } from "react-icons/io";
@@ -105,7 +107,7 @@ const DashboardLayout = () => {
     const adminNavlinks =(
         <>
          <NavLink
-        to="/dashboard/agent-profile"
+        to="profile"
         className={({ isActive, isPending }) =>
         isPending ? "pending" : isActive ? " active bg-base-100  px-3 py-2 text-neutral rounded-xl font-semibold" : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl "
         }
@@ -113,37 +115,30 @@ const DashboardLayout = () => {
     <FaUserSecret  className="inline text-xl mr-3"/> Admin Profile
       </NavLink>
       <NavLink
-        to="/dashboard/add-property"
+        to="/dashboard/manage-properties"
         className={({ isActive, isPending }) =>
         isPending ? "pending" : isActive ? " active bg-base-100  px-3 py-2 text-neutral rounded-xl font-semibold" : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl "
         }
       >
-        <BsBuildingFillAdd  className="inline text-xl mr-3"/>Add Property
+        <BsBuildingFillGear   className="inline text-xl mr-3"/>Manage Properties
       </NavLink>
       <NavLink
-        to="/dashboard/added-properties"
+        to="/dashboard/manage-users"
         className={({ isActive, isPending }) =>
         isPending ? "pending" : isActive ? " active bg-base-100  px-3 py-2 text-neutral rounded-xl font-semibold" : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl "
         }
       >
-        <BsFillHousesFill  className="inline text-xl mr-3"/>My Added Properties
+        <LiaUsersCogSolid   className="inline text-xl mr-3"/>Manage Users
       </NavLink>
       <NavLink
-        to="/dashboard/sold-properties"
-        className={({ isActive, isPending }) =>
-        isPending ? "pending" : isActive ? " active bg-base-100  px-3 py-2 text-neutral rounded-xl font-semibold" : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl "
-    }
-      >
-       <GrMoney  className="inline text-xl mr-3"/>My Sold Properties
-      </NavLink>
-      <NavLink
-        to="/dashboard/requested-properties"
+        to="/dashboard/manage-reviews"
         className={({ isActive, isPending }) =>
         isPending ? "pending" : isActive ? " active bg-base-100  px-3 py-2 text-neutral rounded-xl font-semibold" : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl "
         }
       >
-       <BsBuildingExclamation  className="inline text-xl mr-3"/> Requested Properties
+        <MdRateReview   className="inline text-xl mr-3"/>Manage reviews
       </NavLink>
+      
         </>
     )
   return (
@@ -183,11 +178,12 @@ const DashboardLayout = () => {
             className="drawer-overlay"
           ></label>
         
-          <div className="menu gap-6 p-4 w-80 min-h-full  bg-gradient-to-tr from-secondary to-accent text-black">
+          <div className={role==="admin"? `menu gap-6 p-4 w-80 min-h-full bg-gradient-to-tr from-primary to-blue-200 text-black`:`menu gap-6 p-4 w-80 min-h-full bg-gradient-to-tr from-secondary to-accent text-black`}>
             {/* Sidebar content here */}
         
 
-            <HeaderText headerText={headerText} headerText2={headerText2} headerText3={user?.email}/>
+            <HeaderText headerText={headerText} headerText2={headerText2} emailText={user?.email}/>
+           
            {
             isLoading? <span className="loading loading-ring w-32 mx-auto text-center "></span> :
             role === 'user'?userNavlinks:
@@ -201,9 +197,7 @@ const DashboardLayout = () => {
                 <Link to={'/'} className="hover:bg-white font-bold px-3 py-2 rounded-2xl transition delay-100 ease-in-out"><IoIosHome className="inline text-xl  mr-3"/>HOMEPAGE </Link>
              
     
-          </div>
-        
-          
+          </div>  
         </div>
       </div>
        }

@@ -20,7 +20,7 @@ const ReviewsSlider = () => {
    const {data: reviews =[] } =useQuery({
     queryKey: ['review-key'],
     queryFn: async()=>{
-        const res = await axiosPublic.get('/reviews')
+        const res = await axiosPublic.get('/api/v1/reviews')
         return res.data
     }
    })
@@ -49,18 +49,18 @@ const ReviewsSlider = () => {
         className="mySwiper rounded-xl"
       >
       {
-        reviews?.map((review,idx)=>(
+        reviews?.slice(0,4).map((review,idx)=>(
             <SwiperSlide key={idx}>
             <div className="flex h-full flex-col justify-center items-center text-center bg-gradient-to-tr from-secondary to-accent p-6 shadow-sm sm:p-8 lg:p-12 md:max-w-[80%] mx-auto rounded-2xl">
               <div>
                 
   
                 <div className="mt-4 ">
-                  <img src= {review?.reviewerImage} alt="reviewer image" className="rounded-full w-28 mx-auto" />
+                  <img src= {review?.userPhoto} alt="reviewer image" className="rounded-full w-28 mx-auto aspect-square object-cover" />
                   <p className="text-2xl font-bold  sm:text-3xl pt-2">
-                    {review?.reviewerName}
+                    {review?.username}
                   </p>
-  
+          
                   <p className="mt-4 leading-relaxed text-gray-700 max-w-2xl">
                   {review?.reviewDescription}
                   </p>

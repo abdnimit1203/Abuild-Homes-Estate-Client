@@ -19,6 +19,7 @@ const AddReviews = ({ reviewData }) => {
     const myReview = {
       username: user.displayName,
       userEmail: user.email,
+      userPhoto: user.photoURL,
       propertyID: _id,
       propertyTitle: propertyTitle,
       agentName: agentName,

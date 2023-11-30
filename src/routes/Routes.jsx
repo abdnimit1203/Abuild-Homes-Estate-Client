@@ -22,6 +22,10 @@ import RequestedProperties from "../pages/DashboardPages/AgentDashboard/Requeste
 import AgentHome from './../pages/DashboardPages/AgentDashboard/AgentHome';
 import MakeOffer from "../pages/DashboardPages/UserDashboard/MakeOffer";
 import Payment from "../pages/DashboardPages/UserDashboard/Payment";
+import OnlyAdminRoutes from './OnlyAdminRoutes';
+import ManageProperties from "../pages/DashboardPages/AdminDashBoard/ManageProperties";
+import ManageUsers from "../pages/DashboardPages/AdminDashBoard/ManageUsers";
+import ManageReviews from "../pages/DashboardPages/AdminDashBoard/ManageReviews";
 
 export const router = createBrowserRouter([
   {
@@ -102,6 +106,18 @@ export const router = createBrowserRouter([
         element: <OnlyAgentRoutes><RequestedProperties></RequestedProperties></OnlyAgentRoutes>
       },
 //admin routes
+      {
+        path: 'manage-properties',
+        element: <OnlyAdminRoutes><ManageProperties/></OnlyAdminRoutes>
+      },
+      {
+        path: 'manage-users',
+        element: <OnlyAdminRoutes><ManageUsers/></OnlyAdminRoutes>
+      },
+      {
+        path: 'manage-reviews',
+        element: <OnlyAdminRoutes><ManageReviews/></OnlyAdminRoutes>
+      },
     ]
   },
   {
