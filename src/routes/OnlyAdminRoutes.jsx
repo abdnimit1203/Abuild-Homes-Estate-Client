@@ -26,11 +26,11 @@ const OnlyAdminRoutes = ({children}) => {
          
           icon: "warning",
           color: "white",
-          title: "Only Agent can Access!!",
-          text: "Go log in as agent and try again!",
+          title: "Only Admin have access to this!!",
+          text: "Go log in as admin and try again!",
           showConfirmButton: false,
           timer: 3000,
-          background: "#18b47b",
+          background: "#38B6FF",
         });
         return <Navigate state={location.pathname} to={"/login"}></Navigate>;
       }

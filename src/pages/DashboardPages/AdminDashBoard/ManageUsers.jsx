@@ -63,7 +63,7 @@ const ManageUsers = () => {
           });
       
     };
-    const handleMarkFraud= (id) => {
+    const handleMarkFraud= async (id,email) => {
         Swal.fire({
             title: "Are you sure?",
             text: "Mark this user as FRAUD?",
@@ -72,9 +72,9 @@ const ManageUsers = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Mark Fraud!"
-          }).then((result) => {
+          }).then(async(result) => {
             if  (result.isConfirmed) {
-                axiosSecure.patch(`/api/v1/fraud-users?id=${id}`).then((res) => {
+                await axiosSecure.patch(`/api/v1/users/fraud?id=${id}&email=${email}`).then((res) => {
                     console.log(res.data);
                     Swal.fire({
                       title: "Success!",
@@ -82,7 +82,7 @@ const ManageUsers = () => {
                       icon: "success"
                     });
                     refetch();
-                  });
+                  })
             }
           });
       
@@ -229,7 +229,7 @@ const ManageUsers = () => {
                   <>
                    <button
                     onClick={() =>
-                      handleMarkFraud( user._id)
+                      handleMarkFraud(user._id,user.email)
                     }
                     className="btn btn-sm btn-error text-white"
                   >

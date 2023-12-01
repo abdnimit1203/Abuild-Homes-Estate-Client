@@ -5,10 +5,17 @@ import { Link } from "react-router-dom";
 
 
 const Footer = () => {
+  const isdark=JSON.parse(localStorage.getItem("isdark"))
+  console.log(isdark);
   return (
     <footer className="border-t-2 mt-4 footer p-10 bg-base-100 text-neutral gap-6 w-[90%] mx-auto justify-between">
       <nav className="md:w-[80%]">
-      <img src="/assets/home/logoMain.png" alt="logo" className="w-40 rounded-3xl" />
+        {
+          isdark?
+          <img src="/assets/home/logoDark.png" alt="darkLogo" className="w-40 rounded-3xl" />:
+          <img src="/assets/home/logoMain.png" alt="logo" className="w-40 rounded-3xl" />
+
+        }
       <p className="max-w-xs">Where your dreams find their address, and every door opens to endless possibilities.</p>
         <div className="grid grid-cols-5 text-xl gap-4 py-4">
             <FaFacebook className="hover:scale-150 transition duration-200 cursor-pointer text-blue-500"/>
@@ -40,7 +47,7 @@ const Footer = () => {
           <div className="join">
             <input
               type="text"
-              placeholder="email@site.com"
+              placeholder="username@email.com"
               className="w-[50%] input input-bordered join-item"
             />
             <button className="btn btn-primary   text-white rounded-l-none rounded-r-xl"><FaArrowAltCircleRight/></button>

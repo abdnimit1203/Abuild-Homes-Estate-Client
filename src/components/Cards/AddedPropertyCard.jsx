@@ -27,12 +27,12 @@ const AddedPropertyCard = ({ property,refetch }) => {
   const handleRemove = async()=>{
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to get the review!",
+      text: "You won't be able to get the property details!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, remove review"
+      confirmButtonText: "Yes, remove property"
     }).then((result) => {
       if (result.isConfirmed) {
     axiosPublic.delete(`/api/v1/properties/${_id}`)
