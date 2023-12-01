@@ -74,7 +74,7 @@ const RequestedProperties = () => {
           <tbody className="divide-y divide-gray-200 text-neutral glass">
             {data?.map((property) => (
               <tr key={property._id} className="">
-                <td className="whitespace-wrap px-4 py-3 ">
+                <td className="whitespace-wrap font-semibold px-4 py-3 ">
                   {property.propertyTitle}
                 </td>
                 <td className="whitespace-nowrap px-4 py-3 ">
@@ -86,8 +86,8 @@ const RequestedProperties = () => {
                 <td className="whitespace-nowrap px-4 py-3">
                   {property.buyerEmail}
                 </td>
-                <td className="whitespace-nowrap px-4 py-3">
-                  ${property.offeredAmount}
+                <td className="whitespace-nowrap font-semibold text-primary px-4 py-3">
+                  ${property.offeredAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </td>
                 {property.status === "pending" ? (
                   <td className="whitespace-nowrap px-4 py-3 flex flex-col gap-2">

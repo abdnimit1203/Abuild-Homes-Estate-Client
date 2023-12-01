@@ -260,7 +260,7 @@ const DashboardLayout = () => {
               className={
                 role === "admin"
                   ? `menu gap-6 p-4 w-80 min-h-full bg-gradient-to-tr from-primary to-blue-200 text-black`
-                  : `menu gap-6 p-4 w-80 min-h-full bg-gradient-to-tr from-secondary to-accent text-black`
+                  : role==="agent"? `menu gap-6 p-4 w-80 min-h-full bg-gradient-to-tr from-accent to-secondary text-black` :`menu gap-6 p-4 w-80 min-h-full bg-gradient-to-tr from-secondary to-accent text-black`
               }
             >
               {/* Sidebar content here */}

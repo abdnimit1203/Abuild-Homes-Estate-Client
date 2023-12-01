@@ -96,13 +96,13 @@ const SignUpForm = () => {
       <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
         <aside className="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
           <img
-            alt="Pattern"
-            src="https://images.unsplash.com/photo-1560440021-33f9b867899d?q=80&w=1259&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="property"
+            src="/assets/property/property1.jpg"
             className="absolute inset-0 h-full w-full object-cover"
           />
         </aside>
 
-        <main className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
+        <main className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 xl:w-[80%] lg:py-12 xl:col-span-6">
           <div className="max-w-xl lg:max-w-3xl">
             <Link to={"/"}>
               <button className="button button-2 px-5  rounded-xl btn btn-secondary hover:text-white btn-sm">
@@ -163,10 +163,10 @@ const SignUpForm = () => {
                   className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
                 />
               </div>
-              <div className="col-span-6 ">
+              <div className="col-span-6 w-full ">
                 <label
                   htmlFor="image"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block text-sm font-medium text-gray-700 mb-2 w-full"
                 >
                   Upload Image
                 </label>
@@ -175,7 +175,7 @@ const SignUpForm = () => {
                   type="file"
                   name="image"
                   {...register("image", { required: true })}
-                  className="file-input file-input-bordered file-input-secondary w-full max-w-xs"
+                  className="file-input file-input-bordered file-input-secondary w-auto lg:w-full"
                 />
               </div>
 

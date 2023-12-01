@@ -78,7 +78,7 @@ const MySoldProperties = () => {
                     {soldProperty.buyerEmail}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2  md:text-lg">
-                    ${soldProperty.soldPrice}
+                    ${soldProperty.soldPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                   </td>
                 </tr>
               ))}

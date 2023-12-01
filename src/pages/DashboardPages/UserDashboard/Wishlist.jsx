@@ -10,7 +10,7 @@ const Wishlist = () => {
     const [wishlistDataByEmail,refetch] = useWishlistByEmail(user?.email)
     console.log(wishlistDataByEmail);
     return (
-        <div className="min-h-screen bg-gradient-to-tr to-rose-100 from-white py-20 md:pt-6">
+        <div className="min-h-screen bg-gradient-to-tr to-rose-100 from-white pb-20 md:pt-6">
             <HeaderText headerText='My Wishlists' headerText3='offer / remove from here'/>
             <h2 className='text-xl font-semibold text-center'>{wishlistDataByEmail.length === 0 ? <span><TbMoodEmpty className="inline text-3xl mr-2" />
  You have nothing in the wishlist</span>: ""}</h2>

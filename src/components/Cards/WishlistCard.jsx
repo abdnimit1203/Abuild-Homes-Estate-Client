@@ -55,7 +55,7 @@ const WishlistCard = ({ wishlist,refetch }) => {
    
   }
   return (
-    <article className="overflow-hidden rounded-lg shadow transition hover:shadow-lg max-w-sm xl:max-w-lg mx-auto">
+    <article className="overflow-hidden rounded-lg shadow transition hover:shadow-lg max-w-sm xl:w-lg mx-auto w-full">
       <img
         alt="property image"
         src={propertyImage}
