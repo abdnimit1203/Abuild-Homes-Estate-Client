@@ -87,7 +87,7 @@ const RequestedProperties = () => {
                   {property.buyerEmail}
                 </td>
                 <td className="whitespace-nowrap font-semibold text-primary px-4 py-3">
-                  ${property.offeredAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  ${property?.offeredAmount?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </td>
                 {property.status === "pending" ? (
                   <td className="whitespace-nowrap px-4 py-3 flex flex-col gap-2">

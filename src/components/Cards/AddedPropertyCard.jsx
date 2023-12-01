@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBinFill } from "react-icons/ri";
 const AddedPropertyCard = ({ property,refetch }) => {
-    const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic()
   const {
     _id,
     // propertyID,
@@ -86,7 +86,7 @@ const AddedPropertyCard = ({ property,refetch }) => {
         <p className="text-success font-semibold">Price Range : {priceRange}</p>
         <div className="flex flex-col justify-end mt-4 gap-4">
            {
-            status === "rejected"? '': <Link>
+            status === "rejected"? '': <Link to={`/dashboard/update-property/${_id}`}>
             <button className="btn btn-primary text-white w-full">
                <FaEdit className="text-2xl"/>  Update
             </button>

@@ -26,6 +26,7 @@ import OnlyAdminRoutes from './OnlyAdminRoutes';
 import ManageProperties from "../pages/DashboardPages/AdminDashBoard/ManageProperties";
 import ManageUsers from "../pages/DashboardPages/AdminDashBoard/ManageUsers";
 import ManageReviews from "../pages/DashboardPages/AdminDashBoard/ManageReviews";
+import UpdatePropertyForm from "../components/Forms/UpdatePropertyForm";
 
 export const router = createBrowserRouter([
   {
@@ -96,6 +97,11 @@ export const router = createBrowserRouter([
       {
         path: 'added-properties',
         element: <OnlyAgentRoutes><MyAddedProperties></MyAddedProperties></OnlyAgentRoutes>
+      },
+      {
+        path: 'update-property/:id',
+        element: <OnlyAgentRoutes><UpdatePropertyForm/></OnlyAgentRoutes>,
+        loader: ({params})=> fetch(`http://localhost:3000/api/v1/properties/${params.id}`)
       },
       {
         path: 'sold-properties',

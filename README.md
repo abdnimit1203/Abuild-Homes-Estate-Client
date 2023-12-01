@@ -33,15 +33,15 @@
 - HomePage:
 ![Home Page](https://i.ibb.co/vJMP6T6/hompage.png)
 
-- User Dashboard:
+### User Dashboard:
 ![user profile ](https://i.ibb.co/GCsCRzW/user-dashboard-0.png)
 
 ![user wishlist ](https://i.ibb.co/wS14DcY/user-dashboard.png)
 
-- Agent Dasboard:
+### Agent Dasboard:
 ![agent dashboard](https://i.ibb.co/gVgSWJc/agent-dashboard.png)
 ![agent dashboard](https://i.ibb.co/XjBPfwF/agent-dashboard-2.png)
 
-- Admin Dashboard:
+### Admin Dashboard:
 ![Home Page](https://i.ibb.co/zZzBpp3/admindashboard2.png)
 
