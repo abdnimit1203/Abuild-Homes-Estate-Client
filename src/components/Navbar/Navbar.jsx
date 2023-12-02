@@ -8,7 +8,8 @@ import { FaUser, FaUserSecret } from "react-icons/fa";
 import { RiShieldStarFill } from "react-icons/ri";
 import { RiAdminFill } from "react-icons/ri";
 import { useEffect, useState } from "react";
-import { setTheme } from "../../../public";
+import { setTheme } from "../../..";
+
 
 const Navbar = () => {
   const { user, logOut } = useAuth();

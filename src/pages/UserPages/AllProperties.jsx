@@ -7,29 +7,27 @@ import { TbHomeSearch } from "react-icons/tb";
 const AllProperties = () => {
   const [search, setSearch] = useState("");
   console.log(search);
-  const [property, isLoading, refetch] = useProperties();
+  const [sort, setSort] = useState('')
+  const [asc, setAsc] = useState(false)
+  const [desc, setDesc] = useState(false)
+  const [property, isLoading, refetch] = useProperties(sort);
   //   console.log(property);
-  let verifiedProperties = property.propertiesData;
+  const verifiedProperties = property.propertiesData;
   //   console.log(verifiedProperties);
-
+  
   const handleSortMin = () => {
-
-    console.log("sorting minimum to high");
-    verifiedProperties = property.propertiesData.sort(
-      (a, b) => a.minPrice - b.minPrice
-    );
-    console.log(verifiedProperties);
+    setSort('asc')
     refetch()
+    setAsc(true)
+    setDesc(false)
   };
   const handleSortHigh = () => {
-    console.log("sorting high to minimum");
-    verifiedProperties = property.propertiesData.sort(
-      (a, b) => b.minPrice - a.minPrice
-    );
-    console.log(verifiedProperties);
+    setSort('desc')
+    setAsc(false)
     refetch()
-    
+    setDesc(true)
   };
+  
   return (
     <div>
       <HeaderText headerText="All Properties" />
@@ -76,20 +74,20 @@ const AllProperties = () => {
   
 </label> */}
             <p>Sort by : Price</p>
-            <button className="btn btn-sm" onClick={handleSortMin}>
+            <button className={asc? "btn btn-sm btn-primary" : "btn btn-sm"} onClick={handleSortMin}>
               min to high
             </button>
-            <button className="btn btn-sm" onClick={handleSortHigh}>
+            <button className={desc? "btn btn-sm btn-primary ml-2" : "btn btn-sm ml-2" } onClick={handleSortHigh}>
               hign to min
             </button>
           </div>
         </div>
-{
+{/* {
   isLoading? <span className="loading loading-spinner w-20 mx-auto text-primary"></span>
 :""
-}
+} */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-          {verifiedProperties
+          {isLoading? <span className="loading loading-spinner w-20 mx-auto text-primary"></span>:verifiedProperties
             ?.filter((item) => {
               return search.toLowerCase() === ""
                 ? item
