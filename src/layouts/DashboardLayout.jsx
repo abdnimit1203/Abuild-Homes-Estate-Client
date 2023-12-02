@@ -4,7 +4,9 @@ import { LiaUsersCogSolid } from "react-icons/lia";
 
 import { FaRegUserCircle, FaUserSecret } from "react-icons/fa";
 import { FaBuildingUser } from "react-icons/fa6";
-import { MdRateReview, MdReviews, MdSpaceDashboard } from "react-icons/md";
+import { MdRateReview, MdReviews } from "react-icons/md";
+import { TiThMenuOutline } from "react-icons/ti";
+
 import {
   BsBuildingExclamation,
   BsBuildingFillAdd,
@@ -241,9 +243,9 @@ const DashboardLayout = () => {
             {/* Page content here */}
             <label
               htmlFor="my-drawer-2"
-              className="navbar btn-primary drawer-button md:hidden flex items-center text-center justify-center bg-primary text-white animate-pulse "
+              className="navbar  drawer-button md:hidden font-bold bg-primary pl-6 text-white"
             >
-              <MdSpaceDashboard className="text-xl" /> Open DASHBOARD
+              <TiThMenuOutline  className="text-xl mr-2 " />  DASHBOARD
             </label>
 
             <Outlet></Outlet>

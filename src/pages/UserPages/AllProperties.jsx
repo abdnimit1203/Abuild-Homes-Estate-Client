@@ -10,6 +10,7 @@ const AllProperties = () => {
   const [sort, setSort] = useState('')
   const [asc, setAsc] = useState(false)
   const [desc, setDesc] = useState(false)
+  
   const [property, isLoading, refetch] = useProperties(sort);
   //   console.log(property);
   const verifiedProperties = property.propertiesData;

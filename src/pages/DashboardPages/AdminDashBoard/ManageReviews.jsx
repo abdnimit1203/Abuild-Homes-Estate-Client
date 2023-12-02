@@ -73,7 +73,7 @@ const handleRemove = (id)=>{
         {reviews?.map((review) => (
           <div
             key={review._id}
-            className="w-80 2xl:w-96  glass shadow-xl  bg-warning text-neutral-700 p-6 rounded-2xl border-4 border-neutral flex flex-col justify-between gap-2 items-start text-start"
+            className="w-full md:w-80 2xl:w-96  glass shadow-xl  bg-warning text-neutral-700 p-6 rounded-2xl border-4 border-neutral flex flex-col justify-between gap-2 items-start text-start"
           >
             <h2 className="text-xl md:text-3xl font-bold   underline">
               Review On:
