@@ -4,9 +4,9 @@
 
 **Using the MERN stack**
 
-- [Live Server Link will be here](https://www.google.com) 
+- [Live Server Link ](https://abuild-homesabd.web.app/) 
 
-- [Server Side Github Link: ](https://github.com/programming-hero-web-course1/b8a12-server-side-abdnimit1203) 
+- [Server Side Github Link: ](https://github.com/abdnimit1203/Abuild-Homes-Estate-server.git) 
 
 
 ## Features
