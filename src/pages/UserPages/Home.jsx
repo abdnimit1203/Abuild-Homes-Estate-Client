@@ -3,6 +3,7 @@ import Advertisement from "../../components/Others/Advertisement";
 import AvailableCountries from "../../components/Others/AvailableCountries";
 import ContactUs from "../../components/Others/ContactUs";
 import MarqueeAdd from "../../components/Others/MarqueeAdd";
+import RatingStars from "../../components/RatingStars/RatingStars";
 import Reviews from "../../components/Reviews/Reviews";
 
 const Home = () => {
@@ -25,6 +26,9 @@ const Home = () => {
       </div>
       <div>
         <ContactUs />
+      </div>
+      <div>
+        <RatingStars/>
       </div>
     </div>
   );

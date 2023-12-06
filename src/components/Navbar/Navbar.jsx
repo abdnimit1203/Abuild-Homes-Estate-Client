@@ -50,7 +50,7 @@ const Navbar = () => {
     } else {
       console.log("theme changing : Light");
 
-      setTheme("");
+      setTheme("mytheme");
     }
   };
 
