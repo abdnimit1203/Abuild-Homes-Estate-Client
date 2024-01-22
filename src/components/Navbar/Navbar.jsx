@@ -107,6 +107,30 @@ const Navbar = () => {
         )}
         Dashboard
       </NavLink>
+      <NavLink
+        to="/career"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? " active bg-primary px-3 py-2 text-base-100 rounded-xl"
+            : "hover:bg-primary px-3 py-2 hover:text-base-100 transition duration-200 rounded-xl"
+        }
+      >
+        Career
+      </NavLink>
+      <NavLink
+        to="/about-us"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? " active bg-primary px-3 py-2 text-base-100 rounded-xl"
+            : "hover:bg-primary px-3 py-2 hover:text-base-100 transition duration-200 rounded-xl"
+        }
+      >
+        About Us
+      </NavLink>
     </>
   );
   return (

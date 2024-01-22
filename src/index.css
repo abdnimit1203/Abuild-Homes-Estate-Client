@@ -6,6 +6,12 @@
 body {
   font-family: "Outfit", sans-serif;
 }
+.head-bold{
+    font-weight: 600;
+    font-size: 28px;
+    padding-bottom: 10px;
+}
+
 /* custom button */
 .button {
   text-align: center;

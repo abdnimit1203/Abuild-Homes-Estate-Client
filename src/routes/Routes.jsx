@@ -11,7 +11,6 @@ import PropertyDetails from "../pages/UserPages/PropertyDetails";
 import UserHome from "../pages/DashboardPages/UserDashboard/UserHome";
 import OnlyUserRoute from "./OnlyUserRoute";
 import OnlyAgentRoutes from "./OnlyAgentRoutes";
-
 import Wishlist from "../pages/DashboardPages/UserDashboard/Wishlist";
 import PropertyBought from "../pages/DashboardPages/UserDashboard/PropertyBought";
 import MyReviews from "../pages/DashboardPages/UserDashboard/MyReviews";
@@ -27,6 +26,8 @@ import ManageProperties from "../pages/DashboardPages/AdminDashBoard/ManagePrope
 import ManageUsers from "../pages/DashboardPages/AdminDashBoard/ManageUsers";
 import ManageReviews from "../pages/DashboardPages/AdminDashBoard/ManageReviews";
 import UpdatePropertyForm from "../components/Forms/UpdatePropertyForm";
+import Career from "../pages/UserPages/Career";
+import AboutUs from "../pages/UserPages/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,14 @@ export const router = createBrowserRouter([
         path: "/properties/:id",
         element:<PrivateRoute><PropertyDetails/></PrivateRoute> ,
         loader: ({params})=> fetch(`https://abuild-homes-estates-server.vercel.app/api/v1/properties/${params.id}`)
+      },
+      {
+        path: "/career",
+        element:<Career/> ,
+      },
+      {
+        path: "/about-us",
+        element:<AboutUs/> ,
       },
     ],
   },

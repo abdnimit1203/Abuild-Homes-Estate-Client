@@ -3,7 +3,8 @@ import Advertisement from "../../components/Others/Advertisement";
 import AvailableCountries from "../../components/Others/AvailableCountries";
 import ContactUs from "../../components/Others/ContactUs";
 import MarqueeAdd from "../../components/Others/MarqueeAdd";
-import RatingStars from "../../components/RatingStars/RatingStars";
+import OurFeatures from "../../components/Others/OurFeatures";
+import Rental from "../../components/Others/Rental";
 import Reviews from "../../components/Reviews/Reviews";
 
 const Home = () => {
@@ -22,14 +23,18 @@ const Home = () => {
         <MarqueeAdd/>
       </div>
       <div>
+        <OurFeatures/>
+      </div>
+      <div>
         <Reviews />
+      </div>
+      <div>
+        <Rental/>
       </div>
       <div>
         <ContactUs />
       </div>
-      <div>
-        <RatingStars/>
-      </div>
+     
     </div>
   );
 };

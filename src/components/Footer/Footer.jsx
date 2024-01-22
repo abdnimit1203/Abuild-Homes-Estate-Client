@@ -8,7 +8,9 @@ const Footer = () => {
   const isdark=JSON.parse(localStorage.getItem("isdark"))
   console.log(isdark);
   return (
-    <footer className="border-t-2 mt-4 footer p-10 bg-base-100 text-neutral gap-6 w-[90%] mx-auto justify-between">
+    <footer>
+
+    <div className="border-t-2 mt-4 footer p-10 bg-base-100 text-neutral gap-6 w-[90%] mx-auto justify-between">
       <nav className="md:w-[80%]">
         {
           isdark?
@@ -17,12 +19,14 @@ const Footer = () => {
 
         }
       <p className="max-w-xs">Where your dreams find their address, and every door opens to endless possibilities.</p>
+      <p >Mail: <span className="text-primary">abuild@estate.com</span></p>
+      <p>Phone: +880 1622 3121</p>
         <div className="grid grid-cols-5 text-xl gap-4 py-4">
             <FaFacebook className="hover:scale-150 transition duration-200 cursor-pointer text-blue-500"/>
             <FaTwitter className="hover:scale-150 transition duration-200 cursor-pointer text-sky-400"/>
             <FaInstagram className="hover:scale-150 transition duration-200 cursor-pointer text-rose-500"/>
             <FaLinkedin  className="hover:scale-150 transition duration-200 cursor-pointer text-sky-600"/>
-            <p className="text-xs text-slate-400 col-span-5">© 2023 . All rights reserved. By <Link to={"https://github.com/abdnimit1203"}  target="_blank" className="text-primary">ABD NIMIT</Link></p>
+           
         </div>
       </nav>
       <nav>
@@ -54,6 +58,9 @@ const Footer = () => {
           </div>
         </fieldset>
       </form>
+    
+    </div>
+    <p className="text-xs text-slate-400 col-span-5 text-center">© 2023 . All rights reserved. By <Link to={"https://github.com/abdnimit1203"}  target="_blank" className="text-primary">ABD NIMIT</Link></p>
     </footer>
   );
 };
