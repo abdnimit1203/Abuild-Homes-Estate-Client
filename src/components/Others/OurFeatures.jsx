@@ -7,7 +7,7 @@ const OurFeatures = () => {
         <img
           src="https://i.ibb.co/1z26NVY/sa.jpg"
           alt="home"
-          className=" h-full object-cover hover:scale-90 transition duration-150"
+          className=" h-full object-cover hover:scale-90 transition duration-150 rounded-xl"
         />
       </div>
       <div className="flex-[50%] flex flex-col  justify-center p-10 gap-5 items-start">
@@ -22,8 +22,8 @@ const OurFeatures = () => {
           prioritize transparency, providing detailed
         </p>
         <div className="flex items-center justify-center gap-6">
-          <HiCheckCircle className="transition hover:scale-125 duration-200 text-6xl text-primary animate-pulse" />
-          <div className="flex-1  transition hover:scale-110 duration-200">
+          <HiCheckCircle className="transition hover:scale-125 duration-200 text-6xl text-primary " />
+          <div className="flex-1  transition hover:scale-105 duration-200">
             <h4 className="text-xl font-bold text-primary p-2">
               Explore Property
             </h4>
@@ -36,8 +36,8 @@ const OurFeatures = () => {
           </div>
         </div>
         <div className="flex items-center justify-center gap-6">
-          <HiCheckCircle className=" transition hover:scale-125 duration-200 text-6xl text-primary animate-bounce" />
-          <div className="flex-1 transition hover:scale-110 duration-200">
+          <HiCheckCircle className=" transition hover:scale-125 duration-200 text-6xl text-primary " />
+          <div className="flex-1 transition hover:scale-105 duration-200">
             <h4 className="text-xl font-bold text-primary p-2">Find Agency</h4>
             <p>
               Locate your ideal agency effortlessly. Explore our platform to
@@ -48,8 +48,8 @@ const OurFeatures = () => {
           </div>
         </div>
         <div className="flex items-center justify-center gap-6 ">
-          <HiCheckCircle className=" transition hover:scale-125 duration-200 text-6xl text-primary animate-pulse" />
-          <div className="flex-1  transition hover:scale-110 duration-200">
+          <HiCheckCircle className=" transition hover:scale-125 duration-200 text-6xl text-primary " />
+          <div className="flex-1  transition hover:scale-105 duration-200">
             <h4 className="text-xl font-bold text-primary p-2">
               Property Guide
             </h4>

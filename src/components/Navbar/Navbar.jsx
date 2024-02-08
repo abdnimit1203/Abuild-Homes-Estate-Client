@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import toast from "react-hot-toast";
-import { MdLogout, MdMail } from "react-icons/md";
+
+import {  MdMail } from "react-icons/md";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { FaUser, FaUserSecret } from "react-icons/fa";
@@ -9,10 +9,10 @@ import { RiShieldStarFill } from "react-icons/ri";
 import { RiAdminFill } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { setTheme } from "../../..";
-
+import LogOutButton from "../Buttons/LogOutButton";
 
 const Navbar = () => {
-  const { user, logOut } = useAuth();
+  const { user } = useAuth();
   console.log(user);
   const axiosPublic = useAxiosPublic();
 
@@ -25,16 +25,7 @@ const Navbar = () => {
     },
   });
 
-  const handleLogOut = () => {
-    logOut().then(
-      toast("User has been logged out", {
-        icon: <MdLogout />,
-        style: {
-          background: "#ff92b4",
-        },
-      })
-    );
-  };
+  
 
   // theme changing with local storage
   const [isdark, setIsdark] = useState(
@@ -239,12 +230,7 @@ const Navbar = () => {
                     <MdMail className="inline text-xl text-secondary" />{" "}
                     {user?.email}
                   </p>
-                  <button
-                    onClick={handleLogOut}
-                    className="btn btn-secondary w-full text-white btn-sm"
-                  >
-                    LOG OUT
-                  </button>
+                 <LogOutButton/>
                 </ul>
                 
               </div>
@@ -313,12 +299,7 @@ const Navbar = () => {
           {navlinks}
           <div>
             {user ? (
-              <button
-                onClick={handleLogOut}
-                className="btn btn-secondary w-full text-white btn-sm"
-              >
-                LOG OUT
-              </button>
+              <LogOutButton/>
             ) : (
               <Link to={"/login"}>
                 <button className="w-fit btn button button-1 px-6 py-2 rounded-xl hover:text-white btn-ghost">

@@ -19,6 +19,7 @@ import { RiAdminFill } from "react-icons/ri";
 import { IoIosHome } from "react-icons/io";
 import useRole from "../hooks/useRole";
 import useAuth from "../hooks/useAuth";
+import LogOutButton from "../components/Buttons/LogOutButton";
 
 const DashboardLayout = () => {
   const { user, loading } = useAuth();
@@ -294,6 +295,7 @@ const DashboardLayout = () => {
                 <IoIosHome className="inline text-xl  mr-3" />
                 HOMEPAGE{" "}
               </Link>
+              <LogOutButton/>
             </div>
           </div>
         </div>

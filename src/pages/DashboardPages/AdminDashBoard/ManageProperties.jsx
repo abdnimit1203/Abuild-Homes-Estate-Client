@@ -68,9 +68,9 @@ const ManageProperties = () => {
         <div className="grid grid-cols-3 gap-4 justify-between px-[5%]">
 
         <div className="my-8 col-span-3
-         flex flex-col glass p-6  rounded-2xl w-full  bg-primary text-white">
-        <h2 className="text-xl md:text-3xl font-bold  ">Total Properties</h2>
-        <h2 className="text-3xl md:text-6xl  font-bold ">
+         flex flex-col glass p-6  rounded-2xl w-fit  bg-primary text-white">
+        <h2 className="text-xl  font-bold  ">Total Properties</h2>
+        <h2 className="text-3xl   font-bold ">
           {isLoading ? (
             <span className="loading loading-dots text-white loading-lg"></span>
           ) : (
@@ -79,8 +79,8 @@ const ManageProperties = () => {
         </h2>
       </div>
         <div className="my-8 flex flex-col glass p-3 md:p-6 rounded-2xl w-fit  bg-warning text-neutral-500 ">
-        <h2 className=" md:text-3xl font-bold  ">Pending Properties</h2>
-        <h2 className="text-3xl md:text-6xl  font-bold ">
+        <h2 className=" md:text-xl font-bold  ">Pending Properties</h2>
+        <h2 className="text-3xl  font-bold ">
           {isLoading ? (
             <span className="loading loading-dots text-white loading-lg"></span>
           ) : (
@@ -89,8 +89,8 @@ const ManageProperties = () => {
         </h2>
       </div>
         <div className="my-8 flex flex-col glass p-3 md:p-6 rounded-2xl w-fit  bg-success text-white">
-        <h2 className=" md:text-3xl font-bold  ">Verified Properties</h2>
-        <h2 className="text-3xl md:text-6xl  font-bold ">
+        <h2 className=" md:text-xl font-bold  ">Verified Properties</h2>
+        <h2 className="text-3xl font-bold ">
           {isLoading ? (
             <span className="loading loading-dots text-white loading-lg"></span>
           ) : (
@@ -99,8 +99,8 @@ const ManageProperties = () => {
         </h2>
       </div>
         <div className="my-8 flex flex-col glass p-3 md:p-6 rounded-2xl w-fit  bg-error text-white">
-        <h2 className=" md:text-3xl font-bold  ">Rejected Properties</h2>
-        <h2 className="text-3xl md:text-6xl  font-bold ">
+        <h2 className=" md:text-xl font-bold  ">Rejected Properties</h2>
+        <h2 className="text-3xl  font-bold ">
           {isLoading ? (
             <span className="loading loading-dots text-white loading-lg"></span>
           ) : (
