@@ -8,41 +8,65 @@ const AboutUs = () => {
   return (
     <div>
       <HeaderText headerText="About Us" />
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{
-          type: "spring",
-          stiffness: 260,
-          damping: 60,
-        }}
-      >
-        <img
+      <div>
+        <motion.img
           src="https://i.ibb.co/crndkJx/prope2.jpg"
           alt="home"
           className="h-[200px] w-full object-cover rounded-2xl mb-10"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 60,
+          }}
         />
-        <h2 className="head-bold ">Welcome to Abuild Homes Estate</h2>
-        <p>
+        <motion.h2
+          className="head-bold "
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 60,
+          }}
+        >
+          Welcome to Abuild Homes Estate
+        </motion.h2>
+        <motion.p
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 1, type: "spring", stiffness: 260, damping: 60 }}
+        >
           At Abuild Homes Estate, we are dedicated to simplifying and enhancing
           your property buying and selling experience. With a passion for real
           estate and a commitment to excellence, we strive to be your trusted
           partner in every step of your property journey.
-        </p>
-        <h2 className="head-bold border-b-4 w-fit mx-auto mb-10 border-b-primary text-center pt-10">
+        </motion.p>
+        <motion.h2
+          className="head-bold border-b-4 w-fit mx-auto mb-10 border-b-primary text-center pt-10"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 260, damping: 60 }}
+        >
           Our Mission
-        </h2>
+        </motion.h2>
         <p>
           Our mission is to empower individuals and families to find their dream
           homes and make seamless property transactions. We aim to provide a
           platform that combines innovation, reliability, and personalized
           service.
         </p>
-        <h2 className="head-bold border-b-4 w-fit mx-auto mb-10 border-b-primary text-center pt-10">
+        <motion.h2
+          className="head-bold border-b-4 w-fit mx-auto mb-10 border-b-primary text-center pt-10"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 260, damping: 60 }}
+        >
           Why Choose Us?
-        </h2>
+        </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 justify-center items-center text-center gap-6 ">
-          <div className="flex flex-col p-6 md:p-10 border-4 rounded-xl border-b-8 border-y-primary transition duration-150 hover:scale-105 cursor-pointer h-full ">
+          <motion.div className="flex flex-col p-6 md:p-10 border-4 rounded-xl border-b-8 border-y-primary transition duration-150 hover:scale-105 cursor-pointer h-full">
             <span className="font-bold text-primary text-xl md:text-3xl pb-6">
               Expertise
             </span>
@@ -51,8 +75,8 @@ const AboutUs = () => {
               to transactions, we ensure clarity and openness to build trust
               with our clients
             </p>
-          </div>
-          <div className="flex flex-col p-6 md:p-10 border-4 rounded-xl border-b-8 border-y-primary transition duration-150 hover:scale-105 cursor-pointer h-full">
+          </motion.div>
+          <motion.div className="flex flex-col p-6 md:p-10 border-4 rounded-xl border-b-8 border-y-primary transition duration-150 hover:scale-105 cursor-pointer h-full">
             <span className="font-bold text-primary text-xl md:text-3xl pb-6">
               Transparency:
             </span>
@@ -61,8 +85,8 @@ const AboutUs = () => {
               bring in-depth industry knowledge to guide you through the
               complexities of property transactions.
             </p>
-          </div>
-          <div className="flex flex-col p-6 md:p-10 border-4 rounded-xl border-b-8 border-y-primary transition duration-150 hover:scale-105 cursor-pointer h-full">
+          </motion.div>
+          <motion.div className="flex flex-col p-6 md:p-10 border-4 rounded-xl border-b-8 border-y-primary transition duration-150 hover:scale-105 cursor-pointer h-full">
             <span className="font-bold text-primary text-xl md:text-3xl pb-6">
               Customer-Centric Approach:
             </span>
@@ -71,8 +95,8 @@ const AboutUs = () => {
               means we listen to your needs and work tirelessly to meet and
               exceed your expectations.
             </p>
-          </div>
-          <div className="flex flex-col p-6 md:p-10 border-4 rounded-xl border-b-8 border-y-primary transition duration-150 hover:scale-105 cursor-pointer h-full">
+          </motion.div>
+          <motion.div className="flex flex-col p-6 md:p-10 border-4 rounded-xl border-b-8 border-y-primary transition duration-150 hover:scale-105 cursor-pointer h-full">
             <span className="font-bold text-primary text-xl md:text-3xl pb-6">
               Technology-Driven Solutions:
             </span>
@@ -81,16 +105,21 @@ const AboutUs = () => {
               virtual tours, online property valuation, and more, ensuring a
               seamless and efficient experience.with our clients
             </p>
-          </div>
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       <div className="min-h-screen bg ">
         <h2 className="head-bold border-b-4 border-primary w-fit mx-auto py-10">
           {" "}
           Contact Information
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 justify-center items-center text-center gap-x-10  py-20">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 justify-center items-center text-center gap-x-10  py-20"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+        >
           <div className="flex flex-col p-6 md:p-10 border-4 rounded-xl border-b-8 border-y-primary transition duration-150 hover:scale-105 cursor-pointer h-full relative gap-6 ">
             <span className="border-4 border-primary flex justify-center items-center text-3xl text-white bg-primary aspect-square  rounded-full absolute font-bold w-16 h-16 -top-10 left-[45%] md:left-[36%] lg:left-[40%]">
               <ImPhone />
@@ -109,14 +138,10 @@ const AboutUs = () => {
             <span className="border-4 border-primary flex justify-center items-center text-3xl text-white bg-primary aspect-square  rounded-full absolute font-bold w-16 h-16 -top-10 left-[45%] md:left-[36%] lg:left-[40%]">
               <GrMapLocation />
             </span>
-            <p className="text-xl text-neutral">
-              Location
-            </p>
-            <p className="text-xl ">
-            New York, USA
-            </p>
+            <p className="text-xl text-neutral">Location</p>
+            <p className="text-xl ">New York, USA</p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

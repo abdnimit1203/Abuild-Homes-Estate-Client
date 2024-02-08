@@ -92,7 +92,7 @@ const SignUpForm = () => {
    }
   };
   return (
-    <section className="bg-white">
+    <section className="bg-base-200">
       <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
         <aside className="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
           <img
@@ -110,11 +110,11 @@ const SignUpForm = () => {
               </button>
             </Link>
 
-            {/* <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+            {/* <h1 className="mt-6 text-2xl font-bold  sm:text-3xl md:text-4xl">
             Welcome to <br />ABuild Homes Estates
             </h1> */}
 
-            <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+            <h1 className="mt-6 text-2xl font-bold  sm:text-3xl md:text-4xl">
               Sign Up
             </h1>
 
@@ -133,7 +133,7 @@ const SignUpForm = () => {
               <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="FirstName"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium "
                 >
                   First Name
                 </label>
@@ -143,14 +143,14 @@ const SignUpForm = () => {
                   id="FirstName"
                   name="first_name"
                   {...register("first_name", { required: true })}
-                  className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
+                  className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm  py-3 shadow-sm"
                 />
               </div>
 
               <div className="col-span-6 sm:col-span-3">
                 <label
                   htmlFor="LastName"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium "
                 >
                   Last Name
                 </label>
@@ -160,13 +160,13 @@ const SignUpForm = () => {
                   id="LastName"
                   name="last_name"
                   {...register("last_name", { required: true })}
-                  className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
+                  className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm  py-3 shadow-sm"
                 />
               </div>
               <div className="col-span-6 w-full ">
                 <label
                   htmlFor="image"
-                  className="block text-sm font-medium text-gray-700 mb-2 w-full"
+                  className="block text-sm font-medium  mb-2 w-full"
                 >
                   Upload Image
                 </label>
@@ -182,7 +182,7 @@ const SignUpForm = () => {
               <div className="col-span-6">
                 <label
                   htmlFor="Email"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium "
                 >
                   Email Address
                 </label>
@@ -192,14 +192,14 @@ const SignUpForm = () => {
                   id="Email"
                   {...register("email", { required: true })}
                   name="email"
-                  className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
+                  className="mt-1 w-full border-0 rounded-md border-gray-200 focus:outline-2 px-3 bg-slate-100 focus:outline-slate-400 text-sm  py-3 shadow-sm"
                 />
               </div>
 
               <div className="col-span-6 relative">
                 <label
                   htmlFor="Password"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium "
                 >
                   Password
                 </label>
@@ -215,7 +215,7 @@ const SignUpForm = () => {
                     pattern:
                       /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
                   })}
-                  className="mt-1 px-3 w-full border-0 rounded-md border-gray-200 focus:outline-2  bg-slate-100 focus:outline-slate-400 text-sm text-gray-700 py-3 shadow-sm"
+                  className="mt-1 px-3 w-full border-0 rounded-md border-gray-200 focus:outline-2  bg-slate-100 focus:outline-slate-400 text-sm  py-3 shadow-sm"
                 />
                 {errors.password?.type === "required" && (
                   <p className="text-sm text-error">Password is required</p>

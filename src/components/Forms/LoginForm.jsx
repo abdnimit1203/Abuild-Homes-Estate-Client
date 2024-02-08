@@ -109,7 +109,7 @@ if(!user){
                 <label
                   htmlFor="Password"
 
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium "
                 >
                   Password
                 </label>

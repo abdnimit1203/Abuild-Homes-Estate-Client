@@ -51,7 +51,7 @@ const SocialLogin = () => {
       <button
         onClick={handleGoogleSignIn}
         type="button"
-        className="flex items-center gap-6 font-semibold bg-slate-100 p-2 px-4 rounded-xl shadow-md hover:scale-110 transition delay-150 hover:shadow-success"
+        className="flex items-center gap-6 font-semibold bg-slate-100 p-2 px-4 rounded-xl shadow-md hover:scale-110 transition delay-150 hover:shadow-success text-gray-900"
       >
         <img
           src="https://i.ibb.co/syGPgLz/google-Logo.png"
