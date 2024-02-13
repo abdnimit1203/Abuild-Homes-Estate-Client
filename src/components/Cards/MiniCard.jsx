@@ -15,32 +15,28 @@ const MiniCard = ({ property }) => {
   } = property;
   return (
     <div className="h-full max-w-xl mx-auto">
-      <div className="overflow-hidden  shadow flex transition hover:shadow-lg hover:border-primary hover:scale-105  p-6 bg-base-200 border rounded-xl items-start h-full text-neutral glass">
-        <div>
-
-        <img
-          alt="property image"
-          src={propertyImage}
-          className="h-52 w-56 md:w-fit object-cover md:object-cover rounded-xl"
-        />
+      <div className="overflow-hidden  shadow flex transition hover:shadow-lg hover:border-primary hover:scale-105  p-6 bg-base-200 border rounded-xl items-start h-full text-neutral glass gap-4">
+        <div className="flex-1 h-full">
+          <img
+            alt="property image"
+            src={propertyImage}
+            className="rounded-xl h-full object-cover "
+          />
         </div>
 
-        <div className="bg-transparent pl-6 flex flex-col justify-between  md:h-52">
+        <div className="flex-1">
           <div>
+            <h3 className="mt-0.5 md:text-xl font-semibold  ">{propertyTitle}</h3>
 
-          <h3 className="mt-0.5 text-xl font-semibold  ">
-            {propertyTitle}
-          </h3>
+            <p className="mt-2 line-clamp-3  text-sm/relaxed  ">
+              <FiMapPin className="inline mr-3" />
+              {propertyLocation}
+            </p>
 
-          <p className="mt-2 line-clamp-3 text-sm/relaxed  ">
-            <FiMapPin className="inline mr-3" />
-            {propertyLocation}
-          </p>
-
-          <p className="mt-2 line-clamp-3 md:text-xs lg:text-base ">
-            <MdPriceChange className="inline mr-3" />
-            {priceRange}
-          </p>
+            <p className="mt-2 line-clamp-3 text-sm lg:text-base ">
+              <MdPriceChange className="inline mr-3" />
+              {priceRange}
+            </p>
           </div>
           <div className="flex flex-col items-start lg:flex-row lg:justify-between lg:items-center lg:mt-4 gap-3">
             <p className="mt-2  line-clamp-3 text-md/relaxed ">
