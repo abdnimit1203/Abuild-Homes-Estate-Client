@@ -1,3 +1,4 @@
+import { BsArrowDownUp } from "react-icons/bs";
 import Banner from "../../components/Banner/Banner";
 import Advertisement from "../../components/Others/Advertisement";
 import AvailableCountries from "../../components/Others/AvailableCountries";
@@ -6,8 +7,11 @@ import MarqueeAdd from "../../components/Others/MarqueeAdd";
 import OurFeatures from "../../components/Others/OurFeatures";
 import Rental from "../../components/Others/Rental";
 import Reviews from "../../components/Reviews/Reviews";
+import { FaUpLong } from "react-icons/fa6";
 
 const Home = () => {
+
+
   return (
     <div className="space-y-10">
       <div>
@@ -34,7 +38,10 @@ const Home = () => {
       <div>
         <ContactUs />
       </div>
-     
+     <div>
+    
+
+     </div>
     </div>
   );
 };

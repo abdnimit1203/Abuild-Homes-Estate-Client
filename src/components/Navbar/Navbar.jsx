@@ -13,7 +13,7 @@ import LogOutButton from "../Buttons/LogOutButton";
 
 const Navbar = () => {
   const { user } = useAuth();
-  console.log(user);
+  // console.log(user);
   const axiosPublic = useAxiosPublic();
 
   // user role fetching
@@ -31,6 +31,7 @@ const Navbar = () => {
   const [isdark, setIsdark] = useState(
     JSON.parse(localStorage.getItem("isdark"))
   );
+  
   useEffect(() => {
     localStorage.setItem("isdark", JSON.stringify(isdark));
   }, [isdark]);
@@ -40,7 +41,6 @@ const Navbar = () => {
       setTheme("dark");
     } else {
       console.log("theme changing : Light");
-
       setTheme("mytheme");
     }
   };

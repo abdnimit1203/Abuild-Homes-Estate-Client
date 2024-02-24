@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@smastrom/react-rating": "^1.5.0",
     "@stripe/react-stripe-js": "^2.4.0",
     "@stripe/stripe-js": "^2.2.0",
     "@tanstack/react-query": "^5.8.7",
@@ -32,8 +33,8 @@
     "react-router-dom": "^6.20.0",
     "react-toastify": "^9.1.3",
     "react-typewriter-effect": "^1.1.0",
-    "sort-by": "^1.2.0",
-    "sweetalert2": "^11.10.1",
+    "sort-by": "^0.0.2",
+    "sweetalert2": "^11.6.13",
     "swiper": "^11.0.5"
   },
   "devDependencies": {

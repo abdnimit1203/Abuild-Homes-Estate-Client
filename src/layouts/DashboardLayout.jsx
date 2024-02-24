@@ -20,6 +20,7 @@ import { IoIosHome } from "react-icons/io";
 import useRole from "../hooks/useRole";
 import useAuth from "../hooks/useAuth";
 import LogOutButton from "../components/Buttons/LogOutButton";
+import { useEffect, useState } from "react";
 
 const DashboardLayout = () => {
   const { user, loading } = useAuth();
@@ -31,6 +32,16 @@ const DashboardLayout = () => {
       headerText = role.toUpperCase();
     }
   }
+  //setting theme in Dashboard
+   const [isdark, setIsdark] = useState(
+    JSON.parse(localStorage.getItem("isdark"))
+  );
+  console.log(isdark)
+  useEffect(() => {
+    localStorage.setItem("isdark", JSON.stringify(isdark));
+  }, []);
+
+
 
   const userNavlinks = (
     <>

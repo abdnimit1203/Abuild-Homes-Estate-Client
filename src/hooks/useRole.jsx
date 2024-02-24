@@ -6,7 +6,7 @@ import useAxiosPublic from "./useAxiosPublic";
 const useRole = (email) => {
 
     const axiosPublic = useAxiosPublic()
-    console.log(email);
+    // console.log(email);
       const { data: role='' ,isLoading } = useQuery({
         queryKey: ["user-key",email],
         queryFn: async () => {

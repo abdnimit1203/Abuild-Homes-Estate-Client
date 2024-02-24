@@ -7,7 +7,7 @@ import HeaderText from "../HeaderText/HeaderText";
 const Advertisement = () => {
   const [property,isLoading] = useAdData()
   const adData = property.propertiesData
-  console.log(isLoading,adData);
+  // console.log(isLoading,adData);
   return (
     <div className="flex flex-col items-center">
       <HeaderText headerText="Our Popular Properties" />

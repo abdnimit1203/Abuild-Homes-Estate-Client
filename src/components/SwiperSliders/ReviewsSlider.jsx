@@ -1,74 +1,75 @@
-import { Swiper, SwiperSlide  } from "swiper/react";
-import { FreeMode, Pagination ,Autoplay} from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 
-import Rating from "react-rating";
+// import Rating from "react-rating";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { BsFillBuildingsFill } from "react-icons/bs";
+import { useState } from "react";
 // import "swiper/css/scrollbar";
 
-
 const ReviewsSlider = () => {
-    const axiosPublic = useAxiosPublic()
-    
+  const axiosPublic = useAxiosPublic();
+  const [rating, setRating] = useState(5); // Initial value
 
-   const {data: reviews =[] } =useQuery({
-    queryKey: ['review-key'],
-    queryFn: async()=>{
-        const res = await axiosPublic.get('/api/v1/reviews')
-        return res.data
-    }
-   })
- console.log(reviews);
+  const { data: reviews = [] } = useQuery({
+    queryKey: ["review-key"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/api/v1/reviews");
+      return res.data;
+    },
+  });
+  // console.log(reviews);
   return (
     <div className="text-neutral">
       <div className="text-center pb-16 space-y-6">
-        <h2 className="text-2xl font-semibold">Dont just take our word for it...</h2>
+        <h2 className="text-2xl font-semibold">
+          Dont just take our word for it...
+        </h2>
         <p className="text-xl">Check the latest reviews from customers</p>
       </div>
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
         freeMode={true}
-
-     
         pagination={{
           clickable: true,
         }}
         autoplay={{
-          delay: 2500,
+          delay: 22500,
           disableOnInteraction: false,
         }}
-        
-        modules={[Autoplay,FreeMode, Pagination]}
+        modules={[Autoplay, FreeMode, Pagination]}
         className="mySwiper rounded-xl"
       >
-      {
-        reviews?.slice(0,4).map((review,idx)=>(
-            <SwiperSlide key={idx}>
+        {reviews?.slice(0, 4).map((review, idx) => (
+          <SwiperSlide key={idx}>
             <div className="flex h-full flex-col justify-center items-center text-center bg-gradient-to-tr from-secondary to-accent p-6 shadow-sm sm:p-8 lg:p-12 md:max-w-[80%] mx-auto rounded-2xl">
               <div>
-                
-  
                 <div className="mt-4 ">
-                  <img src= {review?.userPhoto} alt="reviewer image" className="rounded-full w-28 mx-auto aspect-square object-cover" />
+                  <img
+                    src={review?.userPhoto}
+                    alt="reviewer image"
+                    className="rounded-full w-28 mx-auto aspect-square object-cover"
+                  />
                   <p className="text-2xl font-bold  sm:text-3xl pt-2">
                     {review?.username}
                   </p>
-          
+
                   <p className="mt-4 leading-relaxed text-gray-700 max-w-2xl">
-                  {review?.reviewDescription}
+                    {review?.reviewDescription}
                   </p>
                 </div>
               </div>
               <div className="pt-6">
-  
-              <Rating
+                {/* <Rating
                   emptySymbol={
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -102,18 +103,16 @@ const ReviewsSlider = () => {
                   }
                   initialRating={4.5}
                   readonly
-                />
+                /> */}
+                <Rating style={{ maxWidth: 150 }} value={4.5} readOnly />
               </div>
               <footer className="mt-4 font-medium  text-xl sm:mt-6 bg-white p-3 rounded-xl text-slate-700">
-                <BsFillBuildingsFill className="inline text-primary text-2xl"/>  Property:  {review?.propertyTitle}
+                <BsFillBuildingsFill className="inline text-primary text-2xl" />{" "}
+                Property: {review?.propertyTitle}
               </footer>
             </div>
           </SwiperSlide>
-        ))
-      }
-      
-       
-       
+        ))}
       </Swiper>
     </div>
   );

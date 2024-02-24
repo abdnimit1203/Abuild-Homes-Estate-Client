@@ -29,9 +29,9 @@ const MainLayout = () => {
             <div className="w-[90%] mx-auto mt-[130px]">
                 <Outlet/>
             </div>
-            <div>
+            
                 <Footer/>
-            </div>
+             
         </div>
     );
 };
