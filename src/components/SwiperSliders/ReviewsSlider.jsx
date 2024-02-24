@@ -47,11 +47,11 @@ const ReviewsSlider = () => {
           disableOnInteraction: false,
         }}
         modules={[Autoplay, FreeMode, Pagination]}
-        className="mySwiper rounded-xl"
+        className="mySwiper rounded-xl h-full"
       >
         {reviews?.slice(0, 4).map((review, idx) => (
           <SwiperSlide key={idx}>
-            <div className="flex h-full flex-col justify-center items-center text-center bg-gradient-to-tr from-secondary to-accent p-6 shadow-sm sm:p-8 lg:p-12 md:max-w-[80%] mx-auto rounded-2xl">
+            <div className="flex min-h-[500px] flex-col justify-center items-center text-center bg-gradient-to-tr from-secondary to-accent p-6 shadow-sm sm:p-8 lg:p-12 md:max-w-[80%] mx-auto rounded-2xl ">
               <div>
                 <div className="mt-4 ">
                   <img

@@ -85,7 +85,7 @@ const { register, handleSubmit, reset } = useForm();
           alt=""
           className="rounded-full max-w-[220px] object-cover aspect-square"
         />
-        <h3 className="text-3xl gap-2 items-center">
+        <h3 className="text-xl lg:text-3xl gap-2 items-center">
           {user?.displayName}
           {user?.emailVerified ? (
             <MdVerified className="text-blue-300 inline pl-2 pb-2 text-4xl" />
@@ -99,7 +99,7 @@ const { register, handleSubmit, reset } = useForm();
                 <button className="btn btn-secondary text-white">ROLE : {role.toUpperCase()}</button>
             }
         </div>
-        <p className="">{user?.email}</p>
+        <p className="text-sm lg:text-xl">{user?.email}</p>
         {/* FOrm */}
        
         {/* modal */}
