@@ -4,7 +4,7 @@
 
 **Using the MERN stack**
 
-- [Live Server Link ](https://abuild-homesabd.web.app/) 
+- [Live Server Link ](https://abuild-homes-estate-abd.netlify.app) 
 
 - [Server Side Github Link: ](https://github.com/abdnimit1203/Abuild-Homes-Estate-server.git) 
 
