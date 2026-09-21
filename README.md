@@ -9,6 +9,7 @@ A modern, high-performance real-estate web application engineered with **Next.js
 [![DaisyUI](https://img.shields.io/badge/DaisyUI-4.4-5A0EF8.svg)](https://daisyui.com/)
 [![Firebase](https://img.shields.io/badge/Firebase-Auth-orange.svg)](https://firebase.google.com/)
 [![Stripe](https://img.shields.io/badge/Stripe-Elements-6772E5.svg)](https://stripe.com/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8d56f57f-ca7f-46e5-b9c4-247e152c72ac/deploy-status)](https://app.netlify.com/projects/abuild-homes-estate-abd/deploys)
 
 ---
 
