@@ -5,10 +5,16 @@ export const API_BASE_URL =
 
 export const axiosPublic = axios.create({
   baseURL: API_BASE_URL,
+  headers: {
+    "x-client-request": "abuild-homes-estate",
+  },
 });
 
 export const axiosSecure = axios.create({
   baseURL: API_BASE_URL,
+  headers: {
+    "x-client-request": "abuild-homes-estate",
+  },
 });
 
 // Request interceptor to automatically attach authorization bearer token

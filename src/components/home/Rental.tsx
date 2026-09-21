@@ -33,7 +33,7 @@ export default function Rental() {
               how to inspect a property, review tenancy contracts, and ensure fair utility billing.
             </p>
             <Link
-              href="/all-properties"
+              href="/properties"
               className="inline-flex items-center gap-2 text-sm font-bold text-[#38B6FF] hover:underline"
             >
               Browse Rental Homes <ArrowRight className="w-4 h-4" />

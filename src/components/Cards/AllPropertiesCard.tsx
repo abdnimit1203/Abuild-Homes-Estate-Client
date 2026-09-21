@@ -32,12 +32,12 @@ export default function AllPropertiesCard({ property }: AllPropertiesCardProps) 
       className="flex flex-col sm:flex-row rounded-2xl overflow-hidden bg-base-100 dark:bg-base-200/80 border border-base-content/10 hover:border-[#38B6FF]/50 shadow-md hover:shadow-xl transition-all duration-300"
     >
       {/* Property Image Banner */}
-      <div className="relative w-full sm:w-72 h-56 sm:h-auto flex-shrink-0 bg-base-300 overflow-hidden">
+      <div className="relative w-full sm:w-56 md:w-52 lg:w-60 h-52 sm:h-auto flex-shrink-0 bg-base-300 overflow-hidden">
         <Image
           src={propertyImage || "https://i.ibb.co/RvMftC5/property1.jpg"}
           alt={propertyTitle}
           fill
-          sizes="(max-width: 640px) 100vw, 288px"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 220px, 240px"
           className="object-cover hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute top-3 left-3">
@@ -49,7 +49,7 @@ export default function AllPropertiesCard({ property }: AllPropertiesCardProps) 
       </div>
 
       {/* Property Details Container */}
-      <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+      <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-3">
         <div className="space-y-2">
           <h3 className="text-xl font-extrabold text-base-content hover:text-[#38B6FF] transition-colors line-clamp-1">
             {propertyTitle}

@@ -21,7 +21,11 @@ export default function Banner() {
   const isDark = mounted && (theme === "dark" || resolvedTheme === "dark");
 
   const handleSearch = () => {
-    router.push("/all-properties");
+    const params = new URLSearchParams();
+    if (selectedCity) params.set("location", selectedCity);
+    if (selectedType) params.set("type", selectedType);
+    const query = params.toString();
+    router.push(query ? `/properties?${query}` : "/properties");
   };
 
   return (

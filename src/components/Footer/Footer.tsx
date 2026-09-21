@@ -17,11 +17,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Col 1: Logo & Mission */}
           <div className="space-y-4 md:col-span-1">
-            <div className="py-1">
+            <div className="py-2">
               <img
                 src={isDark ? "/assets/home/logoDark.png" : "/assets/home/logoMain.png"}
                 alt="ABuild Homes Estates Logo"
-                className="h-9 sm:h-10 md:h-11 w-auto max-w-[170px] sm:max-w-[200px] object-contain"
+                className="h-10 sm:h-11 md:h-12 w-auto max-w-[190px] sm:max-w-[220px] object-contain"
               />
             </div>
             <p className="text-sm text-base-content/70 leading-relaxed">
@@ -41,7 +41,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/all-properties" className="hover:text-[#38B6FF] transition">
+                <Link href="/properties" className="hover:text-[#38B6FF] transition">
                   All Properties
                 </Link>
               </li>

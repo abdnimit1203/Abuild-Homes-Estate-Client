@@ -54,12 +54,13 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     return signInWithPopup(auth, googleProvider);
   };
 
-  const updateUserProfile = (username: string, url: string) => {
-    if (!auth.currentUser) return Promise.reject(new Error("No user logged in"));
-    return updateProfile(auth.currentUser, {
+  const updateUserProfile = async (username: string, url: string) => {
+    if (!auth.currentUser) throw new Error("No user logged in");
+    await updateProfile(auth.currentUser, {
       displayName: username,
       photoURL: url,
     });
+    setUser({ ...auth.currentUser } as FirebaseUser);
   };
 
   const logOut = async () => {

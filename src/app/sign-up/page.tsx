@@ -82,6 +82,7 @@ export default function SignUpPage() {
         email,
         role: "user",
         photoURL: finalPhoto,
+        imgUrl: finalPhoto,
         uid: res.user.uid,
       };
 

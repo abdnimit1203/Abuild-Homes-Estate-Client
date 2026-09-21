@@ -53,15 +53,15 @@ Abuild-Homes-Estate-Client/
 ├── src/
 │   ├── app/                  # Next.js 14 App Router
 │   │   ├── layout.tsx        # Root layout, Navbar, Footer, and Client Providers
-│   │   ├── page.tsx          # Modernized landing page
-│   │   ├── all-properties/   # Property discovery & search
+│   │   ├── properties/       # Responsive 2-column property discovery & search
+│   │   ├── all-properties/   # Redirects to /properties
 │   │   ├── properties/[id]/  # Single property showcase & review submission
 │   │   ├── login/            # Split-screen responsive login page
 │   │   ├── sign-up/          # Registration with ImgBB avatar upload
 │   │   ├── career/           # Careers & vacancies
 │   │   ├── about-us/         # Mission, pillars & contact channels
 │   │   └── dashboard/        # Role-based dashboard views
-│   │       ├── profile/
+│   │       ├── profile/      # User profile with live ImgBB avatar editing
 │   │       ├── wishlist/
 │   │       ├── add-property/
 │   │       ├── added-properties/

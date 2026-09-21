@@ -58,7 +58,7 @@ export default function PopularProperties() {
 
       <div className="text-center mt-10">
         <Link
-          href="/all-properties"
+          href="/properties"
           className="inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold button-1"
         >
           See All Properties

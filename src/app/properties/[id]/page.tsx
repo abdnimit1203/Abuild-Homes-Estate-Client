@@ -141,7 +141,7 @@ export default function PropertyDetailsPage() {
     return (
       <div className="text-center py-20">
         <h2 className="text-2xl font-bold">Property Not Found</h2>
-        <Link href="/all-properties" className="text-[#38B6FF] underline mt-4 inline-block">
+        <Link href="/properties" className="text-[#38B6FF] underline mt-4 inline-block">
           Return to All Properties
         </Link>
       </div>
@@ -156,7 +156,7 @@ export default function PropertyDetailsPage() {
           Home
         </Link>
         <ChevronRight className="w-3 h-3" />
-        <Link href="/all-properties" className="hover:text-[#38B6FF]">
+        <Link href="/properties" className="hover:text-[#38B6FF]">
           All Properties
         </Link>
         <ChevronRight className="w-3 h-3" />

@@ -47,7 +47,7 @@ export default function Navbar() {
   // Top navigation bar links (Dashboard is NOT placed here per user specification)
   const navLinks = [
     { label: "Home", href: "/" },
-    { label: "All Properties", href: "/all-properties" },
+    { label: "All Properties", href: "/properties" },
     { label: "Career", href: "/career" },
     { label: "About Us", href: "/about-us" },
   ];
@@ -91,12 +91,12 @@ export default function Navbar() {
           </div>
 
           {/* Logo */}
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center group py-1">
+          <div className="flex items-center py-2 sm:py-2.5">
+            <Link href="/" className="flex items-center group">
               <img
                 src={isDark ? "/assets/home/logoDark.png" : "/assets/home/logoMain.png"}
                 alt="ABuild Homes Estates Logo"
-                className="h-9 sm:h-10 md:h-11 w-auto max-w-[150px] sm:max-w-[180px] md:max-w-[210px] object-contain transition-transform duration-200 group-hover:scale-105"
+                className="h-11 sm:h-12 md:h-13 lg:h-14 w-auto max-w-[180px] sm:max-w-[210px] md:max-w-[240px] object-contain transition-transform duration-200 group-hover:scale-105"
               />
             </Link>
           </div>
