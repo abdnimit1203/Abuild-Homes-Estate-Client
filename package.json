@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@smastrom/react-rating": "^1.5.0",
@@ -16,9 +16,13 @@
     "@tanstack/react-query": "^5.8.7",
     "axios": "^1.6.2",
     "firebase": "^10.6.0",
+    "firebase-admin": "^14.4.0",
     "framer-motion": "^10.16.5",
     "localforage": "^1.10.0",
+    "lucide-react": "1.47.0",
     "match-sorter": "^6.3.1",
+    "next": "14.2.15",
+    "next-themes": "0.4.6",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-awesome-stars-rating": "^0.15.0",
@@ -38,8 +42,9 @@
     "swiper": "^11.0.5"
   },
   "devDependencies": {
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
+    "@types/node": "^26.6.2",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.16",
     "daisyui": "^4.4.4",
@@ -49,6 +54,7 @@
     "eslint-plugin-react-refresh": "^0.4.4",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5",
+    "typescript": "^5.9.3",
     "vite": "^5.0.0"
   }
 }

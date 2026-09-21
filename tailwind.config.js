@@ -8,7 +8,7 @@ export default {
         mytheme: {
           primary: "#38B6FF",
 
-          secondary: "#FF3131",
+          secondary: "#FF5A3C",
 
           accent: "#FCB690",
 
@@ -24,7 +24,7 @@ export default {
 
           warning: "#f0d447",
 
-          error: "#f41042",
+          error: "#E11D48",
         },
       },
       "light",
@@ -33,7 +33,7 @@ export default {
         dark: {
           primary: "#38B6FF",
 
-          secondary: "#FF3131",
+          secondary: "#FF5A3C",
 
           accent: "#FCB690",
 
@@ -48,12 +48,18 @@ export default {
 
           warning: "#f0d447",
 
-          error: "#f41042",
+          error: "#E11D48",
         },
       },
     ],
   },
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: 'class',
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/layouts/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     extend: {
       textShadow: {

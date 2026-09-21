@@ -1,47 +1,169 @@
-# ABuild Homes Estates 🏦
+# ABuild Homes Estates — Frontend Client 🏡
 
-## Real estate Platform (an online platform where people can add and buy real estate properties)
+A modern, high-performance real-estate web application engineered with **Next.js 14 (App Router)**, **TypeScript**, **Tailwind CSS**, and **DaisyUI**. Users can discover verified luxury residences, submit purchase offers, share verified reviews, and complete payments via Stripe.
 
-**Using the MERN stack**
+[![Next.js](https://img.shields.io/badge/Next.js-14.2-black.svg)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-18-blue.svg)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC.svg)](https://tailwindcss.com/)
+[![DaisyUI](https://img.shields.io/badge/DaisyUI-4.4-5A0EF8.svg)](https://daisyui.com/)
+[![Firebase](https://img.shields.io/badge/Firebase-Auth-orange.svg)](https://firebase.google.com/)
+[![Stripe](https://img.shields.io/badge/Stripe-Elements-6772E5.svg)](https://stripe.com/)
 
-- [Live Server Link ](https://abuild-homes-estate-abd.netlify.app) 
+---
 
-- [Server Side Github Link: ](https://github.com/abdnimit1203/Abuild-Homes-Estate-server.git) 
+## 🔗 Live Application & Links
 
+- **Live Deployment**: [https://abuild-homes-estate-abd.netlify.app](https://abuild-homes-estate-abd.netlify.app)
+- **Backend API Repository**: [https://github.com/abdnimit1203/Abuild-Homes-Estate-server.git](https://github.com/abdnimit1203/Abuild-Homes-Estate-server.git)
 
-## Features
+---
 
-- **Feature 1 :** - This real state site have user login facility. Where user comes first and have access to most of the ui elements. User can Create account and uploading image from local computer storage.
+## ✨ Features & Capabilities
 
-- **Feature 2 :** - All property page has search functionality. Where user search **property name** from all the property data.
+### 🌐 Public & Discovery Portal
+- **Next.js 14 App Router Architecture**: Full SSR, metadata optimization, OpenGraph previews, and fast client navigation.
+- **Dynamic Search & Multi-Criteria Filtering**: Filter verified real-estate properties by location, type, price ranges, and ascending/descending sorting.
+- **Granular Property Locations**: Detailed address tracking with House Number, Road Number, Division, Country, and Continent while maintaining single-string address compatibility.
+- **Interactive Reviews Carousel**: Client feedback showcase powered by Swiper.js with manual navigation buttons and autoplay.
+- **Dual Light / Dark Mode**: Integrated theme toggle syncing DaisyUI themes (`mytheme` / `dark`) and Tailwind dark-mode classes with local persistence.
 
-- **Feature 3 :** - This site has also a **Dark Theme** functionality. User can easily change theme "Ligth to Dark ". Data is saved to local storage so upon refreshing theme will stay as it was!
+### 📸 Dual-Mode Image Upload
+- **ImgBB Direct Cloud Upload**: Upload high-resolution images straight from local storage to ImgBB with instant progress indicators and hosted HTTPS URLs.
+- **Direct Image URL Input**: Paste existing cloud image URLs directly into listings with real-time preview and fallback handling.
 
-- **Feature 4 :** - User can view details of property and add them to their wishlist also user can add a review on single property page and see all the other users review for that perticular property.
+### 👤 Role-Based Portals & Dashboards
+- **User Dashboard**: Manage personal profile, explore saved wishlist properties, submit custom purchase offers, review offer statuses, and complete payments for accepted bids.
+- **Agent Dashboard**: Add new property listings with granular address fields, manage active listings, track customer offers, and accept or reject bids.
+- **Admin Dashboard**: Verify or reject pending property listings, monitor user accounts, assign roles (`agent`, `admin`, `fraud`), and manage customer reviews.
+- **Dedicated Table Scrollers**: Responsive data tables featuring horizontal scrolling containers on mobile and tablet devices while displaying full width on desktops.
 
-- **Feature 5 :** - User Dashboard : where user can view there profile and edit their profile there. Also they can view their wishlist , users property bought and watch all the reviews. User can manage everything here remove them add them and even pay after their offer has been accepted 
+### 💳 Secure Payments with Stripe
+- Integrated **Stripe Elements** with card number, expiration, and CVC formatting.
+- Real-time client-side payment validation, transaction receipt generation, and status synchronization with the database.
 
-- **Feature 6 :** - Agent Dashboard: You can ask for agent access in the chat. (If admin see's then he can make you an agent) . In the dashBoard : he can **Add property**, **See all his added properties**, **Sold Properties**, **Requested Properties** . Remember if you add something weird admin can make you and fraud and fraud status you be shown. and you cant access anything but profile in dashboard.
+---
 
-- **Feature 7 :** - Admin Dashboard : Here admin can manage all the properties in the database and make them pending to verified and all other things. In Manage user , an admin can see all the users and their role, he can change the roles there.He can make and user agent/ admin. An agent to fraud . Finally, he can delete any user!
- 
-- **Feature 8 :** -  Stripe payment Feature: there user can pay with master card , visacard or any card payments (for example purpose). You can find the payment in the dashboard of user -> property bought -> pay (if accepted offer by agent)
+## 🛠️ Project Structure
 
+```
+Abuild-Homes-Estate-Client/
+├── public/
+│   └── assets/               # Brand logos, hero banners, and vector assets
+├── src/
+│   ├── app/                  # Next.js 14 App Router
+│   │   ├── layout.tsx        # Root layout, Navbar, Footer, and Client Providers
+│   │   ├── page.tsx          # Modernized landing page
+│   │   ├── all-properties/   # Property discovery & search
+│   │   ├── properties/[id]/  # Single property showcase & review submission
+│   │   ├── login/            # Split-screen responsive login page
+│   │   ├── sign-up/          # Registration with ImgBB avatar upload
+│   │   ├── career/           # Careers & vacancies
+│   │   ├── about-us/         # Mission, pillars & contact channels
+│   │   └── dashboard/        # Role-based dashboard views
+│   │       ├── profile/
+│   │       ├── wishlist/
+│   │       ├── add-property/
+│   │       ├── added-properties/
+│   │       ├── update-property/[id]/
+│   │       ├── requested-properties/
+│   │       ├── property-bought/
+│   │       ├── payment/[id]/
+│   │       ├── manage-properties/
+│   │       ├── manage-users/
+│   │       └── manage-reviews/
+│   ├── components/
+│   │   ├── Navbar/           # Responsive top navbar with role-aware profile dropdown
+│   │   ├── Footer/           # Footer with site map and social links
+│   │   ├── Cards/            # AllPropertiesCard, MiniCard
+│   │   ├── common/           # ImageUpload, HeaderText
+│   │   ├── home/             # Banner, Features, Reviews, Rental, Countries
+│   │   ├── auth/             # SocialLogin
+│   │   ├── providers/        # AuthProvider, ClientProviders, QueryClient
+│   │   └── theme/            # ThemeProvider, ThemeToggle
+│   ├── hooks/
+│   │   └── useRole.ts        # TanStack Query hook for user role resolution
+│   ├── lib/
+│   │   ├── api.ts            # Axios instances with token interceptor
+│   │   ├── firebase.ts       # Client Firebase Auth initialization
+│   │   ├── imgbb.ts          # Direct ImgBB upload handler
+│   │   └── confirmDialog.ts  # SweetAlert2 themed confirmation dialogs
+│   └── types/
+│       └── index.ts          # TypeScript interfaces (Property, Offer, User, Review)
+├── tailwind.config.js        # DaisyUI themes & custom colors
+├── tsconfig.json             # TypeScript compiler settings
+└── next.config.mjs           # Next.js optimization configuration
+```
 
-## UI design of this website
+---
 
-- HomePage:
-![Home Page](https://i.ibb.co/vJMP6T6/hompage.png)
+## ⚙️ Environment Configuration
 
-### User Dashboard:
-![user profile ](https://i.ibb.co/GCsCRzW/user-dashboard-0.png)
+Create a `.env.local` file in the root directory:
 
-![user wishlist ](https://i.ibb.co/wS14DcY/user-dashboard.png)
+```ini
+# Backend API Base URL
+NEXT_PUBLIC_API_URL=http://localhost:5000
 
-### Agent Dasboard:
-![agent dashboard](https://i.ibb.co/gVgSWJc/agent-dashboard.png)
-![agent dashboard](https://i.ibb.co/XjBPfwF/agent-dashboard-2.png)
+# Firebase Client Authentication
+NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSy...
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=abuild-homesabd.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=abuild-homesabd
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=abuild-homesabd.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=7901...
+NEXT_PUBLIC_FIREBASE_APP_ID=1:7901...:web:...
 
-### Admin Dashboard:
-![Home Page](https://i.ibb.co/zZzBpp3/admindashboard2.png)
+# ImgBB Direct Upload API Key
+NEXT_PUBLIC_IMGBB_API_KEY=your_imgbb_api_key
 
+# Stripe Payment Gateway
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_51...
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v18.17 or higher)
+- npm or yarn
+
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/abdnimit1203/Abuild-Homes-Estate-Client.git
+cd Abuild-Homes-Estate-Client
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Production Build
+```bash
+# Build optimized static and server pages
+npm run build
+
+# Start production server
+npm start
+```
+
+---
+
+## 🎨 Theme & Color Palette
+
+| Name | Hex Code | Purpose |
+|---|---|---|
+| **Primary Sky Blue** | `#38B6FF` | Main buttons, brand accent, active state highlights |
+| **Warm Sunset Coral** | `#FF5A3C` | Secondary accent, badges, gradient highlights |
+| **Emerald Green** | `#18B47B` | Verified status, success states, pricing badges |
+| **Rose Crimson** | `#E11D48` | Destructive actions, delete confirmations, rejections |
+
+---
+
+## 📄 License
+ISC © [Abdullah Ibne Ali](https://github.com/abdnimit1203)
