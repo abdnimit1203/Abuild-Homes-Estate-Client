@@ -45,8 +45,10 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  manifest: "/manifest.json",
   icons: {
     icon: "/assets/home/logo.png",
+    apple: "/icon-192x192.png",
   },
 };
 
@@ -57,10 +59,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col justify-between overflow-x-hidden max-w-full">
+      <body className="min-h-screen flex flex-col justify-between antialiased">
         <ClientProviders>
           <Navbar />
-          <main className="flex-1 max-w-[1536px] w-full mx-auto px-2 sm:px-4 md:px-6 py-4 sm:py-6 min-w-0">
+          <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 min-w-0">
             {children}
           </main>
           <Footer />

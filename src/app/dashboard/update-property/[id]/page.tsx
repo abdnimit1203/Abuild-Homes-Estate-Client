@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { axiosPublic } from "@/lib/api";
+import { axiosPublic, axiosSecure } from "@/lib/api";
 import { ArrowLeft, Save, MapPin, DollarSign, Globe, Compass, Home } from "lucide-react";
 import toast from "react-hot-toast";
 import { Property } from "@/types";
@@ -113,7 +113,7 @@ export default function UpdatePropertyPage() {
         agentName: property?.agentName,
       };
 
-      await axiosPublic.patch(`/api/v1/properties/${id}`, updateData);
+      await axiosSecure.patch(`/api/v1/properties/${id}`, updateData);
       toast.success("Listing updated successfully!", { id: toastId });
       router.push("/dashboard/added-properties");
     } catch (err: any) {

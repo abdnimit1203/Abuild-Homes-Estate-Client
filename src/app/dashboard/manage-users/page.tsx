@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { axiosPublic } from "@/lib/api";
+import { axiosPublic, axiosSecure } from "@/lib/api";
 import {
   Users,
   Shield,
@@ -13,23 +13,48 @@ import {
   ChevronDown,
   ArrowRightLeft,
   Mail,
+  Search,
+  Filter,
+  X,
+  RotateCcw,
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { UserProfile } from "@/types";
 import { confirmDelete } from "@/lib/confirmDialog";
 
 export default function ManageUsersPage() {
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const [roleFilter, setRoleFilter] = React.useState<string>("all");
+
   const { data: users = [], isLoading, refetch } = useQuery<UserProfile[]>({
     queryKey: ["admin-manage-users"],
     queryFn: async () => {
-      const res = await axiosPublic.get("/api/v1/users");
+      const res = await axiosSecure.get("/api/v1/users");
       return res.data || [];
     },
   });
 
+  const filteredUsers = React.useMemo(() => {
+    return users.filter((u) => {
+      const matchesRole = roleFilter === "all" || u.role === roleFilter;
+      const query = searchQuery.trim().toLowerCase();
+      const displayName = (u.name || (u as any).userName || "").toLowerCase();
+      const email = (u.email || "").toLowerCase();
+      const matchesSearch = !query || displayName.includes(query) || email.includes(query);
+      return matchesRole && matchesSearch;
+    });
+  }, [users, roleFilter, searchQuery]);
+
+  const hasActiveFilters = searchQuery.trim() !== "" || roleFilter !== "all";
+
+  const handleClearFilters = () => {
+    setSearchQuery("");
+    setRoleFilter("all");
+  };
+
   const handleRoleChange = async (id: string, newRole: string) => {
     try {
-      await axiosPublic.patch(`/api/v1/users?id=${id}&role=${newRole}`);
+      await axiosSecure.patch(`/api/v1/users?id=${id}&role=${newRole}`);
       toast.success(`User role updated to ${newRole}`);
       refetch();
     } catch (err) {
@@ -46,7 +71,7 @@ export default function ManageUsersPage() {
     if (!isConfirmed) return;
 
     try {
-      await axiosPublic.patch(`/api/v1/users/fraud?id=${id}&email=${email}`);
+      await axiosSecure.patch(`/api/v1/users/fraud?id=${id}&email=${email}`);
       toast.success("Agent marked as Fraud and their listings restricted");
       refetch();
     } catch (err) {
@@ -68,7 +93,7 @@ export default function ManageUsersPage() {
     const toastId = toast.loading(`Deleting "${displayName}" from Database & Firebase...`);
     try {
       // 1. Delete from backend (MongoDB + Firebase Admin)
-      const res = await axiosPublic.delete(
+      const res = await axiosSecure.delete(
         `/api/v1/users?id=${u._id}&email=${encodeURIComponent(u.email || "")}&uid=${encodeURIComponent(u.uid || "")}`
       );
 
@@ -103,9 +128,81 @@ export default function ManageUsersPage() {
             Assign administrative permissions, designate verified agents, or restrict rogue accounts
           </p>
         </div>
-        <span className="badge badge-lg bg-[#38B6FF]/15 text-[#38B6FF] border-0 font-bold self-start sm:self-auto">
-          Total Users: {users.length}
-        </span>
+        <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+          <span className="badge badge-lg bg-[#38B6FF]/15 text-[#38B6FF] border-0 font-bold self-start sm:self-auto">
+            Total: {users.length}
+          </span>
+          <span className="badge badge-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-0 font-bold self-start sm:self-auto">
+            Agents: {users.filter((u) => u.role === "agent").length}
+          </span>
+        </div>
+      </div>
+
+      {/* Filter & Search Bar */}
+      <div className="p-3 sm:p-4 rounded-2xl bg-base-100 dark:bg-base-200/50 border border-base-content/15 shadow-sm space-y-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 justify-between">
+          {/* Search Input */}
+          <div className="relative flex-1 min-w-[220px]">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-base-content/40" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search by name or email address..."
+              className="w-full pl-9 pr-9 py-2 rounded-xl bg-base-200/60 dark:bg-neutral-800 border border-base-content/10 text-xs sm:text-sm text-base-content placeholder:text-base-content/40 focus:outline-none focus:ring-2 focus:ring-[#38B6FF] transition"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-base-content/40 hover:text-base-content p-0.5"
+                title="Clear search"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+
+          {/* Role Dropdown Filter */}
+          <div className="flex items-center gap-2">
+            <div className="relative flex-1 sm:flex-initial">
+              <Filter className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#38B6FF]" />
+              <select
+                value={roleFilter}
+                onChange={(e) => setRoleFilter(e.target.value)}
+                className="w-full sm:w-auto pl-8 pr-8 py-2 rounded-xl bg-base-200/60 dark:bg-neutral-800 border border-base-content/10 text-xs font-bold text-base-content focus:outline-none focus:ring-2 focus:ring-[#38B6FF] cursor-pointer appearance-none"
+              >
+                <option value="all">All Roles ({users.length})</option>
+                <option value="admin">Admins ({users.filter((u) => u.role === "admin").length})</option>
+                <option value="agent">Agents ({users.filter((u) => u.role === "agent").length})</option>
+                <option value="user">Users ({users.filter((u) => u.role === "user").length})</option>
+                <option value="fraud">Fraud ({users.filter((u) => u.role === "fraud").length})</option>
+              </select>
+            </div>
+
+            {hasActiveFilters && (
+              <button
+                type="button"
+                onClick={handleClearFilters}
+                className="px-3 py-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-500 text-xs font-bold transition flex items-center gap-1.5 flex-shrink-0"
+                title="Clear all filters"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Reset</span>
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Filter Results Summary */}
+        <div className="flex items-center justify-between text-xs text-base-content/60 pt-1 border-t border-base-content/10">
+          <span>
+            Showing <strong className="text-base-content">{filteredUsers.length}</strong> of {users.length} users
+          </span>
+          {hasActiveFilters && (
+            <span className="text-xs text-[#38B6FF] font-semibold">Filters active</span>
+          )}
+        </div>
       </div>
 
       {isLoading ? (
@@ -114,7 +211,7 @@ export default function ManageUsersPage() {
             <div key={n} className="h-20 rounded-2xl bg-base-200 animate-pulse" />
           ))}
         </div>
-      ) : users.length > 0 ? (
+      ) : filteredUsers.length > 0 ? (
         <div className="space-y-2 w-full max-w-full min-w-0">
           {/* Mobile Horizontal Scroll Indicator */}
           <div className="sm:hidden flex items-center justify-between px-1 text-xs text-base-content/50">
@@ -124,7 +221,7 @@ export default function ManageUsersPage() {
             </span>
           </div>
 
-          {/* Table with Dedicated Scroller (scroll bar isolated to this container on mobile, full width on PC) */}
+          {/* Table with Dedicated Scroller */}
           <div className="w-full max-w-full table-scroller rounded-3xl border border-base-content/15 bg-base-100 dark:bg-base-200/50 shadow-sm">
             <table className="table w-full min-w-[580px] md:min-w-full text-left text-sm whitespace-nowrap">
               <thead className="bg-base-200/90 dark:bg-base-300 text-xs font-black uppercase tracking-wider text-base-content border-b-2 border-base-content/20">
@@ -136,7 +233,7 @@ export default function ManageUsersPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-base-content/10">
-                {users.map((u) => (
+                {filteredUsers.map((u) => (
                   <tr key={u._id} className="hover:bg-base-300/30 transition-colors">
                     {/* User Name */}
                     <td className="py-3 px-3 sm:px-4 font-bold text-base-content border-r border-base-content/10">
@@ -258,9 +355,27 @@ export default function ManageUsersPage() {
           </div>
         </div>
       ) : (
-        <div className="text-center py-16 bg-base-200/30 rounded-3xl border border-base-content/10">
-          <Users className="w-12 h-12 text-base-content/20 mx-auto mb-3" />
-          <p className="text-lg font-bold text-base-content">No registered users found</p>
+        <div className="text-center py-16 bg-base-200/30 rounded-3xl border border-base-content/10 space-y-3">
+          <Users className="w-12 h-12 text-base-content/20 mx-auto" />
+          <div>
+            <p className="text-lg font-bold text-base-content">
+              {hasActiveFilters ? "No matching users found" : "No registered users found"}
+            </p>
+            <p className="text-xs text-base-content/60 mt-1 max-w-md mx-auto">
+              {hasActiveFilters
+                ? "No user accounts match your search query or role filter. Try clearing filters to see all users."
+                : "New user registrations will appear here for role assignment and management."}
+            </p>
+          </div>
+          {hasActiveFilters && (
+            <button
+              type="button"
+              onClick={handleClearFilters}
+              className="px-4 py-2 rounded-xl bg-[#38B6FF] hover:bg-[#2fa3e6] text-white text-xs font-bold transition inline-flex items-center gap-1.5 shadow-sm"
+            >
+              <RotateCcw className="w-3.5 h-3.5" /> Reset Filters
+            </button>
+          )}
         </div>
       )}
     </div>

@@ -11,19 +11,18 @@ export function getFirebaseAdminAuth() {
   }
 
   try {
-    // 1. Check for complete Service Account JSON string or file path
+    // 1. Check for complete Service Account JSON string
     if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
-      let credentials;
       const raw = process.env.FIREBASE_SERVICE_ACCOUNT_KEY.trim();
-      if (raw.startsWith("{")) {
-        credentials = JSON.parse(raw);
-      } else {
-        credentials = require(raw);
+      try {
+        const credentials = JSON.parse(raw);
+        const app = initializeApp({
+          credential: cert(credentials),
+        });
+        return getAuth(app);
+      } catch (parseErr: any) {
+        console.warn("⚠️ Could not parse FIREBASE_SERVICE_ACCOUNT_KEY as JSON:", parseErr.message);
       }
-      const app = initializeApp({
-        credential: cert(credentials),
-      });
-      return getAuth(app);
     }
 
     // 2. Check for separate environment variables

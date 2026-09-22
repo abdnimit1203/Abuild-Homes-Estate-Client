@@ -1,0 +1,34 @@
+{
+  "name": "ABuild Homes Estates",
+  "short_name": "ABuild Homes",
+  "description": "Explore verified luxury homes, apartments, villas, and commercial properties.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1528",
+  "theme_color": "#38B6FF",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

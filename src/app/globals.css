@@ -5,10 +5,8 @@
 @tailwind utilities;
 
 @layer base {
-  html,
-  body {
-    max-width: 100%;
-    overflow-x: clip;
+  html {
+    scroll-behavior: smooth;
   }
   body {
     font-family: "Outfit", sans-serif;

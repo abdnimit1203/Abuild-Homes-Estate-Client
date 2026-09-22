@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/components/providers/AuthProvider";
-import { axiosPublic } from "@/lib/api";
+import { axiosPublic, axiosSecure } from "@/lib/api";
 import { PlusCircle, MapPin, DollarSign, Globe, Compass, Home } from "lucide-react";
 import toast from "react-hot-toast";
 import ImageUpload from "@/components/common/ImageUpload";
@@ -87,7 +87,7 @@ export default function AddPropertyPage() {
         status: "pending",
       };
 
-      await axiosPublic.post("/api/v1/properties", newProperty);
+      await axiosSecure.post("/api/v1/properties", newProperty);
       toast.success("Property submitted! Awaiting administrator verification.", { id: toastId });
       router.push("/dashboard/added-properties");
     } catch (err: any) {

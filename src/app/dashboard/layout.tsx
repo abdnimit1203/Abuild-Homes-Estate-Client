@@ -20,7 +20,7 @@ import {
   BsFillHousesFill,
 } from "react-icons/bs";
 import { GrMoney } from "react-icons/gr";
-import { RiAdminFill } from "react-icons/ri";
+import { RiAdminFill, RiMenuFoldLine } from "react-icons/ri";
 import { LiaUsersCogSolid } from "react-icons/lia";
 import { IoIosHome } from "react-icons/io";
 
@@ -45,10 +45,18 @@ export default function DashboardLayout({
   const handleLogOut = () => {
     closeDrawer();
     logOut().then(() => {
-      toast("User has been logged out", {
+      toast("You have been signed out. See you soon!", {
         icon: "👋",
+        duration: 3500,
         style: {
-          background: "#ff92b4",
+          borderRadius: "16px",
+          background: "#0f172a",
+          color: "#ffffff",
+          border: "1px solid rgba(56, 182, 255, 0.35)",
+          boxShadow: "0 14px 34px -4px rgba(0, 0, 0, 0.4)",
+          fontWeight: "600",
+          fontSize: "14px",
+          padding: "12px 20px",
         },
       });
       router.push("/");
@@ -99,7 +107,7 @@ export default function DashboardLayout({
         className={
           pathname === "/dashboard/profile"
             ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-black font-medium"
+            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
         }
       >
         <FaRegUserCircle className="inline text-xl mr-3 flex-shrink-0" /> My Profile
@@ -110,7 +118,7 @@ export default function DashboardLayout({
         className={
           pathname === "/dashboard/wishlist"
             ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-black font-medium"
+            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
         }
       >
         <BsClipboardHeart className="inline text-xl mr-3 flex-shrink-0" /> WishList
@@ -121,7 +129,7 @@ export default function DashboardLayout({
         className={
           pathname === "/dashboard/property-bought"
             ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-black font-medium"
+            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
         }
       >
         <FaBuildingUser className="inline text-xl mr-3 flex-shrink-0" /> Property Bought
@@ -132,7 +140,7 @@ export default function DashboardLayout({
         className={
           pathname === "/dashboard/my-reviews"
             ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-black font-medium"
+            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
         }
       >
         <MdReviews className="inline text-xl mr-3 flex-shrink-0" /> My Reviews
@@ -149,7 +157,7 @@ export default function DashboardLayout({
         className={
           pathname === "/dashboard/profile"
             ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-black font-medium"
+            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
         }
       >
         <FaUserSecret className="inline text-xl mr-3 flex-shrink-0" /> Agent Profile
@@ -160,7 +168,7 @@ export default function DashboardLayout({
         className={
           pathname === "/dashboard/add-property"
             ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-black font-medium"
+            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
         }
       >
         <BsBuildingFillAdd className="inline text-xl mr-3 flex-shrink-0" /> Add Property
@@ -171,7 +179,7 @@ export default function DashboardLayout({
         className={
           pathname === "/dashboard/added-properties"
             ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-black font-medium"
+            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
         }
       >
         <BsFillHousesFill className="inline text-xl mr-3 flex-shrink-0" /> My Added Properties
@@ -182,7 +190,7 @@ export default function DashboardLayout({
         className={
           pathname === "/dashboard/sold-properties"
             ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-black font-medium"
+            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
         }
       >
         <GrMoney className="inline text-xl mr-3 flex-shrink-0" /> My Sold Properties
@@ -193,7 +201,7 @@ export default function DashboardLayout({
         className={
           pathname === "/dashboard/requested-properties"
             ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-black font-medium"
+            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
         }
       >
         <BsBuildingExclamation className="inline text-xl mr-3 flex-shrink-0" /> Requested Properties
@@ -210,7 +218,7 @@ export default function DashboardLayout({
         className={
           pathname === "/dashboard/profile"
             ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-black font-medium"
+            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
         }
       >
         <RiAdminFill className="inline text-xl mr-3 flex-shrink-0" /> Admin Profile
@@ -221,7 +229,7 @@ export default function DashboardLayout({
         className={
           pathname === "/dashboard/manage-properties"
             ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-black font-medium"
+            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
         }
       >
         <BsBuildingFillGear className="inline text-xl mr-3 flex-shrink-0" /> Manage Properties
@@ -232,7 +240,7 @@ export default function DashboardLayout({
         className={
           pathname === "/dashboard/manage-users"
             ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-black font-medium"
+            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
         }
       >
         <LiaUsersCogSolid className="inline text-xl mr-3 flex-shrink-0" /> Manage Users
@@ -243,7 +251,7 @@ export default function DashboardLayout({
         className={
           pathname === "/dashboard/manage-reviews"
             ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-black font-medium"
+            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
         }
       >
         <MdRateReview className="inline text-xl mr-3 flex-shrink-0" /> Manage reviews
@@ -260,7 +268,7 @@ export default function DashboardLayout({
         className={
           pathname === "/dashboard/profile"
             ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-black font-medium"
+            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
         }
       >
         <RiAdminFill className="inline text-xl mr-3 flex-shrink-0" /> Profile
@@ -285,7 +293,7 @@ export default function DashboardLayout({
       {/* Role Navigation Items */}
       {isLoading ? (
         <div className="flex justify-center py-6">
-          <span className="loading loading-ring w-20 text-black"></span>
+          <span className="loading loading-ring w-20 text-primary"></span>
         </div>
       ) : role === "admin" ? (
         adminNavlinks
@@ -303,7 +311,7 @@ export default function DashboardLayout({
       <Link
         href="/"
         onClick={closeDrawer}
-        className="hover:bg-white/80 font-bold px-3 py-2.5 rounded-2xl transition duration-200 flex items-center text-black"
+        className="hover:bg-white/80 font-bold px-3 py-2.5 rounded-2xl transition duration-200 flex items-center text-base-content/90"
       >
         <IoIosHome className="inline text-xl mr-3 flex-shrink-0" />
         HOMEPAGE
@@ -333,7 +341,22 @@ export default function DashboardLayout({
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 
         {/* Content Area */}
-        <div className="drawer-content flex flex-col min-w-0 max-w-full overflow-x-hidden">
+        <div className="drawer-content flex flex-col min-w-0 max-w-full">
+          {/* Mobile Dashboard Top Bar with toggle button */}
+          <div className="flex md:hidden items-center justify-between p-3.5 mb-4 rounded-2xl bg-base-100 dark:bg-base-200/90 border border-base-content/10 shadow-sm">
+            <label
+              htmlFor="my-drawer-2"
+              className="btn btn-sm btn-primary text-white rounded-xl flex items-center gap-2 font-semibold drawer-button cursor-pointer"
+              aria-label="Toggle dashboard menu"
+            >
+              <RiMenuFoldLine className="w-4 h-4 text-white" />
+              <span>DASHBOARD MENU</span>
+            </label>
+            <span className="text-xs font-bold uppercase px-2.5 py-1 rounded-lg bg-primary/10 text-primary">
+              {role || "Dashboard"}
+            </span>
+          </div>
+
           {/* Main Desktop Flex Layout */}
           <div className="flex flex-col md:flex-row gap-4 lg:gap-5 items-start min-w-0 w-full max-w-full">
             {/* Desktop Docked Sidebar (Always visible on md+, docked below top navbar at top-24, z-20 so it never overlaps top navbar) */}
@@ -345,23 +368,23 @@ export default function DashboardLayout({
               </div>
             </aside>
 
-            {/* Dynamic Dashboard Page Outlet (Clean container without page-level scrollbars) */}
-            <main className="flex-1 min-w-0 w-full max-w-full bg-base-100 dark:bg-base-200/40 rounded-3xl p-3.5 sm:p-5 lg:p-6 shadow-sm border border-base-content/10 overflow-hidden">
+            {/* Dynamic Dashboard Page Outlet */}
+            <div className="flex-1 min-w-0 w-full max-w-full bg-base-100 dark:bg-base-200/40 rounded-3xl p-3.5 sm:p-5 lg:p-6 shadow-sm border border-base-content/10">
               {children}
-            </main>
+            </div>
           </div>
         </div>
 
-        {/* Mobile Slide-Out Drawer (controlled by top navbar hamburger via htmlFor="my-drawer-2", slides out under the z-50 top navbar) */}
-        <div className="drawer-side z-40 md:hidden">
+        {/* Mobile Slide-Out Drawer (controlled by mobile dashboard bar via htmlFor="my-drawer-2") */}
+        <div className="drawer-side z-50 md:hidden">
           <label
             htmlFor="my-drawer-2"
             aria-label="close sidebar"
-            className="drawer-overlay !top-20"
+            className="drawer-overlay"
           ></label>
 
           <div
-            className={`mt-20 menu gap-6 p-5 w-72 sm:w-80 min-h-[calc(100vh-5rem)] shadow-2xl text-left ${gradientClass}`}
+            className={`menu gap-6 p-5 w-72 sm:w-80 min-h-full shadow-2xl text-left ${gradientClass}`}
           >
             {sidebarBody}
           </div>

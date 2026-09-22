@@ -22,13 +22,16 @@ export default function LoginPage() {
     e.preventDefault();
 
     if (user) {
-      toast("LOG OUT OF OTHER ACCOUNT FIRST!", {
-        icon: "⚠️",
+      toast("Please log out of your current account first", {
+        icon: "ℹ️",
         style: {
-          borderRadius: "10px",
-          background: "#fadf1b",
-          color: "#1a1a1a",
-          fontWeight: "bold",
+          borderRadius: "14px",
+          background: "#0f172a",
+          color: "#ffffff",
+          border: "1px solid rgba(250, 204, 21, 0.4)",
+          boxShadow: "0 14px 30px -5px rgba(0, 0, 0, 0.3)",
+          fontWeight: "600",
+          fontSize: "14px",
         },
       });
       return;
@@ -40,11 +43,11 @@ export default function LoginPage() {
     }
 
     setLoading(true);
-    const toastId = toast.loading("Logging in...");
+    const toastId = toast.loading("Signing into your account...");
 
     try {
       await signIn(email, password);
-      toast.success("User logged in successfully!", { id: toastId });
+      toast.success("Welcome back! Logged in successfully.", { id: toastId });
       router.push("/");
     } catch (err: any) {
       toast.error(err.message || "Failed to log in. Please check your credentials.", {

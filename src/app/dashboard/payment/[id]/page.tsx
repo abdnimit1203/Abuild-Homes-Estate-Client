@@ -102,7 +102,7 @@ function StripeCheckoutForm({ offer }: { offer: Offer }) {
             propertyImage: offer.propertyImage,
             agentName: offer.agentName,
             agentEmail: offer.agentEmail,
-            buyerName: user?.displayName || "Buyer",
+            // buyerName intentionally omitted — resolved live from users collection on read
             buyerEmail: user?.email,
             date: Date.now(),
             soldPrice: offer.offeredAmount,
@@ -124,7 +124,7 @@ function StripeCheckoutForm({ offer }: { offer: Offer }) {
           propertyImage: offer.propertyImage,
           agentName: offer.agentName,
           agentEmail: offer.agentEmail,
-          buyerName: user?.displayName || "Buyer",
+          // buyerName intentionally omitted — resolved live from users collection on read
           buyerEmail: user?.email,
           date: Date.now(),
           soldPrice: offer.offeredAmount,

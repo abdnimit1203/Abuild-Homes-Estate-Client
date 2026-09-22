@@ -14,7 +14,6 @@ import toast from "react-hot-toast";
 import { MdMail } from "react-icons/md";
 import { RiShieldStarFill, RiAdminFill } from "react-icons/ri";
 import { FaUser, FaUserSecret } from "react-icons/fa";
-import { TiThMenuOutline } from "react-icons/ti";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
@@ -56,10 +55,18 @@ export default function Navbar() {
     setDropdownOpen(false);
     setMobileMenuOpen(false);
     logOut().then(() => {
-      toast("User has been logged out", {
+      toast("You have been signed out. See you soon!", {
         icon: "👋",
+        duration: 3500,
         style: {
-          background: "#ff92b4",
+          borderRadius: "16px",
+          background: "#0f172a",
+          color: "#ffffff",
+          border: "1px solid rgba(56, 182, 255, 0.35)",
+          boxShadow: "0 14px 34px -4px rgba(0, 0, 0, 0.4)",
+          fontWeight: "600",
+          fontSize: "14px",
+          padding: "12px 20px",
         },
       });
     });
@@ -70,24 +77,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Mobile hamburger menu button for top navbar */}
-          <div className="flex md:hidden">
-            {isDashboard ? (
-              <label
-                htmlFor="my-drawer-2"
-                className="btn btn-square btn-ghost text-base-content drawer-button cursor-pointer"
-                aria-label="Toggle dashboard menu"
-              >
-                <TiThMenuOutline className="w-6 h-6 text-primary" />
-              </label>
-            ) : (
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="btn btn-square btn-ghost text-base-content"
-                aria-label="Open navigation menu"
-              >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-            )}
+          <div className="flex md:hidden items-center">
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="btn btn-square btn-ghost text-base-content"
+              aria-label="Open navigation menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
 
           {/* Logo */}
@@ -110,8 +108,8 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={`px-3.5 py-2 rounded-xl text-sm transition duration-200 ${isActive
-                      ? "active bg-primary text-base-100 font-bold shadow-sm"
-                      : "hover:bg-primary px-3 py-2 hover:text-base-100 transition duration-200 rounded-xl"
+                    ? "active bg-primary text-base-100 font-bold shadow-sm"
+                    : "hover:bg-primary px-3 py-2 hover:text-base-100 transition duration-200 rounded-xl"
                     }`}
                 >
                   {item.label}
@@ -227,8 +225,8 @@ export default function Navbar() {
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={`px-4 py-2.5 rounded-xl font-semibold text-base transition ${isActive
-                      ? "bg-primary text-white font-bold"
-                      : "hover:bg-base-300 text-base-content"
+                    ? "bg-primary text-white font-bold"
+                    : "hover:bg-base-300 text-base-content"
                     }`}
                 >
                   {item.label}

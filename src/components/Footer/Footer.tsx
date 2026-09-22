@@ -89,7 +89,7 @@ export default function Footer() {
             </p>
             <div className="pt-2 flex flex-wrap gap-2.5">
               <a
-                href="https://Abdullah1203.github.io/web-portfolio"
+                href="https://abdullah-ibne-ali.netlify.app"
                 target="_blank"
                 rel="noreferrer"
                 className="p-2 rounded-xl bg-base-100 hover:bg-[#38B6FF] hover:text-white border border-base-content/10 shadow-sm transition"

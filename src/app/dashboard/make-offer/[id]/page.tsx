@@ -59,7 +59,7 @@ export default function MakeOfferPage() {
         propertyImage: item.propertyImage,
         agentName: item.agentName,
         agentEmail: item.agentEmail,
-        buyerName: user.displayName || "Buyer",
+        // buyerName intentionally omitted — resolved live from users collection on read
         buyerEmail: user.email,
         offeredAmount: amount,
         buyingDate: buyingDate || new Date().toISOString().split("T")[0],
