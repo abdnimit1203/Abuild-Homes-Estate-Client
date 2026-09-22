@@ -33,16 +33,14 @@ export const metadata: Metadata = {
       "Explore verified luxury homes and apartments with seamless offers and Stripe payments.",
     url: "https://abuild-homes-estate-abd.netlify.app",
     siteName: "ABuild Homes Estates",
-    images: [
-      {
-        url: "/assets/home/banner.png",
-        width: 1200,
-        height: 630,
-        alt: "ABuild Homes Estates",
-      },
-    ],
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ABuild Homes Estates | Modern Real Estate Platform",
+    description:
+      "Explore verified luxury homes and apartments with seamless offers and Stripe payments.",
   },
   manifest: "/manifest.json",
   icons: {
