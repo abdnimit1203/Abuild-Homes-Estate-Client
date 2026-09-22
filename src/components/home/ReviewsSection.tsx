@@ -128,8 +128,8 @@ export default function ReviewsSection() {
 
               return (
                 <SwiperSlide key={review._id || idx} className="h-auto">
-                  {/* Warm Orange Gradient Review Card (as in the classic Abuild Homes review mode) */}
-                  <div className="h-full flex flex-col justify-between text-left p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-[#FF5A36] via-[#FF7043] to-[#FFA726] shadow-xl shadow-orange-500/20 border border-orange-300/40 text-white min-h-[420px] transition-transform duration-300 hover:-translate-y-1">
+                  {/* Clean Modern Review Card */}
+                  <div className="h-full flex flex-col justify-between text-left p-6 sm:p-7 rounded-2xl bg-white dark:bg-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-orange-500/50 dark:border-slate-700 min-h-[280px] transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 group/card">
                     <div className="space-y-4">
                       {/* Top Bar: Quote Icon & 5 Golden Stars */}
                       <div className="flex items-center justify-between">
@@ -137,41 +137,40 @@ export default function ReviewsSection() {
                           {Array.from({ length: 5 }).map((_, i) => (
                             <Star
                               key={i}
-                              className="w-4 h-4 fill-amber-300 text-amber-300 drop-shadow-sm"
+                              className="w-4 h-4 fill-orange-400 text-orange-400"
                             />
                           ))}
                         </div>
-                        <Quote className="w-8 h-8 text-white/30 rotate-180" />
+                        <Quote className="w-8 h-8 text-slate-200 dark:text-slate-700 rotate-180 transition-colors group-hover/card:text-orange-100 dark:group-hover/card:text-orange-900/30" />
                       </div>
 
                       {/* Review Body Text */}
-                      <p className="text-sm sm:text-base text-white/95 leading-relaxed font-medium italic line-clamp-5">
+                      <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-medium italic line-clamp-5">
                         &ldquo;{review.reviewDescription}&rdquo;
                       </p>
                     </div>
 
                     {/* Bottom Area: Buyer Profile & Property Pill */}
-                    <div className="pt-4 border-t border-white/25 mt-4 space-y-3">
+                    <div className="pt-5 mt-5 space-y-4 border-t border-slate-100 dark:border-slate-700">
                       {/* Buyer Picture & Buyer Name */}
                       <div className="flex items-center gap-3.5">
-                        <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white/20 border-2 border-white shadow-md flex-shrink-0">
+                        <div className="relative w-12 h-12 rounded-full overflow-hidden bg-slate-100 dark:bg-slate-700 shadow-sm flex-shrink-0">
                           <img
                             src={buyerPhoto}
                             alt={buyerName}
                             className="w-full h-full object-cover"
                             onError={(e) => {
-                              // Graceful fallback for broken image links
                               (e.target as HTMLImageElement).src =
                                 "https://i.ibb.co/5x6DN2n/blank-dp.png";
                             }}
                           />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="font-bold text-base text-white truncate drop-shadow-sm">
+                          <p className="font-bold text-base text-slate-900 dark:text-white truncate">
                             {buyerName}
                           </p>
-                          <div className="flex items-center gap-1.5 text-xs text-white/85 font-medium">
-                            <span className="inline-block w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
+                          <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-medium">
+                            <span className="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
                             <span>Verified Client</span>
                           </div>
                         </div>
@@ -179,8 +178,8 @@ export default function ReviewsSection() {
 
                       {/* Property Title Tag */}
                       {review.propertyTitle && (
-                        <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-3.5 py-2 rounded-xl text-white text-xs font-semibold truncate border border-white/20 shadow-inner">
-                          <BsFillBuildingsFill className="text-white text-sm flex-shrink-0" />
+                        <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-700/50 px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 text-xs font-semibold truncate border border-slate-200 dark:border-slate-600/50">
+                          <BsFillBuildingsFill className="text-orange-500 text-sm flex-shrink-0" />
                           <span className="truncate">
                             Property: {review.propertyTitle}
                           </span>

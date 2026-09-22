@@ -44,6 +44,7 @@ export default function Rental() {
               src="https://i.ibb.co/Yk7pCjt/houseforest.jpg"
               alt="House in forest"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover hover:scale-105 transition-transform duration-500"
             />
           </div>
@@ -56,6 +57,7 @@ export default function Rental() {
               src="https://i.ibb.co/D5T8yRr/home004.jpg"
               alt="Modern Home"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover hover:scale-105 transition-transform duration-500"
             />
           </div>
@@ -116,6 +118,7 @@ export default function Rental() {
               src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1260&q=80"
               alt="Mobile living"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover hover:scale-105 transition-transform duration-500"
             />
           </div>

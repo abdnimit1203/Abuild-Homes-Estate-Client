@@ -20,7 +20,7 @@ import {
   BsFillHousesFill,
 } from "react-icons/bs";
 import { GrMoney } from "react-icons/gr";
-import { RiAdminFill, RiMenuFoldLine } from "react-icons/ri";
+import { RiAdminFill, RiMenu3Line } from "react-icons/ri";
 import { LiaUsersCogSolid } from "react-icons/lia";
 import { IoIosHome } from "react-icons/io";
 
@@ -98,50 +98,43 @@ export default function DashboardLayout({
     );
   }
 
+  // Helper for clean, accessible navigation links in both light & dark mode
+  const getNavLinkClass = (href: string) => {
+    const isActive = pathname === href;
+    if (isActive) {
+      return "bg-white text-slate-900 shadow-md font-bold px-3.5 py-2.5 rounded-xl flex items-center dark:bg-white/20 dark:text-white dark:border dark:border-white/25 dark:shadow-inner transition-all duration-150";
+    }
+    return "text-slate-900/85 hover:bg-white/60 hover:text-slate-950 dark:text-slate-200 dark:hover:bg-white/10 dark:hover:text-white px-3.5 py-2.5 rounded-xl flex items-center font-medium transition-all duration-150";
+  };
+
   // Left-aligned User navigation links
   const userNavlinks = (
     <div className="flex flex-col gap-2 text-left">
       <Link
         href="/dashboard/profile"
         onClick={closeDrawer}
-        className={
-          pathname === "/dashboard/profile"
-            ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
-        }
+        className={getNavLinkClass("/dashboard/profile")}
       >
         <FaRegUserCircle className="inline text-xl mr-3 flex-shrink-0" /> My Profile
       </Link>
       <Link
         href="/dashboard/wishlist"
         onClick={closeDrawer}
-        className={
-          pathname === "/dashboard/wishlist"
-            ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
-        }
+        className={getNavLinkClass("/dashboard/wishlist")}
       >
         <BsClipboardHeart className="inline text-xl mr-3 flex-shrink-0" /> WishList
       </Link>
       <Link
         href="/dashboard/property-bought"
         onClick={closeDrawer}
-        className={
-          pathname === "/dashboard/property-bought"
-            ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
-        }
+        className={getNavLinkClass("/dashboard/property-bought")}
       >
         <FaBuildingUser className="inline text-xl mr-3 flex-shrink-0" /> Property Bought
       </Link>
       <Link
         href="/dashboard/my-reviews"
         onClick={closeDrawer}
-        className={
-          pathname === "/dashboard/my-reviews"
-            ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
-        }
+        className={getNavLinkClass("/dashboard/my-reviews")}
       >
         <MdReviews className="inline text-xl mr-3 flex-shrink-0" /> My Reviews
       </Link>
@@ -154,55 +147,35 @@ export default function DashboardLayout({
       <Link
         href="/dashboard/profile"
         onClick={closeDrawer}
-        className={
-          pathname === "/dashboard/profile"
-            ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
-        }
+        className={getNavLinkClass("/dashboard/profile")}
       >
         <FaUserSecret className="inline text-xl mr-3 flex-shrink-0" /> Agent Profile
       </Link>
       <Link
         href="/dashboard/add-property"
         onClick={closeDrawer}
-        className={
-          pathname === "/dashboard/add-property"
-            ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
-        }
+        className={getNavLinkClass("/dashboard/add-property")}
       >
         <BsBuildingFillAdd className="inline text-xl mr-3 flex-shrink-0" /> Add Property
       </Link>
       <Link
         href="/dashboard/added-properties"
         onClick={closeDrawer}
-        className={
-          pathname === "/dashboard/added-properties"
-            ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
-        }
+        className={getNavLinkClass("/dashboard/added-properties")}
       >
         <BsFillHousesFill className="inline text-xl mr-3 flex-shrink-0" /> My Added Properties
       </Link>
       <Link
         href="/dashboard/sold-properties"
         onClick={closeDrawer}
-        className={
-          pathname === "/dashboard/sold-properties"
-            ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
-        }
+        className={getNavLinkClass("/dashboard/sold-properties")}
       >
         <GrMoney className="inline text-xl mr-3 flex-shrink-0" /> My Sold Properties
       </Link>
       <Link
         href="/dashboard/requested-properties"
         onClick={closeDrawer}
-        className={
-          pathname === "/dashboard/requested-properties"
-            ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
-        }
+        className={getNavLinkClass("/dashboard/requested-properties")}
       >
         <BsBuildingExclamation className="inline text-xl mr-3 flex-shrink-0" /> Requested Properties
       </Link>
@@ -215,44 +188,28 @@ export default function DashboardLayout({
       <Link
         href="/dashboard/profile"
         onClick={closeDrawer}
-        className={
-          pathname === "/dashboard/profile"
-            ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
-        }
+        className={getNavLinkClass("/dashboard/profile")}
       >
         <RiAdminFill className="inline text-xl mr-3 flex-shrink-0" /> Admin Profile
       </Link>
       <Link
         href="/dashboard/manage-properties"
         onClick={closeDrawer}
-        className={
-          pathname === "/dashboard/manage-properties"
-            ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
-        }
+        className={getNavLinkClass("/dashboard/manage-properties")}
       >
         <BsBuildingFillGear className="inline text-xl mr-3 flex-shrink-0" /> Manage Properties
       </Link>
       <Link
         href="/dashboard/manage-users"
         onClick={closeDrawer}
-        className={
-          pathname === "/dashboard/manage-users"
-            ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
-        }
+        className={getNavLinkClass("/dashboard/manage-users")}
       >
         <LiaUsersCogSolid className="inline text-xl mr-3 flex-shrink-0" /> Manage Users
       </Link>
       <Link
         href="/dashboard/manage-reviews"
         onClick={closeDrawer}
-        className={
-          pathname === "/dashboard/manage-reviews"
-            ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
-        }
+        className={getNavLinkClass("/dashboard/manage-reviews")}
       >
         <MdRateReview className="inline text-xl mr-3 flex-shrink-0" /> Manage reviews
       </Link>
@@ -265,15 +222,11 @@ export default function DashboardLayout({
       <Link
         href="/dashboard/profile"
         onClick={closeDrawer}
-        className={
-          pathname === "/dashboard/profile"
-            ? "active bg-base-100 px-3 py-2 text-neutral rounded-xl font-semibold flex items-center"
-            : "hover:bg-base-100 px-3 py-2 hover:text-neutral transition duration-200 rounded-xl flex items-center text-base-content/90 font-medium"
-        }
+        className={getNavLinkClass("/dashboard/profile")}
       >
         <RiAdminFill className="inline text-xl mr-3 flex-shrink-0" /> Profile
       </Link>
-      <div className="p-3 bg-red-600/20 rounded-xl text-red-900 text-xs font-bold space-y-1">
+      <div className="p-3 bg-red-600/20 text-red-800 dark:text-red-300 border border-red-500/30 rounded-xl text-xs font-bold space-y-1">
         <p>Sorry! You do not have access to any dashboard facility! (Because you were marked as fraud)</p>
         <p>Please contact admin!</p>
       </div>
@@ -305,13 +258,13 @@ export default function DashboardLayout({
         userNavlinks
       )}
 
-      <hr className="border-white/50 my-2" />
+      <hr className="border-slate-900/20 dark:border-white/20 my-2" />
 
       {/* Return to Homepage */}
       <Link
         href="/"
         onClick={closeDrawer}
-        className="hover:bg-white/80 font-bold px-3 py-2.5 rounded-2xl transition duration-200 flex items-center text-base-content/90"
+        className="font-bold px-3.5 py-2.5 rounded-xl transition duration-200 flex items-center text-slate-900/90 hover:bg-white/60 hover:text-slate-950 dark:text-slate-200 dark:hover:bg-white/10 dark:hover:text-white"
       >
         <IoIosHome className="inline text-xl mr-3 flex-shrink-0" />
         HOMEPAGE
@@ -320,7 +273,7 @@ export default function DashboardLayout({
       {/* Log Out Button */}
       <button
         onClick={handleLogOut}
-        className="btn btn-secondary border-white hover:border-white w-full text-white btn-sm rounded-xl font-bold"
+        className="btn bg-rose-600 hover:bg-rose-700 border-none text-white w-full btn-sm rounded-xl font-bold shadow-md transition"
       >
         <MdLogout className="inline text-lg mr-1" /> LOG OUT
       </button>
@@ -329,10 +282,10 @@ export default function DashboardLayout({
 
   const gradientClass =
     role === "admin"
-      ? "bg-gradient-to-tr from-[#38B6FF] to-blue-200 text-black"
+      ? "bg-gradient-to-tr from-[#38B6FF] to-blue-200 dark:from-slate-900 dark:via-slate-900/95 dark:to-sky-950/80 text-slate-900 dark:text-white dark:border dark:border-sky-500/30 shadow-xl"
       : role === "agent"
-      ? "bg-gradient-to-tr from-blue-400 via-purple-400 to-purple-500 border-r-2 border-[#ffffff56] text-black"
-      : "bg-gradient-to-tr from-[#FF5A3C] to-amber-300 text-black";
+      ? "bg-gradient-to-tr from-blue-400 via-purple-400 to-purple-500 dark:from-slate-900 dark:via-slate-900/95 dark:to-purple-950/80 text-slate-900 dark:text-white dark:border dark:border-purple-500/30 shadow-xl"
+      : "bg-gradient-to-tr from-[#FF5A3C] to-amber-300 dark:from-slate-900 dark:via-slate-900/95 dark:to-amber-950/70 text-slate-900 dark:text-white dark:border dark:border-amber-500/30 shadow-xl";
 
   return (
     <div className="relative min-h-[calc(100vh-10rem)] w-full max-w-full min-w-0">
@@ -349,7 +302,7 @@ export default function DashboardLayout({
               className="btn btn-sm btn-primary text-white rounded-xl flex items-center gap-2 font-semibold drawer-button cursor-pointer"
               aria-label="Toggle dashboard menu"
             >
-              <RiMenuFoldLine className="w-4 h-4 text-white" />
+              <RiMenu3Line className="w-4 h-4 text-white" />
               <span>DASHBOARD MENU</span>
             </label>
             <span className="text-xs font-bold uppercase px-2.5 py-1 rounded-lg bg-primary/10 text-primary">

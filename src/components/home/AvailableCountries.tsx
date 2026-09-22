@@ -31,6 +31,8 @@ export default function AvailableCountries() {
               src={item.image}
               alt={item.name}
               fill
+              unoptimized
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
               className="object-cover group-hover:scale-110 transition-transform duration-500"
             />
             <div className={`absolute inset-0 bg-gradient-to-t ${item.color} opacity-60 group-hover:opacity-75 transition-opacity`} />

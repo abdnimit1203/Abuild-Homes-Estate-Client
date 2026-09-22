@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, MapPin, Home as HomeIcon, DollarSign } from "lucide-react";
@@ -39,11 +40,19 @@ export default function Banner() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-            style={{ backgroundImage: "url(/assets/home/banner-dark.png)" }}
+            className="absolute inset-0 z-0"
           >
+            <Image
+              src="/assets/home/banner-dark.jpg"
+              alt="Luxury Modern Estate at Dusk"
+              fill
+              priority
+              unoptimized
+              sizes="(max-width: 1536px) 100vw, 1536px"
+              className="object-cover object-center"
+            />
             {/* Soft dark overlay for text contrast */}
-            <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/85 via-neutral-950/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/85 via-neutral-950/60 to-transparent z-[1]" />
           </motion.div>
         ) : (
           <motion.div
@@ -52,11 +61,19 @@ export default function Banner() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-            style={{ backgroundImage: "url(/assets/home/banner.png)" }}
+            className="absolute inset-0 z-0"
           >
+            <Image
+              src="/assets/home/banner.jpg"
+              alt="Luxury Modern Estate"
+              fill
+              priority
+              unoptimized
+              sizes="(max-width: 1536px) 100vw, 1536px"
+              className="object-cover object-center"
+            />
             {/* Soft light overlay for text contrast */}
-            <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/50 to-transparent z-[1]" />
           </motion.div>
         )}
       </AnimatePresence>

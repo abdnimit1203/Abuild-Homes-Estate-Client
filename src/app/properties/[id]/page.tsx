@@ -196,34 +196,34 @@ export default function PropertyDetailsPage() {
           </div>
 
           {/* Quick Property Features */}
-          <div className="grid grid-cols-3 gap-4 p-5 rounded-2xl bg-base-200/50 dark:bg-base-200/80 border border-base-content/10">
-            <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-xl bg-[#38B6FF]/15 text-[#38B6FF]">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-base-200/50 dark:bg-base-200/80 border border-base-content/10">
+            <div className="flex items-center gap-3 min-w-0 p-2.5 sm:p-0 rounded-xl bg-base-100/60 dark:bg-base-100/30 sm:bg-transparent dark:sm:bg-transparent">
+              <div className="p-2.5 rounded-xl bg-[#38B6FF]/15 text-[#38B6FF] flex-shrink-0">
                 <BedDouble className="w-5 h-5" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-xs text-base-content/60">Bedrooms</p>
-                <p className="text-sm font-bold text-base-content">3-4 Rooms</p>
+                <p className="text-sm font-bold text-base-content truncate">3-4 Rooms</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-xl bg-emerald-500/15 text-emerald-500">
+            <div className="flex items-center gap-3 min-w-0 p-2.5 sm:p-0 rounded-xl bg-base-100/60 dark:bg-base-100/30 sm:bg-transparent dark:sm:bg-transparent">
+              <div className="p-2.5 rounded-xl bg-emerald-500/15 text-emerald-500 flex-shrink-0">
                 <Car className="w-5 h-5" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-xs text-base-content/60">Parking</p>
-                <p className="text-sm font-bold text-base-content">Dedicated</p>
+                <p className="text-sm font-bold text-base-content truncate">Dedicated</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-xl bg-amber-500/15 text-amber-500">
+            <div className="flex items-center gap-3 min-w-0 p-2.5 sm:p-0 rounded-xl bg-base-100/60 dark:bg-base-100/30 sm:bg-transparent dark:sm:bg-transparent">
+              <div className="p-2.5 rounded-xl bg-amber-500/15 text-amber-500 flex-shrink-0">
                 <Maximize2 className="w-5 h-5" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-xs text-base-content/60">Total Area</p>
-                <p className="text-sm font-bold text-base-content">2,400 sqft</p>
+                <p className="text-sm font-bold text-base-content truncate">2,400 sqft</p>
               </div>
             </div>
           </div>

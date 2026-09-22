@@ -1,18 +1,24 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 
 export default function ContactUs() {
   return (
     <section className="py-12">
-      <div
-        className="relative rounded-3xl overflow-hidden min-h-[420px] flex items-center bg-cover bg-center shadow-2xl"
-        style={{ backgroundImage: "url(/assets/home/contact-home.jpg)" }}
-      >
+      <div className="relative rounded-3xl overflow-hidden min-h-[420px] flex items-center shadow-2xl">
+        <Image
+          src="/assets/home/contact-home.jpg"
+          alt="Contact ABuild Homes"
+          fill
+          unoptimized
+          sizes="(max-width: 1280px) 100vw, 1280px"
+          className="object-cover object-center z-0"
+        />
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-neutral-950/75 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-neutral-950/75 backdrop-blur-[2px] z-[1]" />
 
         <div className="relative z-10 max-w-2xl px-6 sm:px-12 py-10 text-white space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#38B6FF]/20 border border-[#38B6FF]/40 text-[#38B6FF] text-xs font-bold uppercase tracking-wider">
