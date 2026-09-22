@@ -72,8 +72,12 @@ export default function Navbar() {
     });
   };
 
+  if (isDashboard) {
+    return null;
+  }
+
   return (
-    <nav className="sticky top-0 z-50 w-full backdrop-blur-md bg-base-100/90 dark:bg-base-100/95 border-b border-base-content/10 transition-colors duration-200">
+    <nav className="fixed top-0 left-0 right-0 z-50 w-full backdrop-blur-md bg-base-100/90 dark:bg-base-100/95 border-b border-base-content/10 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Mobile hamburger menu button for top navbar */}
@@ -121,20 +125,23 @@ export default function Navbar() {
           {/* Right Actions: Theme Controller & Role-based Profile Icon Dropdown */}
           <div className="flex items-center gap-2 sm:gap-3">
             {user ? (
-              <div className="relative" ref={dropdownRef}>
+              <div className="relative " ref={dropdownRef}>
                 {/* Profile Icon with primary border and online status indicator */}
-                <div
-                  tabIndex={0}
-                  role="button"
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="avatar online w-11 h-11 rounded-full border-2 border-primary cursor-pointer overflow-hidden p-[2px] transition hover:scale-105"
-                  aria-label="User profile menu"
-                >
-                  <img
-                    src={user.photoURL || "https://i.ibb.co/5x6DN2n/blank-dp.png"}
-                    alt="user-photo"
-                    className="w-full h-full rounded-full object-cover"
-                  />
+                <div className="avatar online ">
+
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                    className=" w-12 h-12 rounded-full border-2 border-primary cursor-pointer overflow-hidden p-[2px] transition hover:scale-105"
+                    aria-label="User profile menu"
+                  >
+                    <img
+                      src={user.photoURL || "https://i.ibb.co/5x6DN2n/blank-dp.png"}
+                      alt="user-photo"
+                      className="w-full h-full rounded-full object-cover"
+                    />
+                  </div>
                 </div>
 
                 {/* Role-Based Profile Dropdown View */}

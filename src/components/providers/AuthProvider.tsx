@@ -12,7 +12,7 @@ import {
   User as FirebaseUser,
 } from "firebase/auth";
 import { auth } from "@/lib/firebase";
-import { axiosPublic } from "@/lib/api";
+import { axiosPublic, prime, invalidate } from "@/lib/api";
 
 interface AuthContextType {
   user: FirebaseUser | null;
@@ -67,9 +67,8 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     setLoading(true);
     try {
       await signOut(auth);
-      if (typeof window !== "undefined") {
-        localStorage.removeItem("access-token");
-      }
+      // TokenManager owns the cache — one call clears it
+      invalidate();
     } finally {
       setLoading(false);
     }
@@ -80,9 +79,10 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
       setUser(currentUser);
       if (currentUser?.email) {
         try {
+          // Mint a fresh JWT and hand it to TokenManager via prime()
           const res = await axiosPublic.post("/jwt", { email: currentUser.email });
-          if (res.data?.token && typeof window !== "undefined") {
-            localStorage.setItem("access-token", res.data.token);
+          if (res.data?.token) {
+            prime(res.data.token);
           }
         } catch (error) {
           console.error("Failed to generate JWT token:", error);
@@ -90,9 +90,8 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
           setLoading(false);
         }
       } else {
-        if (typeof window !== "undefined") {
-          localStorage.removeItem("access-token");
-        }
+        // Sign-out path: clear the token through the seam
+        invalidate();
         setLoading(false);
       }
     });

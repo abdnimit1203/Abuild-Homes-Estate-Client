@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import ClientProviders from "@/components/providers/ClientProviders";
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
+import AppShell from "@/components/layout/AppShell";
 
 export const viewport: Viewport = {
   themeColor: "#38B6FF",
@@ -61,11 +60,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen flex flex-col justify-between antialiased">
         <ClientProviders>
-          <Navbar />
-          <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 min-w-0">
-            {children}
-          </main>
-          <Footer />
+          <AppShell>{children}</AppShell>
         </ClientProviders>
       </body>
     </html>

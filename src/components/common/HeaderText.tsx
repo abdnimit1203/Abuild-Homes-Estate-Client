@@ -17,31 +17,26 @@ export default function HeaderText({
   emailText,
 }: HeaderTextProps) {
   return (
-    <div className="text-center py-6 space-y-1">
-      {headerText && (
-        <h2 className="text-xl md:text-2xl font-bold mx-auto text-base-content">
-          {headerText}
-        </h2>
-      )}
-      {headerText2 && (
-        <h2 className="text-xl md:text-2xl font-bold mx-auto text-base-content">
-          {headerText2}
+    <div className="text-center py-6 space-y-2">
+      {(headerText || headerText2) && (
+        <h2 className="text-2xl sm:text-3xl font-extrabold mx-auto text-base-content tracking-tight px-4">
+          {headerText} {headerText2 && <span className="text-[#38B6FF]">{headerText2}</span>}
         </h2>
       )}
       {headerText3 && (
-        <h3 className="text-xs font-bold text-base-content/70 mx-auto">
+        <p className="text-xs sm:text-sm text-base-content/70 mx-auto max-w-xl px-4 leading-relaxed font-medium">
           {headerText3}
-        </h3>
+        </p>
       )}
       {emailText && (
-        <h3 className="text-xs text-base-content/90 font-bold mx-auto truncate px-2">
+        <p className="text-xs text-base-content/90 font-bold mx-auto truncate px-4">
           {emailText}
-        </h3>
+        </p>
       )}
       <div className="inline-flex items-center justify-center w-full relative pt-2">
-        <hr className="h-px my-4 bg-base-content/20 w-[60%] mx-auto border-base-content/20 border" />
-        <span className="absolute px-3 py-1 bg-base-200/80 backdrop-blur-sm text-base-content rounded-xl shadow-sm">
-          <BsFillBuildingsFill className="text-lg my-1" />
+        <hr className="h-px my-4 bg-base-content/15 w-[50%] max-w-xs mx-auto border-0" />
+        <span className="absolute px-3 py-1 bg-base-200/90 backdrop-blur-sm text-base-content rounded-xl shadow-sm border border-base-content/10">
+          <BsFillBuildingsFill className="text-base text-[#38B6FF] my-0.5" />
         </span>
       </div>
     </div>

@@ -7,6 +7,7 @@ import HeaderText from "../common/HeaderText";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { BsFillBuildingsFill } from "react-icons/bs";
 import { Review } from "@/types";
+import { normaliseReview } from "@/lib/normaliseReview";
 
 // Swiper imports
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -19,7 +20,7 @@ import "swiper/css/navigation";
 export default function ReviewsSection() {
   const swiperRef = useRef<SwiperCore | null>(null);
 
-  const { data: reviews = [], isLoading } = useQuery<Review[]>({
+  const { data: rawReviews = [], isLoading } = useQuery<Review[]>({
     queryKey: ["all-reviews"],
     queryFn: async () => {
       try {
@@ -31,6 +32,9 @@ export default function ReviewsSection() {
       }
     },
   });
+
+  // Apply the shared normaliseReview adapter once — no inline fallback chains below
+  const reviews = rawReviews.map(normaliseReview);
 
   return (
     <section className="py-16">
@@ -118,46 +122,38 @@ export default function ReviewsSection() {
             className="reviews-swiper w-full !pb-14"
           >
             {reviews.map((review, idx) => {
-              // Map buyer picture & name correctly from MongoDB schema (userPhoto & username)
-              const buyerPhoto =
-                review.userPhoto ||
-                review.userImage ||
-                "https://i.ibb.co/5x6DN2n/blank-dp.png";
-              const buyerName =
-                review.username || review.userName || "Verified Buyer";
-
               return (
                 <SwiperSlide key={review._id || idx} className="h-auto">
                   {/* Clean Modern Review Card */}
-                  <div className="h-full flex flex-col justify-between text-left p-6 sm:p-7 rounded-2xl bg-white dark:bg-slate-800 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-orange-500/50 dark:border-slate-700 min-h-[280px] transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 group/card">
-                    <div className="space-y-4">
+                  <div className="h-full flex flex-col justify-between text-left p-5 rounded-2xl bg-white dark:bg-slate-800 shadow-sm border border-orange-500/40 dark:border-slate-700 transition-all duration-300 hover:shadow-md hover:-translate-y-1 group/card">
+                    <div className="space-y-3">
                       {/* Top Bar: Quote Icon & 5 Golden Stars */}
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-0.5">
                           {Array.from({ length: 5 }).map((_, i) => (
                             <Star
                               key={i}
-                              className="w-4 h-4 fill-orange-400 text-orange-400"
+                              className="w-3.5 h-3.5 fill-orange-400 text-orange-400"
                             />
                           ))}
                         </div>
-                        <Quote className="w-8 h-8 text-slate-200 dark:text-slate-700 rotate-180 transition-colors group-hover/card:text-orange-100 dark:group-hover/card:text-orange-900/30" />
+                        <Quote className="w-6 h-6 text-slate-200 dark:text-slate-700 rotate-180" />
                       </div>
 
                       {/* Review Body Text */}
-                      <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-medium italic line-clamp-5">
+                      <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic line-clamp-4">
                         &ldquo;{review.reviewDescription}&rdquo;
                       </p>
                     </div>
 
                     {/* Bottom Area: Buyer Profile & Property Pill */}
-                    <div className="pt-5 mt-5 space-y-4 border-t border-slate-100 dark:border-slate-700">
+                    <div className="pt-4 mt-4 space-y-3 border-t border-slate-100 dark:border-slate-700">
                       {/* Buyer Picture & Buyer Name */}
-                      <div className="flex items-center gap-3.5">
-                        <div className="relative w-12 h-12 rounded-full overflow-hidden bg-slate-100 dark:bg-slate-700 shadow-sm flex-shrink-0">
+                      <div className="flex items-center gap-3">
+                        <div className="relative w-10 h-10 rounded-full overflow-hidden bg-slate-100 dark:bg-slate-700 shadow-sm flex-shrink-0">
                           <img
-                            src={buyerPhoto}
-                            alt={buyerName}
+                            src={review.displayPhoto}
+                            alt={review.displayName}
                             className="w-full h-full object-cover"
                             onError={(e) => {
                               (e.target as HTMLImageElement).src =
@@ -166,11 +162,11 @@ export default function ReviewsSection() {
                           />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="font-bold text-base text-slate-900 dark:text-white truncate">
-                            {buyerName}
+                          <p className="font-bold text-sm text-slate-900 dark:text-white truncate">
+                            {review.displayName}
                           </p>
-                          <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 font-medium">
-                            <span className="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
+                          <div className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400 font-medium">
+                            <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                             <span>Verified Client</span>
                           </div>
                         </div>
@@ -178,8 +174,8 @@ export default function ReviewsSection() {
 
                       {/* Property Title Tag */}
                       {review.propertyTitle && (
-                        <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-700/50 px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-300 text-xs font-semibold truncate border border-slate-200 dark:border-slate-600/50">
-                          <BsFillBuildingsFill className="text-orange-500 text-sm flex-shrink-0" />
+                        <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-700/50 px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 text-xs font-semibold border border-slate-200 dark:border-slate-600/50">
+                          <BsFillBuildingsFill className="text-orange-500 text-xs flex-shrink-0" />
                           <span className="truncate">
                             Property: {review.propertyTitle}
                           </span>

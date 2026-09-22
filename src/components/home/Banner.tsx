@@ -94,8 +94,7 @@ export default function Banner() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-neutral-900 dark:text-white leading-[1.15]">
-            Discover Your <br />
-            <span className="text-[#38B6FF]">Dream Home</span> With Confidence
+            Discover Your <br /><span className="text-[#38B6FF]">Dream Home</span> With Confidence
           </h1>
 
           <p className="text-base sm:text-lg text-neutral-700 dark:text-neutral-300 font-medium leading-relaxed">

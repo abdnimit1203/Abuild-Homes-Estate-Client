@@ -2,14 +2,20 @@
 
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { ShieldCheck } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaXTwitter, FaInstagram, FaGlobe } from "react-icons/fa6";
 
 export default function Footer() {
+  const pathname = usePathname();
   const { theme, resolvedTheme } = useTheme();
   const isDark = theme === "dark" || resolvedTheme === "dark";
+
+  if (pathname?.startsWith("/dashboard")) {
+    return null;
+  }
 
   return (
     <footer className="mt-20 border-t border-base-content/10 bg-base-200/50 dark:bg-base-200/90 transition-colors">

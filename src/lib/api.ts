@@ -1,118 +1,91 @@
-import axios from "axios";
-import { auth } from "./firebase";
+/**
+ * api.ts — axios instances + interceptors.
+ *
+ * Token lifecycle is fully owned by TokenManager (@/lib/tokenManager).
+ * This file only wires the interceptors to that seam.
+ *
+ * axiosPublic  — requests that don't require authentication (can still carry a token if present)
+ * axiosSecure  — requests that require authentication (same behaviour; name preserved for callers)
+ *
+ * Both instances share the same interceptor setup because the TokenManager attaches the token
+ * opportunistically: if none exists, the request goes through unauthenticated.
+ */
 
-export const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://abuild-homes-estate-server-2.onrender.com";
+import axios from "axios";
+import { getToken, prime, invalidate, API_BASE_URL } from "./tokenManager";
+
+export { API_BASE_URL } from "./tokenManager";
+
+const SHARED_HEADERS = {
+  "x-client-request": "abuild-homes-estate",
+};
 
 export const axiosPublic = axios.create({
   baseURL: API_BASE_URL,
-  headers: {
-    "x-client-request": "abuild-homes-estate",
-  },
+  headers: SHARED_HEADERS,
 });
 
 export const axiosSecure = axios.create({
   baseURL: API_BASE_URL,
-  headers: {
-    "x-client-request": "abuild-homes-estate",
-  },
+  headers: SHARED_HEADERS,
 });
 
-/**
- * Resolves the active authentication token.
- * 1. Reads from localStorage ('access-token')
- * 2. If missing/empty and user is logged into Firebase, requests a fresh JWT from /jwt
- * 3. Falls back to Firebase ID token
- */
-export async function getValidToken(): Promise<string | null> {
-  if (typeof window === "undefined") return null;
+// ---------------------------------------------------------------------------
+// Interceptors — delegate token work to TokenManager
+// ---------------------------------------------------------------------------
 
-  let token = localStorage.getItem("access-token");
-  if (token) return token;
-
-  if (auth.currentUser?.email) {
-    try {
-      const res = await axios.post(
-        `${API_BASE_URL}/jwt`,
-        { email: auth.currentUser.email },
-        { headers: { "x-client-request": "abuild-homes-estate" } }
-      );
-      if (res.data?.token) {
-        token = res.data.token;
-        localStorage.setItem("access-token", token as string);
-        return token;
-      }
-    } catch (e) {
-      try {
-        const idToken = await auth.currentUser.getIdToken();
-        if (idToken) return idToken;
-      } catch (fbErr) {
-        // Fallthrough
-      }
-    }
-  }
-
-  return null;
-}
-
-// Request interceptor: automatically attach Authorization Bearer token to all outgoing requests
-const setupRequestInterceptor = (instance: typeof axiosPublic) => {
+function attachInterceptors(instance: typeof axiosPublic) {
+  // Request: attach Authorization header when a token is available
   instance.interceptors.request.use(
     async (config) => {
       try {
-        const token = await getValidToken();
+        const token = await getToken();
         if (token && config.headers) {
           config.headers.Authorization = `Bearer ${token}`;
         }
-      } catch (err) {
-        // Request continues even if token resolution fails
+      } catch {
+        // Request continues unauthenticated if token resolution fails
       }
       return config;
     },
     (error) => Promise.reject(error)
   );
-};
 
-// Response interceptor: automatically retry on 401 by requesting a fresh token
-const setupResponseInterceptor = (instance: typeof axiosPublic) => {
+  // Response: on 401, drop the cached token and retry once with a fresh one
   instance.interceptors.response.use(
     (response) => response,
     async (error) => {
       const originalRequest = error.config;
       if (
-        error.response &&
-        error.response.status === 401 &&
+        error.response?.status === 401 &&
         originalRequest &&
         !originalRequest._retry
       ) {
         originalRequest._retry = true;
-        if (typeof window !== "undefined" && auth.currentUser?.email) {
-          try {
-            const res = await axios.post(
-              `${API_BASE_URL}/jwt`,
-              { email: auth.currentUser.email },
-              { headers: { "x-client-request": "abuild-homes-estate" } }
-            );
-            if (res.data?.token) {
-              const freshToken = res.data.token;
-              localStorage.setItem("access-token", freshToken);
-              if (originalRequest.headers) {
-                originalRequest.headers.Authorization = `Bearer ${freshToken}`;
-              }
-              return instance(originalRequest);
+        // Drop the stale cached token so TokenManager acquires a fresh one
+        invalidate();
+        try {
+          const freshToken = await getToken();
+          if (freshToken) {
+            if (originalRequest.headers) {
+              originalRequest.headers.Authorization = `Bearer ${freshToken}`;
             }
-          } catch (refreshErr) {
-            console.warn("Silent token refresh failed:", refreshErr);
+            return instance(originalRequest);
           }
+        } catch {
+          // Fallthrough to rejection
         }
       }
       return Promise.reject(error);
     }
   );
-};
+}
 
-setupRequestInterceptor(axiosSecure);
-setupResponseInterceptor(axiosSecure);
+attachInterceptors(axiosPublic);
+attachInterceptors(axiosSecure);
 
-setupRequestInterceptor(axiosPublic);
-setupResponseInterceptor(axiosPublic);
+// ---------------------------------------------------------------------------
+// Re-export token utilities for the rare caller that needs them directly
+// (e.g. AuthProvider uses prime() and invalidate())
+// ---------------------------------------------------------------------------
+export { getToken, prime, invalidate };

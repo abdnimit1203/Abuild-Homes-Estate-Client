@@ -127,7 +127,7 @@ export default function ProfilePage() {
         <div className="h-28 sm:h-36 w-full bg-gradient-to-r from-[#38B6FF]/25 via-primary/20 to-purple-500/20 border-b border-base-content/10 relative">
           <div className="absolute top-4 right-4 flex items-center gap-2">
             <span className="inline-flex z-10 items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 backdrop-blur-md">
-              <CheckCircle className="w-8.5 h-8.5 " />
+              <CheckCircle className="w-3.5 h-3.5 " />
               Verified
             </span>
           </div>
